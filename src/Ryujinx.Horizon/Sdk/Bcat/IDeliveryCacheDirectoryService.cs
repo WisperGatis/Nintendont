@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using LibHac.Bcat;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf;

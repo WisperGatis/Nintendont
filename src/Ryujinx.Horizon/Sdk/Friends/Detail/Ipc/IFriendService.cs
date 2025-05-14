@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Account;
 using Ryujinx.Horizon.Sdk.Settings;

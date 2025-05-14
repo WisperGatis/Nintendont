@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Arp;
 using Ryujinx.Horizon.Sdk.Arp.Detail;
@@ -6,7 +7,7 @@ using Ryujinx.Horizon.Sdk.Sf;
 
 namespace Ryujinx.Horizon.Arp.Ipc
 {
-    partial class Writer : IWriter, IServiceObject
+    partial class Writer : ServiceObjectBase, IWriter
     {
         private readonly ApplicationInstanceManager _applicationInstanceManager;
 

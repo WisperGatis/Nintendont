@@ -2,10 +2,11 @@ using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Arp;
 using Ryujinx.Horizon.Sdk.Arp.Detail;
 using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Arp.Ipc
 {
-    partial class UnregistrationNotifier : IUnregistrationNotifier, IServiceObject
+    partial class UnregistrationNotifier : ServiceObjectBase, IUnregistrationNotifier
     {
         private readonly ApplicationInstanceManager _applicationInstanceManager;
 
@@ -21,5 +22,7 @@ namespace Ryujinx.Horizon.Arp.Ipc
 
             return Result.Success;
         }
+
+
     }
 }

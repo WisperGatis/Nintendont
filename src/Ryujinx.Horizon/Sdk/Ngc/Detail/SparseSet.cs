@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 namespace Ryujinx.Horizon.Sdk.Ngc.Detail
 {
     class SparseSet

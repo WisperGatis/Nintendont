@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 namespace Ryujinx.Horizon.LogManager
 {
     class LmMain : IService

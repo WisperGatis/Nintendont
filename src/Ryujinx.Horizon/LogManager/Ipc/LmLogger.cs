@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Common.Logging;
 using Ryujinx.Common.Memory;
 using Ryujinx.Horizon.Common;
@@ -167,5 +168,9 @@ namespace Ryujinx.Horizon.LogManager.Ipc
 
             return true;
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

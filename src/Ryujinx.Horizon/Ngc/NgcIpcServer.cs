@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using Ryujinx.Horizon.Ngc.Ipc;
 using Ryujinx.Horizon.Sdk.Fs;
 using Ryujinx.Horizon.Sdk.Ngc.Detail;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Concentus;
 using Concentus.Enums;
 using Concentus.Structs;
@@ -370,6 +371,11 @@ namespace Ryujinx.Horizon.Sdk.Codec.Detail
         {
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
+        }
+        
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
         }
     }
 }

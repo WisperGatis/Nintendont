@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using Ryujinx.Common;
 
 namespace Ryujinx.Horizon.Sdk.Sf

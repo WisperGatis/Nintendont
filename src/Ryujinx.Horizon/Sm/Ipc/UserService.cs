@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sm;
@@ -62,5 +63,9 @@ namespace Ryujinx.Horizon.Sm.Ipc
 
             return _serviceManager.UnregisterService(_clientProcessId, name);
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

@@ -1,3 +1,4 @@
+using Ryujinx.Ava.Common.Locale;
 using Ryujinx.Ava.UI.ViewModels;
 using Ryujinx.Common;
 using Ryujinx.Common.Utilities;

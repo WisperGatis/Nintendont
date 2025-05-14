@@ -156,5 +156,9 @@ namespace Ryujinx.Horizon.MmNv.Ipc
                 return session.Id;
             }
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

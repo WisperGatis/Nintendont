@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Audio;
 using Ryujinx.Audio.Common;
 using Ryujinx.Audio.Output;
@@ -89,5 +90,10 @@ namespace Ryujinx.Horizon.Sdk.Audio.Detail
         {
             return OpenAudioOut(out outputConfig, out audioOut, outName, parameter, appletResourceId, processHandle, name, pid);
         }
+
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

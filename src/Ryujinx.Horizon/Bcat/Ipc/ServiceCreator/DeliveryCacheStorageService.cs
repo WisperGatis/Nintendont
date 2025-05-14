@@ -5,6 +5,7 @@ using Ryujinx.Horizon.Sdk.Bcat;
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Ryujinx.Horizon.Bcat.Ipc
@@ -70,5 +71,10 @@ namespace Ryujinx.Horizon.Bcat.Ipc
                 _libHacService.Destroy();
             }
         }
+        
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Audio.Common;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Applet;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Lm;
 using Ryujinx.Horizon.Sdk.Sf;
@@ -16,5 +17,9 @@ namespace Ryujinx.Horizon.LogManager.Ipc
 
             return Result.Success;
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

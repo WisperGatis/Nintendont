@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using Ryujinx.Common.Memory;
 using System;
 using System.Runtime.InteropServices;

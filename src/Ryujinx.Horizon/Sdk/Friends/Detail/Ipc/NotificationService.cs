@@ -168,5 +168,9 @@ namespace Ryujinx.Horizon.Sdk.Friends.Detail.Ipc
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

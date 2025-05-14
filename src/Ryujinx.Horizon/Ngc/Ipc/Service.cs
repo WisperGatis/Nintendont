@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Ngc;
 using Ryujinx.Horizon.Sdk.Ngc.Detail;
@@ -64,5 +65,9 @@ namespace Ryujinx.Horizon.Ngc.Ipc
                 return _profanityFilter.Reload();
             }
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

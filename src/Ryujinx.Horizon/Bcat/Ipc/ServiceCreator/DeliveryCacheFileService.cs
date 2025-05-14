@@ -6,6 +6,7 @@ using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Bcat.Ipc
 {
@@ -43,12 +44,27 @@ namespace Ryujinx.Horizon.Bcat.Ipc
             return _libHacService.Get.GetDigest(out digest).ToHorizonResult();
         }
 
-        public void Dispose()
+        private void Dispose(bool disposing)
         {
-            if (Interlocked.Exchange(ref _disposalState, 1) == 0)
+            if (_disposalState == 0)
             {
-                _libHacService.Destroy();
+                _disposalState = 1;
+
+                if (disposing)
+                {
+                    _libHacService.Destroy();
+                }
             }
         }
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

@@ -1,3 +1,4 @@
+using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Arp;
 using Ryujinx.Horizon.Audio;
 using Ryujinx.Horizon.Bcat;

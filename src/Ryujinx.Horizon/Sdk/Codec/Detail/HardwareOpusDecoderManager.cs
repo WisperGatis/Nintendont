@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Common;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf;
@@ -382,5 +383,10 @@ namespace Ryujinx.Horizon.Sdk.Codec.Detail
                 numberOfStereoStreams >= 0 &&
                 numberOfStereoStreams <= numberOfStreams;
         }
+
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

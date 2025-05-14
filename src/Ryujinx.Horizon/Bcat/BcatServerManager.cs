@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using Ryujinx.Horizon.Bcat.Ipc;
 using Ryujinx.Horizon.Bcat.Types;
 using Ryujinx.Horizon.Common;

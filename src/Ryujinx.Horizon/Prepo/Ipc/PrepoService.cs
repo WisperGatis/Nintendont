@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MsgPack;
 using MsgPack.Serialization;
 using Ryujinx.Common.Logging;
@@ -235,5 +236,9 @@ namespace Ryujinx.Horizon.Prepo.Ipc
 
             return Result.Success;
         }
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

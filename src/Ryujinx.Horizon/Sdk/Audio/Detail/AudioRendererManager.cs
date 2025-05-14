@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Audio.Renderer.Device;
 using Ryujinx.Audio.Renderer.Server;
 using Ryujinx.Common.Logging;
@@ -128,5 +129,10 @@ namespace Ryujinx.Horizon.Sdk.Audio.Detail
 
             return Result.Success;
         }
+
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

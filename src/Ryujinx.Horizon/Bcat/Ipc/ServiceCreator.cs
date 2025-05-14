@@ -6,6 +6,7 @@ using Ryujinx.Horizon.Sdk.Sf;
 using System;
 using System.Threading;
 using ApplicationId = Ryujinx.Horizon.Sdk.Ncm.ApplicationId;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Bcat.Ipc
 {
@@ -81,5 +82,10 @@ namespace Ryujinx.Horizon.Bcat.Ipc
                 _libHacService.Destroy();
             }
         }
+
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

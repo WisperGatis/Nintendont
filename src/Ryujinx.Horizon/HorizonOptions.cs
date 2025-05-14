@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using LibHac;
 using Ryujinx.Audio.Integration;
 using Ryujinx.Cpu;

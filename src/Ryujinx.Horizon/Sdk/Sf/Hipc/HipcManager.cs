@@ -1,6 +1,7 @@
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Sf.Cmif;
 using System;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Sdk.Sf.Hipc
 {
@@ -8,6 +9,11 @@ namespace Ryujinx.Horizon.Sdk.Sf.Hipc
     {
         private readonly ServerDomainSessionManager _manager;
         private readonly ServerSession _session;
+
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
 
         public HipcManager(ServerDomainSessionManager manager, ServerSession session)
         {

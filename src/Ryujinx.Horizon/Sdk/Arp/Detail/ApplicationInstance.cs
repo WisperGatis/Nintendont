@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using Ryujinx.Horizon.Sdk.Ns;
 
 namespace Ryujinx.Horizon.Sdk.Arp.Detail

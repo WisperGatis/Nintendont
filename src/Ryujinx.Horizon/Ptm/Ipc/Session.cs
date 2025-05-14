@@ -3,6 +3,7 @@ using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Ptm.Ipc;
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Ts;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Ts.Ipc
 {
@@ -43,5 +44,10 @@ namespace Ryujinx.Horizon.Ts.Ipc
 
             return Result.Success;
         }
+        
+    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+    {
+        return new Dictionary<int, CommandHandler>().AsReadOnly();
+    }
     }
 }

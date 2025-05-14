@@ -1,4 +1,5 @@
 using Ryujinx.Common.Logging;
+using Ryujinx.Cpu;
 using Ryujinx.HLE.HOS.Ipc;
 using Ryujinx.HLE.HOS.Kernel;
 using Ryujinx.HLE.HOS.Kernel.Ipc;
@@ -96,7 +97,15 @@ namespace Ryujinx.HLE.HOS.Services.Sm
                 {
                     ServiceAttribute serviceAttribute = (ServiceAttribute)type.GetCustomAttributes(typeof(ServiceAttribute)).First(service => ((ServiceAttribute)service).Name == name);
 
-                    IpcService service = GetServiceInstance(type, context, serviceAttribute.Parameter);
+                    IpcService service;
+                    if (serviceAttribute.Parameter != null)
+                    {
+                        service = GetServiceInstanceWithParameter(type, context, serviceAttribute.Parameter);
+                    }
+                    else
+                    {
+                        service = GetServiceInstance(type, context);
+                    }
 
                     service.TrySetServer(_commonServer);
                     service.Server.AddSessionObj(session.ServerSession, service);
@@ -233,23 +242,28 @@ namespace Ryujinx.HLE.HOS.Services.Sm
             return ResultCode.Success;
         }
 
-        private static string ReadName(ServiceCtx context)
+        private string ReadName(ServiceCtx context)
         {
-            StringBuilder nameBuilder = new();
+            ulong namePtr = context.Request.SendBuff[0].Position;
 
-            for (int index = 0; index < 8 &&
-                context.RequestData.BaseStream.Position <
-                context.RequestData.BaseStream.Length; index++)
+            return MemoryHelper.ReadAsciiString(context.Memory, namePtr, 8).TrimEnd('\0');
+        }
+
+        private IpcService GetServiceInstance(Type type, ServiceCtx context)
+        {
+            return (IpcService)Activator.CreateInstance(type, context.Device);
+        }
+
+        private IpcService GetServiceInstanceWithParameter(Type type, ServiceCtx context, object parameter)
+        {
+            if (parameter != null)
             {
-                byte chr = context.RequestData.ReadByte();
-
-                if (chr >= 0x20 && chr < 0x7f)
-                {
-                    nameBuilder.Append((char)chr);
-                }
+                return (IpcService)Activator.CreateInstance(type, context.Device, parameter);
             }
-
-            return nameBuilder.ToString();
+            else
+            {
+                return GetServiceInstance(type, context);
+            }
         }
 
         public override void DestroyAtExit()

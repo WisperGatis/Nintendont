@@ -1,3 +1,4 @@
+using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Common;
 using Ryujinx.Horizon.Common;
 using System;

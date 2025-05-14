@@ -1,13 +1,15 @@
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Arp;
 using Ryujinx.Horizon.Sdk.Arp.Detail;
+using Ryujinx.Horizon.Sdk.Ns;
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Arp.Ipc
 {
-    partial class Updater : IUpdater, IServiceObject
+    partial class Updater : ServiceObjectBase, IUpdater
     {
         private readonly ApplicationInstanceManager _applicationInstanceManager;
         private readonly ulong _applicationInstanceId;

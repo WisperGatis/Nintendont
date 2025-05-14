@@ -5,10 +5,11 @@ using Ryujinx.Horizon.Sdk.Ns;
 using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.Sf.Hipc;
 using System;
+using System.Collections.Generic;
 
 namespace Ryujinx.Horizon.Arp.Ipc
 {
-    partial class Registrar : IRegistrar, IServiceObject
+    partial class Registrar : ServiceObjectBase, IRegistrar
     {
         private readonly ApplicationInstance _applicationInstance;
 
@@ -48,5 +49,7 @@ namespace Ryujinx.Horizon.Arp.Ipc
 
             return Result.Success;
         }
+
+
     }
 }

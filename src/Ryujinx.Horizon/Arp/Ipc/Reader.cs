@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Ryujinx.Horizon.Common;
 using Ryujinx.Horizon.Sdk.Arp;
 using Ryujinx.Horizon.Sdk.Arp.Detail;
@@ -8,7 +9,7 @@ using System;
 
 namespace Ryujinx.Horizon.Arp.Ipc
 {
-    partial class Reader : IReader, IServiceObject
+    partial class Reader : ServiceObjectBase, IReader
     {
         private readonly ApplicationInstanceManager _applicationInstanceManager;
 

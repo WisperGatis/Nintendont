@@ -1,3 +1,4 @@
+using Ryujinx.Horizon.Sdk.Sf;
 using Ryujinx.Horizon.Sdk.OsTypes.Impl;
 using System.Collections.Generic;
 

@@ -4,6 +4,14 @@ namespace Ryujinx.Horizon.Sdk.Sf
 {
     interface IServiceObject
     {
-        IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers();
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers();
+    }
+
+    static class ServiceObjectUtils
+    {
+        public static IReadOnlyDictionary<int, CommandHandler> GetEmptyHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

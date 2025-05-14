@@ -1,3 +1,5 @@
+using Ryujinx.Horizon.Sdk.Sf;
+using System.Collections.Generic;
 using Ryujinx.Horizon.Sdk.Account;
 
 namespace Ryujinx.Horizon.Sdk.Settings.System
