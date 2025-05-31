@@ -106,25 +106,30 @@
                 </Style>
             </ui:NavigationView.Styles>
         </ui:NavigationView>
-        <ReversibleStackPanel
+        <Border
             Grid.Row="2"
-            Margin="10"
-            Spacing="10"
-            Orientation="Horizontal"
-            HorizontalAlignment="Right"
-            ReverseOrder="{Binding IsMacOS}">
-            <Button
-                HotKey="Enter"
-                Classes="accent"
-                Content="{locale:Locale SettingsButtonOk}"
-                Command="{Binding OkButton}" />
-            <Button
-                HotKey="Escape"
-                Content="{locale:Locale SettingsButtonCancel}"
-                Command="{Binding CancelButton}" />
-            <Button
-                Content="{locale:Locale SettingsButtonApply}"
-                Command="{Binding ApplyButton}" />
-        </ReversibleStackPanel>
+            Background="{DynamicResource ThemeContentBackgroundColor}"
+            BorderBrush="{DynamicResource ThemeControlBorderColor}"
+            BorderThickness="0,1,0,0">
+            <ReversibleStackPanel
+                Margin="10"
+                Spacing="10"
+                Orientation="Horizontal"
+                HorizontalAlignment="Right"
+                ReverseOrder="{Binding IsMacOS}">
+                <Button
+                    HotKey="Enter"
+                    Classes="accent"
+                    Content="{locale:Locale SettingsButtonOk}"
+                    Command="{Binding OkButton}" />
+                <Button
+                    HotKey="Escape"
+                    Content="{locale:Locale SettingsButtonCancel}"
+                    Command="{Binding CancelButton}" />
+                <Button
+                    Content="{locale:Locale SettingsButtonApply}"
+                    Command="{Binding ApplyButton}" />
+            </ReversibleStackPanel>
+        </Border>
     </Grid>
 </window:StyleableWindow>

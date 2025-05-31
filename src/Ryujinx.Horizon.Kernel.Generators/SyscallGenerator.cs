@@ -140,7 +140,8 @@ namespace Ryujinx.Horizon.Kernel.Generators
             generator.AppendLine("using System;");
             generator.AppendLine();
             generator.EnterScope($"namespace {ClassNamespace}");
-            generator.EnterScope($"static class {ClassName}");
+            generator.AppendLine($"static partial class {ClassName}");
+            generator.EnterScope();
 
             GenerateResultCheckHelper(generator);
             generator.AppendLine();

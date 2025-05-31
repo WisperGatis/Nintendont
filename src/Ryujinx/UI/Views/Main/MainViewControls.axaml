@@ -10,21 +10,26 @@
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
     x:Class="Ryujinx.Ava.UI.Views.Main.MainViewControls"
-    x:DataType="viewModels:MainWindowViewModel">
+    x:DataType="viewModels:MainWindowViewModel"
+    Background="{DynamicResource MenuBarBackgroundColor}">
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
     <DockPanel
         Margin="0,0,0,5"
         Height="35"
-        HorizontalAlignment="Stretch">
+        HorizontalAlignment="Stretch"
+        Background="{DynamicResource MenuBarBackgroundColor}">
         <Button
             Width="40"
             MinWidth="40"
             Margin="5,2,0,2"
             VerticalAlignment="Stretch"
             Command="{Binding SetListMode}"
-            IsEnabled="{Binding IsGrid}">
+            IsEnabled="{Binding IsGrid}"
+            Background="{DynamicResource ThemeControlBorderColor}"
+            Foreground="{DynamicResource ThemeForegroundColor}"
+            BorderBrush="{DynamicResource ThemeControlBorderColor}">
             <ui:FontIcon
                 Margin="0"
                 HorizontalAlignment="Stretch"
@@ -38,7 +43,10 @@
             Margin="5,2,5,2"
             VerticalAlignment="Stretch"
             Command="{Binding SetGridMode}"
-            IsEnabled="{Binding IsList}">
+            IsEnabled="{Binding IsList}"
+            Background="{DynamicResource ThemeControlBorderColor}"
+            Foreground="{DynamicResource ThemeForegroundColor}"
+            BorderBrush="{DynamicResource ThemeControlBorderColor}">
             <ui:FontIcon
                 Margin="0"
                 HorizontalAlignment="Stretch"
@@ -50,7 +58,8 @@
             Margin="10,0"
             VerticalAlignment="Center"
             Text="{locale:Locale IconSize}"
-            ToolTip.Tip="{locale:Locale IconSizeTooltip}" />
+            ToolTip.Tip="{locale:Locale IconSizeTooltip}"
+            Foreground="{DynamicResource ThemeForegroundColor}" />
         <controls:SliderScroll
             Width="150"
             Height="35"
@@ -67,7 +76,8 @@
             Margin="0"
             VerticalAlignment="Center"
             IsChecked="{Binding ShowNames, Mode=TwoWay}"
-            IsVisible="{Binding IsGrid}">
+            IsVisible="{Binding IsGrid}"
+            Foreground="{DynamicResource ThemeForegroundColor}">
             <TextBlock Margin="5,3,0,0" Text="{locale:Locale CommonShowNames}" />
         </CheckBox>
         <TextBox
@@ -79,13 +89,19 @@
             DockPanel.Dock="Right"
             KeyUp="SearchBox_OnKeyUp"
             Text="{Binding SearchText}"
-            Watermark="{locale:Locale MenuSearch}" />
+            Watermark="{locale:Locale MenuSearch}"
+            Background="{DynamicResource ThemeContentBackgroundColor}"
+            Foreground="{DynamicResource ThemeForegroundColor}"
+            BorderBrush="{DynamicResource ThemeControlBorderColor}" />
         <DropDownButton
             Width="150"
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             Content="{Binding SortName}"
-            DockPanel.Dock="Right">
+            DockPanel.Dock="Right"
+            Background="{DynamicResource ThemeControlBorderColor}"
+            Foreground="{DynamicResource ThemeForegroundColor}"
+            BorderBrush="{DynamicResource ThemeControlBorderColor}">
             <DropDownButton.Flyout>
                 <Flyout Placement="Bottom">
                     <StackPanel
@@ -172,6 +188,7 @@
             HorizontalAlignment="Right"
             VerticalAlignment="Center"
             DockPanel.Dock="Right"
-            Text="{locale:Locale CommonSort}" />
+            Text="{locale:Locale CommonSort}"
+            Foreground="{DynamicResource ThemeForegroundColor}" />
     </DockPanel>
 </UserControl>

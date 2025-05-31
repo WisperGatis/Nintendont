@@ -213,6 +213,12 @@
         <Setter Property="BorderBrush"
                 Value="{DynamicResource ThemeControlBorderColor}" />
     </Style>
+    <Style Selector="Menu">
+        <Setter Property="Background"
+                Value="{DynamicResource MenuBarBackgroundColor}" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+    </Style>
     <Style Selector="TabItem > ScrollViewer">
         <Setter Property="Background"
                 Value="{DynamicResource ThemeBackgroundColor}" />
@@ -231,6 +237,53 @@
         <Setter Property="MinWidth"
                 Value="80" />
     </Style>
+
+    <!-- Accent Button Style for OK button -->
+    <Style Selector="Button.accent">
+        <Setter Property="Background"
+                Value="{DynamicResource SystemAccentColor}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextOnAccentFillColorPrimary}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource SystemAccentColor}" />
+    </Style>
+    
+    <Style Selector="Button.accent:pointerover">
+        <Setter Property="Background"
+                Value="{DynamicResource SystemAccentColorDark1}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource SystemAccentColorDark1}" />
+    </Style>
+    
+    <Style Selector="Button.accent:pressed">
+        <Setter Property="Background"
+                Value="{DynamicResource SystemAccentColorDark2}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource SystemAccentColorDark2}" />
+    </Style>
+    
+
+    
+    <!-- General Button styling with theme colors -->
+    <Style Selector="Button:not(.accent)">
+        <Setter Property="Background"
+                Value="{DynamicResource ButtonBackgroundColor}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource ThemeForegroundColor}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource ButtonBorderColor}" />
+    </Style>
+    
+    <Style Selector="Button:not(.accent):pointerover">
+        <Setter Property="Background"
+                Value="{DynamicResource ButtonHoverBackgroundColor}" />
+    </Style>
+    
+    <Style Selector="Button:not(.accent):pressed">
+        <Setter Property="Background"
+                Value="{DynamicResource ButtonPressedBackgroundColor}" />
+    </Style>
+    
     <Style Selector="ProgressBar /template/ Border#ProgressBarTrack">
         <Setter Property="IsVisible"
                 Value="False" />
@@ -351,6 +404,68 @@
         <Setter Property="Background"
                 Value="{DynamicResource AppListHoverBackgroundColor}" />
     </Style>
+    
+    <!-- NavigationView Styles for proper theming -->
+    <Style Selector="ui|NavigationView">
+        <Setter Property="Background"
+                Value="{DynamicResource ThemeBackgroundColor}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource ThemeForegroundColor}" />
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItem">
+        <Setter Property="Background"
+                Value="Transparent" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource ThemeForegroundColor}" />
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItem:pointerover">
+        <Setter Property="Background"
+                Value="{DynamicResource ListBoxItemHoverBackgroundColor}" />
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItem:selected">
+        <Setter Property="Background"
+                Value="{DynamicResource ListBoxItemSelectedBackgroundColor}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextOnAccentFillColorPrimary}" />
+    </Style>
+    
+    <Style Selector="ui|NavigationViewItem:selected:pointerover">
+        <Setter Property="Background"
+                Value="{DynamicResource ListBoxItemSelectedBackgroundColor}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TextOnAccentFillColorPrimary}" />
+    </Style>
+    
+    <!-- NavigationView Pane styling -->
+    <Style Selector="ui|NavigationView /template/ Grid#PaneRoot">
+        <Setter Property="Background"
+                Value="{DynamicResource PanelBackgroundColor}" />
+    </Style>
+    
+    <Style Selector="ui|NavigationView /template/ Border#PaneBorder">
+        <Setter Property="Background"
+                Value="{DynamicResource PanelBackgroundColor}" />
+        <Setter Property="BorderBrush"
+                Value="{DynamicResource ThemeControlBorderColor}" />
+    </Style>
+    
+    <Style Selector="ui|NavigationView /template/ ScrollViewer#MenuItemsScrollViewer">
+        <Setter Property="Background"
+                Value="{DynamicResource PanelBackgroundColor}" />
+    </Style>
+    
+    <!-- ContentDialog Styling for proper theming -->
+    <Style Selector="ui|ContentDialog">
+        <Setter Property="Background"
+                Value="{DynamicResource ThemeContentBackgroundColor}" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource ThemeForegroundColor}" />
+    </Style>
+    
+    <!-- MainViewControls styles removed due to type resolution issues -->
     <Styles.Resources>
         <SolidColorBrush x:Key="ThemeAccentColorBrush"
                          Color="{DynamicResource SystemAccentColor}" />

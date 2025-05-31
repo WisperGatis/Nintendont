@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Layout;
 using Avalonia.Media;
+using Avalonia.Styling;
 using Avalonia.Threading;
 using FluentAvalonia.Core;
 using FluentAvalonia.UI.Controls;
@@ -19,6 +20,15 @@ namespace Ryujinx.Ava.UI.Helpers
     {
         private static bool _isChoiceDialogOpen;
         private static ContentDialogOverlayWindow _contentDialogOverlayWindow;
+
+        private static void ApplyContentDialogStyling(ContentDialog contentDialog)
+        {
+            // Only apply the minimal styling needed - hide the DialogSpace border used in some dialogs
+            // This is the same pattern used in DownloadableContentManagerWindow, ModManagerWindow, etc.
+            Style bottomBorder = new(x => x.OfType<Grid>().Name("DialogSpace").Child().OfType<Border>());
+            bottomBorder.Setters.Add(new Setter(Visual.IsVisibleProperty, false));
+            contentDialog.Styles.Add(bottomBorder);
+        }
 
         private async static Task<UserResult> ShowContentDialog(
              string title,
@@ -44,6 +54,9 @@ namespace Ryujinx.Ava.UI.Helpers
                     result = primaryButtonResult;
                 }),
             };
+
+            // Apply comprehensive styling
+            ApplyContentDialogStyling(contentDialog);
 
             contentDialog.SecondaryButtonCommand = MiniCommand.Create(() =>
             {

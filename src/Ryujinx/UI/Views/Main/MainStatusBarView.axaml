@@ -93,8 +93,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -110,8 +110,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <SplitButton
@@ -164,8 +164,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <ToggleSplitButton
@@ -215,8 +215,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -230,8 +230,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -245,8 +245,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock
@@ -260,8 +260,8 @@
                 Width="2"
                 Height="12"
                 Margin="0"
-                BorderBrush="Gray"
-                Background="Gray"
+                BorderBrush="{DynamicResource ThemeControlBorderColor}"
+                Background="{DynamicResource ThemeControlBorderColor}"
                 BorderThickness="1"
                 IsVisible="{Binding !ShowLoadProgress}" />
             <TextBlock

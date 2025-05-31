@@ -7,17 +7,19 @@
     mc:Ignorable="d"
     xmlns:viewModels="clr-namespace:Ryujinx.Ava.UI.ViewModels"
     x:DataType="viewModels:MainWindowViewModel"
-    x:Class="Ryujinx.Ava.UI.Views.Main.MainMenuBarView">
+    x:Class="Ryujinx.Ava.UI.Views.Main.MainMenuBarView"
+    Background="{DynamicResource MenuBarBackgroundColor}">
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>
-    <DockPanel HorizontalAlignment="Stretch">
+    <DockPanel HorizontalAlignment="Stretch" Background="{DynamicResource MenuBarBackgroundColor}">
         <Menu
             Name="Menu"
             Height="35"
             Margin="0"
-            HorizontalAlignment="Left"
-            IsOpen="{Binding IsSubMenuOpen, Mode=OneWayToSource}">
+            HorizontalAlignment="Stretch"
+            IsOpen="{Binding IsSubMenuOpen, Mode=OneWayToSource}"
+            Background="{DynamicResource MenuBarBackgroundColor}">
             <Menu.ItemsPanel>
                 <ItemsPanelTemplate>
                     <DockPanel Margin="0" HorizontalAlignment="Stretch" />

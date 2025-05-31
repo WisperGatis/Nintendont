@@ -49,11 +49,13 @@ namespace Ryujinx.Ava.UI.ViewModels
         private int _graphicsBackendIndex;
         private int _scalingFilter;
         private int _scalingFilterLevel;
+        private int _baseStyleIndex;
 
         public event Action CloseWindow;
         public event Action SaveSettingsEvent;
         private int _networkInterfaceIndex;
         private int _multiplayerModeIndex;
+        private bool _enableDiscordIntegration;
 
         public int ResolutionScale
         {
@@ -128,7 +130,15 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public bool IsMacOS => OperatingSystem.IsMacOS();
 
-        public bool EnableDiscordIntegration { get; set; }
+        public bool EnableDiscordIntegration
+        {
+            get => _enableDiscordIntegration;
+            set
+            {
+                _enableDiscordIntegration = value;
+                OnPropertyChanged();
+            }
+        }
         public bool CheckUpdatesOnStart { get; set; }
         public bool ShowConfirmExit { get; set; }
         public bool RememberWindowState { get; set; }
@@ -188,7 +198,15 @@ namespace Ryujinx.Ava.UI.ViewModels
         }
         public int OpenglDebugLevel { get; set; }
         public int MemoryMode { get; set; }
-        public int BaseStyleIndex { get; set; }
+        public int BaseStyleIndex
+        {
+            get => _baseStyleIndex;
+            set
+            {
+                _baseStyleIndex = value;
+                OnPropertyChanged();
+            }
+        }
         public int GraphicsBackendIndex
         {
             get => _graphicsBackendIndex;
@@ -388,9 +406,9 @@ namespace Ryujinx.Ava.UI.ViewModels
             ConfigurationState config = ConfigurationState.Instance;
 
             // User Interface
-            EnableDiscordIntegration = config.EnableDiscordIntegration;
+            EnableDiscordIntegration = config.EnableDiscordIntegration.Value;
             CheckUpdatesOnStart = config.CheckUpdatesOnStart;
-            ShowConfirmExit = config.ShowConfirmExit;
+            ShowConfirmExit = config.ShowConfirmExit.Value;
             RememberWindowState = config.RememberWindowState;
             HideCursor = (int)config.HideCursor.Value;
 
@@ -402,6 +420,11 @@ namespace Ryujinx.Ava.UI.ViewModels
                 "Auto" => 0,
                 "Light" => 1,
                 "Dark" => 2,
+                "Purple" => 3,
+                "CatppuccinLatte" => 4,
+                "CatppuccinFrappe" => 5,
+                "CatppuccinMacchiato" => 6,
+                "CatppuccinMocha" => 7,
                 _ => 0
             };
 
@@ -497,6 +520,11 @@ namespace Ryujinx.Ava.UI.ViewModels
                 0 => "Auto",
                 1 => "Light",
                 2 => "Dark",
+                3 => "Purple",
+                4 => "CatppuccinLatte",
+                5 => "CatppuccinFrappe",
+                6 => "CatppuccinMacchiato",
+                7 => "CatppuccinMocha",
                 _ => "Auto"
             };
 

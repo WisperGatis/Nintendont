@@ -3,7 +3,7 @@ using Ryujinx.Horizon.Common;
 
 namespace Ryujinx.HLE.HOS.Kernel.SupervisorCall
 {
-    static class SyscallDispatch
+    static partial class SyscallDispatch
     {
         public static void Dispatch64(ISyscallApi syscall, IExecutionContext context, int id)
         {

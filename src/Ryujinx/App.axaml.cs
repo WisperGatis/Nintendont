@@ -19,6 +19,12 @@ namespace Ryujinx.Ava
 {
     public class App : Application
     {
+        public static readonly ThemeVariant PurpleTheme = new("Purple", ThemeVariant.Dark);
+        public static readonly ThemeVariant CatppuccinLatteTheme = new("CatppuccinLatte", ThemeVariant.Light);
+        public static readonly ThemeVariant CatppuccinFrappeTheme = new("CatppuccinFrappe", ThemeVariant.Dark);
+        public static readonly ThemeVariant CatppuccinMacchiatoTheme = new("CatppuccinMacchiato", ThemeVariant.Dark);
+        public static readonly ThemeVariant CatppuccinMochaTheme = new("CatppuccinMocha", ThemeVariant.Dark);
+
         public override void Initialize()
         {
             Name = $"Ryujinx {Program.Version}";
@@ -108,6 +114,11 @@ namespace Ryujinx.Ava
                     "Auto" => systemTheme,
                     "Light" => ThemeVariant.Light,
                     "Dark" => ThemeVariant.Dark,
+                    "Purple" => PurpleTheme,
+                    "CatppuccinLatte" => CatppuccinLatteTheme,
+                    "CatppuccinFrappe" => CatppuccinFrappeTheme,
+                    "CatppuccinMacchiato" => CatppuccinMacchiatoTheme,
+                    "CatppuccinMocha" => CatppuccinMochaTheme,
                     _ => ThemeVariant.Default,
                 };
             }
@@ -130,7 +141,7 @@ namespace Ryujinx.Ava
                 _ => ThemeVariant.Default,
             };
 
-        public static ThemeVariant DetectSystemTheme()
+        internal static ThemeVariant DetectSystemTheme()
         {
             if (Application.Current is App app)
             {

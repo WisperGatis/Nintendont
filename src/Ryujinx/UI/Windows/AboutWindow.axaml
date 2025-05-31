@@ -214,10 +214,9 @@
                 <TextBlock
                     FontSize="15"
                     FontWeight="Bold"
-                    Text="{locale:Locale AboutRyujinxAboutTitle}" />
+                />
                 <TextBlock
                     FontSize="10"
-                    Text="{locale:Locale AboutRyujinxAboutContent}"
                     TextWrapping="Wrap" />
             </StackPanel>
             <StackPanel

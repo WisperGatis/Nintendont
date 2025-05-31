@@ -12,6 +12,7 @@
     Title="ContentDialogOverlayWindow"
     Focusable="False">
     <window:StyleableWindow.Styles>
+        <!-- Main overlay background - keep transparent for proper layering -->
         <Style Selector="ui|ContentDialog /template/ Panel#LayoutRoot">
             <Setter Property="Background"
                     Value="Transparent" />

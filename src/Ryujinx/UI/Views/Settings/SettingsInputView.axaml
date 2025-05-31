@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="Ryujinx.Ava.UI.Views.Settings.SettingsInputView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -50,7 +50,7 @@
                                 ToolTip.Tip="{locale:Locale DirectKeyboardTooltip}"
                                 IsChecked="{Binding EnableKeyboard}">
                                 <TextBlock
-                                    Text="{locale:Locale SettingsTabInputDirectKeyboardAccess}" />
+                                    Text="{locale:Locale SettingsTabInputEnableDirectKeyboardAccess}" />
                             </CheckBox>
                             <CheckBox
                                 ToolTip.Tip="{locale:Locale DirectMouseTooltip}"
