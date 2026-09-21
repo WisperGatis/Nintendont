@@ -12,7 +12,7 @@ namespace Ryujinx.Tests.Collections
         {
             TreeDictionary<int, int> dictionary = new();
 
-            Assert.AreEqual(dictionary.Count, 0);
+            Assert.That(0, Is.EqualTo(dictionary.Count));
 
             dictionary.Add(2, 7);
             dictionary.Add(1, 4);
@@ -22,7 +22,7 @@ namespace Ryujinx.Tests.Collections
             dictionary.Add(11, 2);
             dictionary.Add(5, 2);
 
-            Assert.AreEqual(dictionary.Count, 7);
+            Assert.That(7, Is.EqualTo(dictionary.Count));
 
             List<KeyValuePair<int, int>> list = dictionary.AsLevelOrderList();
 
@@ -36,14 +36,14 @@ namespace Ryujinx.Tests.Collections
              *  
              */
 
-            Assert.AreEqual(list.Count, dictionary.Count);
-            Assert.AreEqual(list[0].Key, 2);
-            Assert.AreEqual(list[1].Key, 1);
-            Assert.AreEqual(list[2].Key, 4);
-            Assert.AreEqual(list[3].Key, 3);
-            Assert.AreEqual(list[4].Key, 10);
-            Assert.AreEqual(list[5].Key, 5);
-            Assert.AreEqual(list[6].Key, 11);
+            Assert.That(dictionary.Count, Is.EqualTo(list.Count));
+            Assert.That(2, Is.EqualTo(list[0].Key));
+            Assert.That(1, Is.EqualTo(list[1].Key));
+            Assert.That(4, Is.EqualTo(list[2].Key));
+            Assert.That(3, Is.EqualTo(list[3].Key));
+            Assert.That(10, Is.EqualTo(list[4].Key));
+            Assert.That(5, Is.EqualTo(list[5].Key));
+            Assert.That(11, Is.EqualTo(list[6].Key));
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace Ryujinx.Tests.Collections
         {
             TreeDictionary<int, int> dictionary = new();
 
-            Assert.AreEqual(dictionary.Count, 0);
+            Assert.That(0, Is.EqualTo(dictionary.Count));
 
             dictionary.Add(2, 7);
             dictionary.Add(1, 4);
@@ -66,7 +66,7 @@ namespace Ryujinx.Tests.Collections
             dictionary.Add(13, 2);
             dictionary.Add(24, 2);
             dictionary.Add(6, 2);
-            Assert.AreEqual(dictionary.Count, 13);
+            Assert.That(13, Is.EqualTo(dictionary.Count));
 
             List<KeyValuePair<int, int>> list = dictionary.AsLevelOrderList();
 
@@ -84,20 +84,20 @@ namespace Ryujinx.Tests.Collections
             {
                 Console.WriteLine($"{node.Key} -> {node.Value}");
             }
-            Assert.AreEqual(list.Count, dictionary.Count);
-            Assert.AreEqual(list[0].Key, 4);
-            Assert.AreEqual(list[1].Key, 2);
-            Assert.AreEqual(list[2].Key, 10);
-            Assert.AreEqual(list[3].Key, 1);
-            Assert.AreEqual(list[4].Key, 3);
-            Assert.AreEqual(list[5].Key, 7);
-            Assert.AreEqual(list[6].Key, 13);
-            Assert.AreEqual(list[7].Key, 5);
-            Assert.AreEqual(list[8].Key, 9);
-            Assert.AreEqual(list[9].Key, 11);
-            Assert.AreEqual(list[10].Key, 24);
-            Assert.AreEqual(list[11].Key, 6);
-            Assert.AreEqual(list[12].Key, 8);
+            Assert.That(dictionary.Count, Is.EqualTo(list.Count));
+            Assert.That(4, Is.EqualTo(list[0].Key));
+            Assert.That(2, Is.EqualTo(list[1].Key));
+            Assert.That(10, Is.EqualTo(list[2].Key));
+            Assert.That(1, Is.EqualTo(list[3].Key));
+            Assert.That(3, Is.EqualTo(list[4].Key));
+            Assert.That(7, Is.EqualTo(list[5].Key));
+            Assert.That(13, Is.EqualTo(list[6].Key));
+            Assert.That(5, Is.EqualTo(list[7].Key));
+            Assert.That(9, Is.EqualTo(list[8].Key));
+            Assert.That(11, Is.EqualTo(list[9].Key));
+            Assert.That(24, Is.EqualTo(list[10].Key));
+            Assert.That(6, Is.EqualTo(list[11].Key));
+            Assert.That(8, Is.EqualTo(list[12].Key));
 
             list.Clear();
 
@@ -118,18 +118,18 @@ namespace Ryujinx.Tests.Collections
             {
                 Console.WriteLine($"{node.Key} -> {node.Value}");
             }
-            Assert.AreEqual(list[0].Key, 4);
-            Assert.AreEqual(list[1].Key, 2);
-            Assert.AreEqual(list[2].Key, 10);
-            Assert.AreEqual(list[3].Key, 1);
-            Assert.AreEqual(list[4].Key, 3);
-            Assert.AreEqual(list[5].Key, 6);
-            Assert.AreEqual(list[6].Key, 13);
-            Assert.AreEqual(list[7].Key, 5);
-            Assert.AreEqual(list[8].Key, 9);
-            Assert.AreEqual(list[9].Key, 11);
-            Assert.AreEqual(list[10].Key, 24);
-            Assert.AreEqual(list[11].Key, 8);
+            Assert.That(4, Is.EqualTo(list[0].Key));
+            Assert.That(2, Is.EqualTo(list[1].Key));
+            Assert.That(10, Is.EqualTo(list[2].Key));
+            Assert.That(1, Is.EqualTo(list[3].Key));
+            Assert.That(3, Is.EqualTo(list[4].Key));
+            Assert.That(6, Is.EqualTo(list[5].Key));
+            Assert.That(13, Is.EqualTo(list[6].Key));
+            Assert.That(5, Is.EqualTo(list[7].Key));
+            Assert.That(9, Is.EqualTo(list[8].Key));
+            Assert.That(11, Is.EqualTo(list[9].Key));
+            Assert.That(24, Is.EqualTo(list[10].Key));
+            Assert.That(8, Is.EqualTo(list[11].Key));
 
             list.Clear();
 
@@ -149,17 +149,17 @@ namespace Ryujinx.Tests.Collections
             {
                 Console.WriteLine($"{node.Key} -> {node.Value}");
             }
-            Assert.AreEqual(list[0].Key, 4);
-            Assert.AreEqual(list[1].Key, 2);
-            Assert.AreEqual(list[2].Key, 9);
-            Assert.AreEqual(list[3].Key, 1);
-            Assert.AreEqual(list[4].Key, 3);
-            Assert.AreEqual(list[5].Key, 6);
-            Assert.AreEqual(list[6].Key, 13);
-            Assert.AreEqual(list[7].Key, 5);
-            Assert.AreEqual(list[8].Key, 8);
-            Assert.AreEqual(list[9].Key, 11);
-            Assert.AreEqual(list[10].Key, 24);
+            Assert.That(4, Is.EqualTo(list[0].Key));
+            Assert.That(2, Is.EqualTo(list[1].Key));
+            Assert.That(9, Is.EqualTo(list[2].Key));
+            Assert.That(1, Is.EqualTo(list[3].Key));
+            Assert.That(3, Is.EqualTo(list[4].Key));
+            Assert.That(6, Is.EqualTo(list[5].Key));
+            Assert.That(13, Is.EqualTo(list[6].Key));
+            Assert.That(5, Is.EqualTo(list[7].Key));
+            Assert.That(8, Is.EqualTo(list[8].Key));
+            Assert.That(11, Is.EqualTo(list[9].Key));
+            Assert.That(24, Is.EqualTo(list[10].Key));
         }
 
         [Test]
@@ -167,7 +167,7 @@ namespace Ryujinx.Tests.Collections
         {
             TreeDictionary<int, int> dictionary = new();
 
-            Assert.AreEqual(dictionary.Count, 0);
+            Assert.That(0, Is.EqualTo(dictionary.Count));
 
             dictionary.Add(2, 7);
             dictionary.Add(1, 4);
@@ -182,7 +182,7 @@ namespace Ryujinx.Tests.Collections
             dictionary.Add(13, 2);
             dictionary.Add(24, 2);
             dictionary.Add(6, 2);
-            Assert.AreEqual(dictionary.Count, 13);
+            Assert.That(13, Is.EqualTo(dictionary.Count));
 
             List<KeyValuePair<int, int>> list = dictionary.AsLevelOrderList();
 
@@ -201,44 +201,44 @@ namespace Ryujinx.Tests.Collections
              *                6  8 
              */
 
-            Assert.AreEqual(list.Count, dictionary.Count);
-            Assert.AreEqual(list[0].Key, 4);
-            Assert.AreEqual(list[1].Key, 2);
-            Assert.AreEqual(list[2].Key, 10);
-            Assert.AreEqual(list[3].Key, 1);
-            Assert.AreEqual(list[4].Key, 3);
-            Assert.AreEqual(list[5].Key, 7);
-            Assert.AreEqual(list[6].Key, 13);
-            Assert.AreEqual(list[7].Key, 5);
-            Assert.AreEqual(list[8].Key, 9);
-            Assert.AreEqual(list[9].Key, 11);
-            Assert.AreEqual(list[10].Key, 24);
-            Assert.AreEqual(list[11].Key, 6);
-            Assert.AreEqual(list[12].Key, 8);
+            Assert.That(dictionary.Count, Is.EqualTo(list.Count));
+            Assert.That(4, Is.EqualTo(list[0].Key));
+            Assert.That(2, Is.EqualTo(list[1].Key));
+            Assert.That(10, Is.EqualTo(list[2].Key));
+            Assert.That(1, Is.EqualTo(list[3].Key));
+            Assert.That(3, Is.EqualTo(list[4].Key));
+            Assert.That(7, Is.EqualTo(list[5].Key));
+            Assert.That(13, Is.EqualTo(list[6].Key));
+            Assert.That(5, Is.EqualTo(list[7].Key));
+            Assert.That(9, Is.EqualTo(list[8].Key));
+            Assert.That(11, Is.EqualTo(list[9].Key));
+            Assert.That(24, Is.EqualTo(list[10].Key));
+            Assert.That(6, Is.EqualTo(list[11].Key));
+            Assert.That(8, Is.EqualTo(list[12].Key));
 
-            Assert.AreEqual(list[4].Value, 2);
+            Assert.That(2, Is.EqualTo(list[4].Value));
 
             dictionary.Add(3, 4);
 
             list = dictionary.AsLevelOrderList();
 
-            Assert.AreEqual(list[4].Value, 4);
+            Assert.That(4, Is.EqualTo(list[4].Value));
 
 
             // Assure that none of the nodes locations have been modified.
-            Assert.AreEqual(list[0].Key, 4);
-            Assert.AreEqual(list[1].Key, 2);
-            Assert.AreEqual(list[2].Key, 10);
-            Assert.AreEqual(list[3].Key, 1);
-            Assert.AreEqual(list[4].Key, 3);
-            Assert.AreEqual(list[5].Key, 7);
-            Assert.AreEqual(list[6].Key, 13);
-            Assert.AreEqual(list[7].Key, 5);
-            Assert.AreEqual(list[8].Key, 9);
-            Assert.AreEqual(list[9].Key, 11);
-            Assert.AreEqual(list[10].Key, 24);
-            Assert.AreEqual(list[11].Key, 6);
-            Assert.AreEqual(list[12].Key, 8);
+            Assert.That(4, Is.EqualTo(list[0].Key));
+            Assert.That(2, Is.EqualTo(list[1].Key));
+            Assert.That(10, Is.EqualTo(list[2].Key));
+            Assert.That(1, Is.EqualTo(list[3].Key));
+            Assert.That(3, Is.EqualTo(list[4].Key));
+            Assert.That(7, Is.EqualTo(list[5].Key));
+            Assert.That(13, Is.EqualTo(list[6].Key));
+            Assert.That(5, Is.EqualTo(list[7].Key));
+            Assert.That(9, Is.EqualTo(list[8].Key));
+            Assert.That(11, Is.EqualTo(list[9].Key));
+            Assert.That(24, Is.EqualTo(list[10].Key));
+            Assert.That(6, Is.EqualTo(list[11].Key));
+            Assert.That(8, Is.EqualTo(list[12].Key));
         }
     }
 }

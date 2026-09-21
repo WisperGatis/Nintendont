@@ -31,7 +31,7 @@ namespace Ryujinx.Tests.Common.Extensions
                 ref readonly MyUnmanagedStruct read = ref sequenceReader.GetRefOrRefToCopy<MyUnmanagedStruct>(out _);
 
                 // Assert
-                MyUnmanagedStruct.Assert(Assert.AreEqual, original, read);
+                MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, original, read);
             }
         }
 
@@ -51,8 +51,8 @@ namespace Ryujinx.Tests.Common.Extensions
                 ref readonly MyUnmanagedStruct read = ref sequenceReader.GetRefOrRefToCopy<MyUnmanagedStruct>(out var copy);
 
                 // Assert
-                MyUnmanagedStruct.Assert(Assert.AreEqual, original, read);
-                MyUnmanagedStruct.Assert(Assert.AreEqual, read, copy);
+                MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, original, read);
+                MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, read, copy);
             }
         }
 
@@ -72,8 +72,8 @@ namespace Ryujinx.Tests.Common.Extensions
                 ref readonly MyUnmanagedStruct read = ref sequenceReader.GetRefOrRefToCopy<MyUnmanagedStruct>(out var copy);
 
                 // Assert
-                MyUnmanagedStruct.Assert(Assert.AreEqual, original, read);
-                MyUnmanagedStruct.Assert(Assert.AreNotEqual, read, copy);
+                MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, original, read);
+                MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreNotEqual, read, copy);
             }
         }
 
@@ -112,7 +112,7 @@ namespace Ryujinx.Tests.Common.Extensions
             sequenceReader.ReadLittleEndian(out int roundTrippedValue);
 
             // Assert
-            Assert.AreEqual(TestValue, roundTrippedValue);
+            Assert.That(roundTrippedValue, Is.EqualTo(TestValue));
         }
 
         [Test]
@@ -131,7 +131,7 @@ namespace Ryujinx.Tests.Common.Extensions
             sequenceReader.ReadLittleEndian(out int roundTrippedValue);
 
             // Assert
-            Assert.AreNotEqual(TestValue, roundTrippedValue);
+            Assert.That(roundTrippedValue, Is.Not.EqualTo(TestValue));
         }
 
         [Test]
@@ -221,7 +221,7 @@ namespace Ryujinx.Tests.Common.Extensions
                 sequenceReader.ReadUnmanaged(out MyUnmanagedStruct read);
 
                 // Assert
-                MyUnmanagedStruct.Assert(Assert.AreEqual, original, read);
+                MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, original, read);
             }
         }
 
@@ -237,19 +237,19 @@ namespace Ryujinx.Tests.Common.Extensions
             static void SetConsumedAndAssert(scoped ref SequenceReader<byte> sequenceReader, long consumed)
             {
                 sequenceReader.SetConsumed(consumed);
-                Assert.AreEqual(consumed, sequenceReader.Consumed);
+                Assert.That(sequenceReader.Consumed, Is.EqualTo(consumed));
             }
 
             // Act/Assert
             ref readonly MyUnmanagedStruct struct0A = ref sequenceReader.GetRefOrRefToCopy<MyUnmanagedStruct>(out _);
 
-            Assert.AreEqual(sequenceReader.Consumed, MyUnmanagedStruct.SizeOf);
+            Assert.That(MyUnmanagedStruct.SizeOf, Is.EqualTo(sequenceReader.Consumed));
 
             SetConsumedAndAssert(ref sequenceReader, 0);
 
             ref readonly MyUnmanagedStruct struct0B = ref sequenceReader.GetRefOrRefToCopy<MyUnmanagedStruct>(out _);
 
-            MyUnmanagedStruct.Assert(Assert.AreEqual, struct0A, struct0B);
+            MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, struct0A, struct0B);
 
             SetConsumedAndAssert(ref sequenceReader, 1);
 
@@ -261,7 +261,7 @@ namespace Ryujinx.Tests.Common.Extensions
 
             ref readonly MyUnmanagedStruct struct1B = ref sequenceReader.GetRefOrRefToCopy<MyUnmanagedStruct>(out _);
 
-            MyUnmanagedStruct.Assert(Assert.AreEqual, struct1A, struct1B);
+            MyUnmanagedStruct.Assert(MyUnmanagedStruct.AreEqual, struct1A, struct1B);
         }
 
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -297,6 +297,10 @@ namespace Ryujinx.Tests.Common.Extensions
 
                 return result;
             }
+
+            public static void AreEqual(object expected, object actual) => NUnit.Framework.Assert.That(actual, Is.EqualTo(expected));
+
+            public static void AreNotEqual(object expected, object actual) => NUnit.Framework.Assert.That(actual, Is.Not.EqualTo(expected));
 
             public static unsafe void Assert(Action<object, object> assert, in MyUnmanagedStruct expected, in MyUnmanagedStruct actual)
             {
