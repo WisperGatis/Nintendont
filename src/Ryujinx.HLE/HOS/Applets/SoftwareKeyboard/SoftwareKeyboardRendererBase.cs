@@ -180,7 +180,7 @@ namespace Ryujinx.HLE.HOS.Applets.SoftwareKeyboard
 
             if (newHeight != 0 && newWidth != 0)
             {
-                var resized = bitmap.Resize(new SKImageInfo(newWidth, newHeight), SKFilterQuality.High);
+                var resized = bitmap.Resize(new SKImageInfo(newWidth, newHeight), new SKSamplingOptions(SKCubicResampler.Mitchell));
                 if (resized != null)
                 {
                     bitmap.Dispose();
