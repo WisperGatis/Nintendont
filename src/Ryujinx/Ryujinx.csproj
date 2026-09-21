@@ -52,7 +52,7 @@
     <PackageReference Include="Silk.NET.Vulkan.Extensions.KHR" />
     <PackageReference Include="SPB" />
     <PackageReference Include="SharpZipLib" />
-    <!-- Pin Avalonia's transitive DBus dependency to the patched release. -->
+    <!-- Pin Avalonia's transitive DBus dependency (Avalonia.FreeDesktop 12.1.2 needs >= 0.94.1) to the patched release. -->
     <PackageReference Include="Tmds.DBus.Protocol" />
   </ItemGroup>
 
