@@ -12,6 +12,7 @@ using Ryujinx.UI.Common.Helper;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Text.Json.Nodes;
 
 namespace Ryujinx.UI.Common.Configuration
@@ -148,6 +149,11 @@ namespace Ryujinx.UI.Common.Configuration
             public ReactiveObject<string> CustomThemePath { get; private set; }
 
             /// <summary>
+            /// Path to the Matugen-generated Avalonia palette
+            /// </summary>
+            public ReactiveObject<string> MatugenThemePath { get; private set; }
+
+            /// <summary>
             /// Selects the base style
             /// </summary>
             public ReactiveObject<string> BaseStyle { get; private set; }
@@ -196,6 +202,7 @@ namespace Ryujinx.UI.Common.Configuration
                 WindowStartup = new WindowStartupSettings();
                 EnableCustomTheme = new ReactiveObject<bool>();
                 CustomThemePath = new ReactiveObject<string>();
+                MatugenThemePath = new ReactiveObject<string>();
                 BaseStyle = new ReactiveObject<string>();
                 StartFullscreen = new ReactiveObject<bool>();
                 GameListViewMode = new ReactiveObject<int>();
@@ -748,6 +755,7 @@ namespace Ryujinx.UI.Common.Configuration
                 LanguageCode = UI.LanguageCode,
                 EnableCustomTheme = UI.EnableCustomTheme,
                 CustomThemePath = UI.CustomThemePath,
+                MatugenThemePath = UI.MatugenThemePath,
                 BaseStyle = UI.BaseStyle,
                 GameListViewMode = UI.GameListViewMode,
                 ShowNames = UI.ShowNames,
@@ -845,6 +853,7 @@ namespace Ryujinx.UI.Common.Configuration
             UI.EnableCustomTheme.Value = true;
             UI.LanguageCode.Value = "en_US";
             UI.CustomThemePath.Value = "";
+            UI.MatugenThemePath.Value = Path.Combine(AppDataManager.BaseDirPath, "matugen.xaml");
             UI.BaseStyle.Value = "Dark";
             UI.GameListViewMode.Value = 0;
             UI.ShowNames.Value = true;
@@ -1547,6 +1556,9 @@ namespace Ryujinx.UI.Common.Configuration
             UI.EnableCustomTheme.Value = configurationFileFormat.EnableCustomTheme;
             UI.LanguageCode.Value = configurationFileFormat.LanguageCode;
             UI.CustomThemePath.Value = configurationFileFormat.CustomThemePath;
+            UI.MatugenThemePath.Value = string.IsNullOrWhiteSpace(configurationFileFormat.MatugenThemePath)
+                ? Path.Combine(AppDataManager.BaseDirPath, "matugen.xaml")
+                : configurationFileFormat.MatugenThemePath;
             UI.BaseStyle.Value = configurationFileFormat.BaseStyle;
             UI.GameListViewMode.Value = configurationFileFormat.GameListViewMode;
             UI.ShowNames.Value = configurationFileFormat.ShowNames;

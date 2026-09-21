@@ -21,7 +21,7 @@ namespace Ryujinx.Ava.Common.Locale
         OpenRyujinxFolderTooltip,
         OpenRyujinxLogsTooltip,
         ExitTooltip,
-        
+
         // Options Menu
         MenuBarOptions,
         MenuBarOptionsToggleFullscreen,
@@ -37,12 +37,12 @@ namespace Ryujinx.Ava.Common.Locale
         MenuBarOptionsPauseEmulation,
         MenuBarOptionsResumeEmulation,
         StopEmulationTooltip,
-        
+
         // Actions Menu
         MenuBarActions,
         MenuBarOptionsSimulateWakeUpMessage,
         MenuBarActionsScanAmiibo,
-        
+
         // Tools Menu
         MenuBarTools,
         MenuBarToolsInstallFirmware,
@@ -53,13 +53,13 @@ namespace Ryujinx.Ava.Common.Locale
         MenuBarFileToolsHideUi,
         MenuBarToolsInstallFileTypes,
         MenuBarToolsUninstallFileTypes,
-        
+
         // View Menu
         MenuBarView,
         MenuBarViewWindow,
         MenuBarViewWindow720,
         MenuBarViewWindow1080,
-        
+
         // Help Menu
         MenuBarHelp,
         MenuBarHelpCheckForUpdates,
@@ -74,7 +74,7 @@ namespace Ryujinx.Ava.Common.Locale
         SettingsTabSystemMemoryManagerModeHost,
         SettingsTabSystemMemoryManagerModeHostUnchecked,
         SettingsTabSystemUseHypervisor,
-        
+
         // Audio Settings
         SettingsTabSystemAudioBackend,
         AudioBackendTooltip,
@@ -83,7 +83,7 @@ namespace Ryujinx.Ava.Common.Locale
         SettingsTabSystemAudioBackendSoundIO,
         SettingsTabSystemAudioBackendSDL2,
         SettingsTabSystemAudioVolume,
-        
+
         // Graphics Settings
         SettingsTabGraphicsAspectRatio,
         SettingsTabGraphicsAspectRatio4x3,
@@ -114,7 +114,7 @@ namespace Ryujinx.Ava.Common.Locale
         SettingsTabGraphicsAnisotropicFiltering4x,
         SettingsTabGraphicsAnisotropicFiltering8x,
         SettingsTabGraphicsAnisotropicFilteringAuto,
-        
+
         // Common Dialog Buttons
         Generic_Ok,
         Generic_Cancel,
@@ -124,7 +124,7 @@ namespace Ryujinx.Ava.Common.Locale
         Generic_Warning,
         Generic_Success,
         Generic_Info,
-        
+
         // Common UI Elements
         IconSize,
         IconSizeTooltip,
@@ -133,19 +133,19 @@ namespace Ryujinx.Ava.Common.Locale
         OrderAscending,
         OrderDescending,
         CommonSort,
-        
+
         // Input Dialog Buttons
         InputDialogOk,
         InputDialogYes,
         InputDialogNo,
         InputDialogCancel,
-        
+
         // Application Error Dialog
         DialogMessageAppExit,
         DialogMessageAppExitMessage,
         DialogMessageAppExitSubMessage,
         DialogMessageAppExitInputBoxMessage,
-        
+
         // Common Error Messages
         ErrorWindowTitle,
         ErrorMessageFatal,
@@ -154,7 +154,7 @@ namespace Ryujinx.Ava.Common.Locale
         ErrorMessageAudio,
         ErrorMessageSystemFiles,
         ErrorMessageSystemShaders,
-        
+
         // Dialog Titles
         RyujinxInfo,
         RyujinxConfirm,
@@ -164,7 +164,7 @@ namespace Ryujinx.Ava.Common.Locale
         DialogUserErrorDialogTitle,
         DialogControllerAppletTitle,
         DialogUpdaterTitle,
-        
+
         // Status Bar
         StatusBarGamesLoaded,
         StatusBarSystemVersion,
@@ -172,19 +172,19 @@ namespace Ryujinx.Ava.Common.Locale
         StatusBarPlayControlsRunning,
         StatusBarPlayControlsPaused,
         AspectRatioTooltip,
-        
+
         // Loading Messages
         LoadingHeading,
         CompilingPPTC,
         CompilingShaders,
         PackagingShaders,
-        
+
         // File Dialog
         FileDialogAllTypes,
         OpenFileDialogTitle,
         OpenFolderDialogTitle,
         AllSupportedFormats,
-        
+
         // Game Dialogs
         DialogLoadAppGameAlreadyLoadedMessage,
         DialogLoadAppGameAlreadyLoadedSubMessage,
@@ -219,7 +219,7 @@ namespace Ryujinx.Ava.Common.Locale
         DialogSoftwareKeyboardErrorExceptionMessage,
         DialogUserProfileDeletionWarningMessage,
         DialogUserProfileDeletionConfirmMessage,
-        
+
         // User Profile Dialogs
         UserProfileWindowTitle,
         UserEditorTitleCreate,
@@ -228,7 +228,7 @@ namespace Ryujinx.Ava.Common.Locale
         UserProfileUnsavedChangesTitle,
         UserProfileUnsavedChangesMessage,
         UserProfileUnsavedChangesSubMessage,
-        
+
         // Titles and Headings
         TitleBundledDlcLabel,
         TitleBundledUpdateVersionLabel,
@@ -243,7 +243,7 @@ namespace Ryujinx.Ava.Common.Locale
         DlcWindowTitle,
         ModWindowTitle,
         Settings,
-        
+
         // Keyboard Keys
         KeyUnknown,
         KeyShiftLeft,
@@ -314,7 +314,7 @@ namespace Ryujinx.Ava.Common.Locale
         KeySlash,
         KeyBackSlash,
         KeyUnbound,
-        
+
         // Mac-specific key mappings
         KeyMacControlLeft,
         KeyMacControlRight,
@@ -322,7 +322,7 @@ namespace Ryujinx.Ava.Common.Locale
         KeyMacAltRight,
         KeyMacWinLeft,
         KeyMacWinRight,
-        
+
         // Gamepad Input IDs
         GamepadLeftStick,
         GamepadRightStick,
@@ -347,15 +347,15 @@ namespace Ryujinx.Ava.Common.Locale
         GamepadSingleRightTrigger0,
         GamepadSingleLeftTrigger1,
         GamepadSingleRightTrigger1,
-        
+
         // Stick Input IDs
         StickLeft,
         StickRight,
-        
+
         // Volume and Game
         VolumeShort,
         Game,
-        
+
         // Controller Settings
         ControllerSettingsDeviceDisabled,
         ControllerSettingsProfileDefault,
@@ -386,7 +386,7 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsRightShoulderButton,
         ControllerSettingsLeftTriggerButton,
         ControllerSettingsRightTriggerButton,
-        
+
         // Controller Stick Settings
         ControllerSettingsStickStick,
         ControllerSettingsStickDeadzone,
@@ -397,12 +397,12 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsStickDown,
         ControllerSettingsStickLeft,
         ControllerSettingsStickRight,
-        
+
         // Stick Inversion Settings
         ControllerSettingsStickInvertXAxis,
         ControllerSettingsStickInvertYAxis,
         ControllerSettingsStickInvertBothAxes,
-        
+
         // Stick Rotation Settings
         ControllerSettingsRotate90,
         ControllerSettingsRotate180,
@@ -410,7 +410,7 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsStickRotate90,
         ControllerSettingsStickRotate180,
         ControllerSettingsStickRotate270,
-        
+
         // D-pad Settings
         ControllerSettingsDPad,
         ControllerSettingsDPadUp,
@@ -418,19 +418,19 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsDPadLeft,
         ControllerSettingsDPadRight,
         ControllerSettingsDPadButton,
-        
+
         // Trigger Settings
         ControllerSettingsTriggerThreshold,
         ControllerSettingsTriggerDeadzone,
         ControllerSettingsTriggerSensitivity,
         ControllerSettingsTriggerButton,
-        
+
         // Shoulder Button Settings
         ControllerSettingsLeftSR,
         ControllerSettingsRightSR,
         ControllerSettingsLeftSL,
         ControllerSettingsRightSL,
-        
+
         // Motion Control Settings
         ControllerSettingsMotion,
         ControllerSettingsMotionSensitivity,
@@ -444,7 +444,7 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsMotionControllerSlot,
         ControllerSettingsMotionRightJoyConSlot,
         ControllerSettingsMotionMirrorInput,
-        
+
         // Rumble Settings
         ControllerSettingsRumble,
         ControllerSettingsRumbleIntensity,
@@ -455,11 +455,11 @@ namespace Ryujinx.Ava.Common.Locale
         // Player Settings
         ControllerSettingsPlayer,
         ControllerSettingsPlayerIndex,
-        
+
         // Amiibo Dialogs
         DialogAmiiboApiTitle,
         DialogAmiiboApiConnectErrorMessage,
-        
+
         // Updater Messages
         UpdaterExtracting,
         UpdaterRenaming,
@@ -469,17 +469,17 @@ namespace Ryujinx.Ava.Common.Locale
         DialogUpdaterNoInternetSubMessage,
         DialogUpdaterDirtyBuildMessage,
         DialogUpdaterDirtyBuildSubMessage,
-        
+
         // Network
         NetworkInterfaceDefault,
-        
+
         // Profile Dialogs
         DialogProfileInvalidProfileErrorMessage,
         DialogProfileDefaultProfileOverwriteErrorMessage,
         DialogProfileInvalidProfileNameErrorMessage,
         DialogProfileDeleteProfileTitle,
         DialogProfileDeleteProfileMessage,
-        
+
         // Firmware Installer
         DialogFirmwareInstallerFirmwareNotFoundErrorMessage,
         DialogFirmwareInstallerFirmwareInstallTitle,
@@ -488,19 +488,19 @@ namespace Ryujinx.Ava.Common.Locale
         DialogFirmwareInstallerFirmwareInstallConfirmMessage,
         DialogFirmwareInstallerFirmwareInstallWaitMessage,
         DialogFirmwareInstallerFirmwareInstallSuccessMessage,
-        
+
         // Mod Manager Dialogs
         DialogModDeleteNoParentMessage,
         DialogModInvalidMessage,
         DialogModAlreadyExistsMessage,
         SelectModDialogTitle,
-        
+
         // Amiibo Window
         Unknown,
         Usage,
         Writable,
         DialogAmiiboApiFailFetchMessage,
-        
+
         // Controller Settings
         ControllerSettingsPlayer1,
         ControllerSettingsPlayer2,
@@ -517,7 +517,7 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsControllerTypeJoyConPair,
         ControllerSettingsControllerTypeJoyConLeft,
         ControllerSettingsControllerTypeJoyConRight,
-        
+
         // Game List Headers
         GameListHeaderApplication,
         GameListHeaderDeveloper,
@@ -527,11 +527,11 @@ namespace Ryujinx.Ava.Common.Locale
         GameListHeaderFileSize,
         GameListHeaderPath,
         CommonFavorite,
-        
+
         // System Modes
         Docked,
         Handheld,
-        
+
         // Linux System Messages
         LinuxVmMaxMapCountWarningTextPrimary,
         LinuxVmMaxMapCountWarningTextSecondary,
@@ -540,13 +540,13 @@ namespace Ryujinx.Ava.Common.Locale
         LinuxVmMaxMapCountDialogTextSecondary,
         LinuxVmMaxMapCountDialogButtonUntilRestart,
         LinuxVmMaxMapCountDialogButtonPersistent,
-        
+
         // Firmware Dialogs
         DialogFirmwareNoFirmwareInstalledMessage,
         DialogFirmwareInstallEmbeddedMessage,
         DialogFirmwareInstalledMessage,
         DialogFirmwareInstallEmbeddedSuccessMessage,
-        
+
         // Content Dialogs
         DialogConfirmationTitle,
         DialogWarningTitle,
@@ -556,11 +556,11 @@ namespace Ryujinx.Ava.Common.Locale
         DialogExitSubMessage,
         DialogStopEmulationTitle,
         DialogStopEmulationMessage,
-        
+
         // DLC Manager
         SelectDlcDialogTitle,
         DialogDlcNoDlcErrorMessage,
-        
+
         // NCA Extraction
         FolderDialogExtractTitle,
         DialogNcaExtractionTitle,
@@ -568,38 +568,38 @@ namespace Ryujinx.Ava.Common.Locale
         DialogNcaExtractionMainNcaNotFoundErrorMessage,
         DialogNcaExtractionCheckLogErrorMessage,
         DialogNcaExtractionSuccessMessage,
-        
+
         // Status
         Paused,
-        
+
         // User Error Dialogs
         UserErrorUndefinedDescription,
         OpenSetupGuideMessage,
         DialogUserErrorDialogMessage,
         DialogUserErrorDialogInfoMessage,
-        
+
         // Cache Management
         DialogPPTCDeletionErrorMessage,
         ShaderCachePurgeError,
-        
+
         // Software Keyboard
         SoftwareKeyboardModeNumeric,
         SoftwareKeyboardModeAlphabet,
         SoftwareKeyboardModeASCII,
         SoftwareKeyboard,
-        
+
         // Applet Dialogs
         DialogErrorAppletErrorExceptionMessage,
-        
+
         // Settings
         DialogSettingsBackendThreadingWarningMessage,
         DialogSettingsBackendThreadingWarningTitle,
         SettingsButtonClose,
-        
+
         // Window Headings
         DlcWindowHeading,
         ModWindowHeading,
-        
+
         // Controller Settings
         ControllerRumbleTitle,
         ControllerMotionTitle,
@@ -607,12 +607,12 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsClose,
         DialogControllerSettingsModifiedConfirmMessage,
         DialogControllerSettingsModifiedConfirmSubMessage,
-        
+
         // User Profiles
         DialogUserProfileUnsavedChangesTitle,
         DialogUserProfileUnsavedChangesMessage,
         DialogUserProfileUnsavedChangesSubMessage,
-        
+
         // Miscellaneous
         Never,
         NoUpdate,
@@ -657,7 +657,7 @@ namespace Ryujinx.Ava.Common.Locale
         AboutTwitterUrlTooltipMessage,
         AboutUrlTooltipMessage,
         AboutRyujinxAboutTitle,
-        
+
         // User Errors
         UserErrorNoKeys,
         UserErrorNoFirmware,
@@ -670,30 +670,30 @@ namespace Ryujinx.Ava.Common.Locale
         UserErrorFirmwareParsingFailedDescription,
         UserErrorApplicationNotFoundDescription,
         UserErrorUnknownDescription,
-        
+
         // Amiibo
         Amiibo,
-        
+
         // User Profiles
         UserProfilesClose,
         DeleteUserSave,
         IrreversibleActionNote,
-        
+
         // Updater
         RyujinxUpdaterMessage,
         UpdaterDownloading,
-        
+
         // Software Keyboard
         SwkbdMinCharacters,
         SwkbdMinRangeCharacters,
-        
+
         // Input
         AllKeyboards,
-        
+
         // Connection
         ConnectionError,
         ApiError,
-        
+
         // Controller Applet
         ControllerAppletDescription,
         ControllerAppletDocked,
@@ -702,7 +702,7 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerAppletPlayers,
         ControllerAppletDisconnect,
         ControllerAppletConnect,
-        
+
         // Game List Context Menu
         GameListContextMenuRunApplication,
         GameListContextMenuToggleFavorite,
@@ -744,11 +744,11 @@ namespace Ryujinx.Ava.Common.Locale
         GameListContextMenuExtractDataRomFSToolTip,
         GameListContextMenuExtractDataLogo,
         GameListContextMenuExtractDataLogoToolTip,
-        
+
         // Input Device Settings
         ControllerSettingsInputDevice,
         ControllerSettingsInputDeviceType,
-        
+
         // Profile Settings
         ControllerSettingsProfile,
         ControllerSettingsProfileNew,
@@ -757,14 +757,14 @@ namespace Ryujinx.Ava.Common.Locale
         ControllerSettingsSaveProfileToolTip,
         ControllerSettingsDeleteProfileToolTip,
         ControllerSettingsRemoveProfileToolTip,
-        
+
         // Button Settings
         ControllerSettingsButtons,
         ControllerSettingsButtonA,
         ControllerSettingsButtonB,
         ControllerSettingsButtonX,
         ControllerSettingsButtonY,
-        
+
         // Configuration Buttons
         ControllerSettingsConfigureGeneral,
         ControllerSettingsConfigureMotion,
@@ -861,7 +861,7 @@ namespace Ryujinx.Ava.Common.Locale
         SettingsTabSystemIgnoreMissingServices,
         IgnoreMissingServicesTooltip,
         SettingsTabSystemEnableInternetAccess,
-        
+
         // Network Settings
         SettingsTabNetworkConnection,
         SettingsTabNetworkInterface,
@@ -876,7 +876,7 @@ namespace Ryujinx.Ava.Common.Locale
         CommonAuto,
         CommonOff,
         CommonOn,
-        
+
         // Graphics Enhancement Settings
         SettingsEnableColorSpacePassthrough,
         SettingsEnableColorSpacePassthroughTooltip,
@@ -884,7 +884,7 @@ namespace Ryujinx.Ava.Common.Locale
         SettingsEnableMacroHLETooltip,
         SettingsEnableTextureRecompression,
         SettingsEnableTextureRecompressionTooltip,
-        
+
         // Graphics Scaling and AA
         GraphicsAALabel,
         GraphicsAATooltip,
@@ -898,14 +898,14 @@ namespace Ryujinx.Ava.Common.Locale
         SmaaLow,
         SmaaMedium,
         SmaaUltra,
-        
+
         // Tooltips
         AnisotropyTooltip,
         ResolutionScaleEntryTooltip,
         ResolutionScaleTooltip,
         ShaderDumpPathTooltip,
         GalThreadingTooltip,
-        
+
         // Logging Settings
         SettingsTabLoggingDeveloperOptions,
         SettingsTabLoggingDeveloperOptionsNote,
@@ -925,7 +925,7 @@ namespace Ryujinx.Ava.Common.Locale
         SettingsTabLoggingGraphicsBackendLogLevelNone,
         SettingsTabLoggingGraphicsBackendLogLevelPerformance,
         SettingsTabLoggingLogging,
-        
+
         // Logging Tooltips
         DebugLogTooltip,
         ErrorLogTooltip,

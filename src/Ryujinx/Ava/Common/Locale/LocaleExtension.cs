@@ -20,9 +20,9 @@ namespace Ryujinx.Ava.Common.Locale
             _keyString = keyString;
         }
 
-        public LocaleKeys Key 
-        { 
-            get 
+        public LocaleKeys Key
+        {
+            get
             {
                 if (_key.HasValue)
                 {
