@@ -6,11 +6,12 @@ using System.Linq;
 namespace Ryujinx.HLE.Generators
 {
     [Generator]
-    public class IpcServiceGenerator : ISourceGenerator
+    public class IpcServiceGenerator : IIncrementalGenerator
     {
-        public void Execute(GeneratorExecutionContext context)
+        private void Execute(SourceProductionContext context, Compilation compilation)
         {
-            var syntaxReceiver = (ServiceSyntaxReceiver)context.SyntaxReceiver;
+            ServiceSyntaxReceiver syntaxReceiver = new ServiceSyntaxReceiver();
+            syntaxReceiver.Visit(compilation);
             CodeGenerator generator = new CodeGenerator();
 
             generator.AppendLine("#nullable enable");
@@ -23,7 +24,7 @@ namespace Ryujinx.HLE.Generators
             {
                 if (className.Modifiers.Any(SyntaxKind.AbstractKeyword) || className.Modifiers.Any(SyntaxKind.PrivateKeyword) || !className.AttributeLists.Any(x => x.Attributes.Any(y => y.ToString().StartsWith("Service"))))
                     continue;
-                var name = GetFullName(className, context).Replace("global::", "");
+                var name = GetFullName(className, compilation).Replace("global::", "");
                 if (!name.StartsWith("Ryujinx.HLE.HOS.Services"))
                     continue;
                 var constructors = className.ChildNodes().Where(x => x.IsKind(SyntaxKind.ConstructorDeclaration)).Select(y => y as ConstructorDeclarationSyntax);
@@ -33,21 +34,21 @@ namespace Ryujinx.HLE.Generators
 
                 if (constructors.Where(x => x.ParameterList.Parameters.Count >= 1).FirstOrDefault().ParameterList.Parameters[0].Type.ToString() == "ServiceCtx")
                 {
-                    generator.EnterScope($"if (type == typeof({GetFullName(className, context)}))");
+                    generator.EnterScope($"if (type == typeof({GetFullName(className, compilation)}))");
                     if (constructors.Any(x => x.ParameterList.Parameters.Count == 2))
                     {
                         var type = constructors.Where(x => x.ParameterList.Parameters.Count == 2).FirstOrDefault().ParameterList.Parameters[1].Type;
-                        var model = context.Compilation.GetSemanticModel(type.SyntaxTree);
+                        var model = compilation.GetSemanticModel(type.SyntaxTree);
                         var typeSymbol = model.GetSymbolInfo(type).Symbol as INamedTypeSymbol;
                         var fullName = typeSymbol.ToString();
                         generator.EnterScope("if (parameter != null)");
-                        generator.AppendLine($"return new {GetFullName(className, context)}(context, ({fullName})parameter);");
+                        generator.AppendLine($"return new {GetFullName(className, compilation)}(context, ({fullName})parameter);");
                         generator.LeaveScope();
                     }
 
                     if (constructors.Any(x => x.ParameterList.Parameters.Count == 1))
                     {
-                        generator.AppendLine($"return new {GetFullName(className, context)}(context);");
+                        generator.AppendLine($"return new {GetFullName(className, compilation)}(context);");
                     }
 
                     generator.LeaveScope();
@@ -62,16 +63,16 @@ namespace Ryujinx.HLE.Generators
             context.AddSource($"IUserInterface.g.cs", generator.ToString());
         }
 
-        private string GetFullName(ClassDeclarationSyntax syntaxNode, GeneratorExecutionContext context)
+        private string GetFullName(ClassDeclarationSyntax syntaxNode, Compilation compilation)
         {
-            var typeSymbol = context.Compilation.GetSemanticModel(syntaxNode.SyntaxTree).GetDeclaredSymbol(syntaxNode);
+            var typeSymbol = compilation.GetSemanticModel(syntaxNode.SyntaxTree).GetDeclaredSymbol(syntaxNode);
 
             return typeSymbol.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
         }
 
-        public void Initialize(GeneratorInitializationContext context)
+        public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            context.RegisterForSyntaxNotifications(() => new ServiceSyntaxReceiver());
+            context.RegisterSourceOutput(context.CompilationProvider, Execute);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 namespace Ryujinx.Horizon.Generators.Hipc
 {
     [Generator]
-    class HipcGenerator : ISourceGenerator
+    class HipcGenerator : IIncrementalGenerator
     {
         private const string ArgVariablePrefix = "arg";
         private const string ResultVariableName = "result";
@@ -57,13 +57,14 @@ namespace Ryujinx.Horizon.Generators.Hipc
             }
         }
 
-        public void Execute(GeneratorExecutionContext context)
+        private void Execute(SourceProductionContext context, Compilation compilation)
         {
-            HipcSyntaxReceiver syntaxReceiver = (HipcSyntaxReceiver)context.SyntaxReceiver;
+            HipcSyntaxReceiver syntaxReceiver = new HipcSyntaxReceiver();
+            syntaxReceiver.Visit(compilation);
 
             foreach (var commandInterface in syntaxReceiver.CommandInterfaces)
             {
-                if (!NeedsIServiceObjectImplementation(context.Compilation, commandInterface.ClassDeclarationSyntax))
+                if (!NeedsIServiceObjectImplementation(compilation, commandInterface.ClassDeclarationSyntax))
                 {
                     continue;
                 }
@@ -84,13 +85,13 @@ namespace Ryujinx.Horizon.Generators.Hipc
                 generator.EnterScope($"namespace {GetNamespaceName(commandInterface.ClassDeclarationSyntax)}");
                 generator.EnterScope($"partial class {className}");
 
-                GenerateMethodTable(generator, context.Compilation, commandInterface);
+                GenerateMethodTable(generator, compilation, commandInterface);
 
                 foreach (var method in commandInterface.CommandImplementations)
                 {
                     generator.AppendLine();
 
-                    GenerateMethod(generator, context.Compilation, method);
+                    GenerateMethod(generator, compilation, method);
                 }
 
                 generator.LeaveScope();
@@ -790,9 +791,9 @@ namespace Ryujinx.Horizon.Generators.Hipc
             return serviceObjectInterface != null && type.FindImplementationForInterfaceMember(interfaceMember) == null;
         }
 
-        public void Initialize(GeneratorInitializationContext context)
+        public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            context.RegisterForSyntaxNotifications(() => new HipcSyntaxReceiver());
+            context.RegisterSourceOutput(context.CompilationProvider, Execute);
         }
     }
 }
