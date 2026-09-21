@@ -73,7 +73,8 @@ namespace Ryujinx.Ava
                         new[] { Win32RenderingMode.AngleEgl, Win32RenderingMode.Software } :
                         new[] { Win32RenderingMode.Software },
                 })
-                .UseSkia();
+                .UseSkia()
+                .UseHarfBuzz();
         }
 
         private static void Initialize(string[] args)

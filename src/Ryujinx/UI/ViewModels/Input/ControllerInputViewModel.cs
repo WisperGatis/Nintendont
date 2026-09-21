@@ -1,4 +1,4 @@
-using Avalonia.Svg.Skia;
+using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Ava.UI.Models.Input;
 using Ryujinx.Ava.UI.Views.Input;
 

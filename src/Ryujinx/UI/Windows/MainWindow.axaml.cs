@@ -110,12 +110,12 @@ namespace Ryujinx.Ava.UI.Windows
         protected override void OnClosed(EventArgs e)
         {
             base.OnClosed(e);
-            if (PlatformSettings != null)
+            if (Application.Current.PlatformSettings != null)
             {
                 /// <summary>
                 /// Unsubscribe to the ColorValuesChanged event
                 /// </summary>
-                PlatformSettings.ColorValuesChanged -= OnPlatformColorValuesChanged;
+                Application.Current.PlatformSettings.ColorValuesChanged -= OnPlatformColorValuesChanged;
             }
         }
 
@@ -269,7 +269,7 @@ namespace Ryujinx.Ava.UI.Windows
                 LocaleManager.Instance[LocaleKeys.LinuxVmMaxMapCountDialogButtonUntilRestart],
                 LocaleManager.Instance[LocaleKeys.LinuxVmMaxMapCountDialogButtonPersistent],
                 LocaleManager.Instance[LocaleKeys.InputDialogNo],
-                (int)Symbol.Help
+                (int)FASymbol.Help
             );
 
             int rc;
@@ -454,7 +454,7 @@ namespace Ryujinx.Ava.UI.Windows
             /// <summary>
             /// Subscribe to the ColorValuesChanged event
             /// </summary>
-            PlatformSettings.ColorValuesChanged += OnPlatformColorValuesChanged;
+            Application.Current.PlatformSettings.ColorValuesChanged += OnPlatformColorValuesChanged;
 
             ViewModel.Initialize(
                 ContentManager,

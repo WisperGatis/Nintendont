@@ -107,7 +107,7 @@
                         VerticalAlignment="Center"
                         ToolTip.Tip="{locale:Locale ControllerSettingsLoadProfileToolTip}"
                         Command="{Binding LoadProfile}">
-                        <ui:SymbolIcon
+                        <ui:FASymbolIcon
                             Symbol="Upload"
                             FontSize="15"
                             Height="20" />
@@ -119,7 +119,7 @@
                             VerticalAlignment="Center"
                             ToolTip.Tip="{locale:Locale ControllerSettingsSaveProfileToolTip}"
                             Command="{Binding SaveProfile}">
-                        <ui:SymbolIcon
+                        <ui:FASymbolIcon
                             Symbol="Save"
                             FontSize="15"
                             Height="20" />
@@ -131,7 +131,7 @@
                             VerticalAlignment="Center"
                             ToolTip.Tip="{locale:Locale ControllerSettingsRemoveProfileToolTip}"
                             Command="{Binding RemoveProfile}">
-                        <ui:SymbolIcon
+                        <ui:FASymbolIcon
                             Symbol="Delete"
                             FontSize="15"
                             Height="20" />
@@ -175,7 +175,7 @@
                         Margin="5,0,0,0"
                         VerticalAlignment="Center"
                         Command="{Binding LoadDevices}">
-                        <ui:SymbolIcon
+                        <ui:FASymbolIcon
                             Symbol="Refresh"
                             FontSize="15"
                             Height="20"/>

@@ -29,17 +29,17 @@ namespace Ryujinx.Ava.UI.Views.User
         {
             InitializeComponent();
 
-            AddHandler(Frame.NavigatedToEvent, (s, e) =>
+            AddHandler(FAFrame.NavigatedToEvent, (s, e) =>
             {
                 NavigatedTo(e);
             }, RoutingStrategies.Direct);
         }
 
-        private void NavigatedTo(NavigationEventArgs arg)
+        private void NavigatedTo(FANavigationEventArgs arg)
         {
             if (Program.PreviewerDetached)
             {
-                if (arg.NavigationMode == NavigationMode.New)
+                if (arg.NavigationMode == FANavigationMode.New)
                 {
                     (_parent, _profile) = ((NavigationDialogHost, TempProfile))arg.Parameter;
                     ContentManager = _parent.ContentManager;

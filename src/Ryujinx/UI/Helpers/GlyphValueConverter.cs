@@ -11,8 +11,8 @@ namespace Ryujinx.Ava.UI.Helpers
 
         private static readonly Dictionary<Glyph, string> _glyphs = new()
         {
-            { Glyph.List, char.ConvertFromUtf32((int)Symbol.List) },
-            { Glyph.Grid, char.ConvertFromUtf32((int)Symbol.ViewAll) },
+            { Glyph.List, char.ConvertFromUtf32((int)FASymbol.List) },
+            { Glyph.Grid, char.ConvertFromUtf32((int)FASymbol.ViewAll) },
             { Glyph.Chip, char.ConvertFromUtf32(59748) },
         };
 

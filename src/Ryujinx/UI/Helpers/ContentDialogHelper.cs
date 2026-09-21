@@ -21,7 +21,7 @@ namespace Ryujinx.Ava.UI.Helpers
         private static bool _isChoiceDialogOpen;
         private static ContentDialogOverlayWindow _contentDialogOverlayWindow;
 
-        private static void ApplyContentDialogStyling(ContentDialog contentDialog)
+        private static void ApplyContentDialogStyling(FAContentDialog contentDialog)
         {
             // Only apply the minimal styling needed - hide the DialogSpace border used in some dialogs
             // This is the same pattern used in DownloadableContentManagerWindow, ModManagerWindow, etc.
@@ -38,11 +38,11 @@ namespace Ryujinx.Ava.UI.Helpers
              string closeButton,
              UserResult primaryButtonResult = UserResult.Ok,
              ManualResetEvent deferResetEvent = null,
-             TypedEventHandler<ContentDialog, ContentDialogButtonClickEventArgs> deferCloseAction = null)
+             TypedEventHandler<FAContentDialog, FAContentDialogButtonClickEventArgs> deferCloseAction = null)
         {
             UserResult result = UserResult.None;
 
-            ContentDialog contentDialog = new()
+            FAContentDialog contentDialog = new()
             {
                 Title = title,
                 PrimaryButtonText = primaryButton,
@@ -90,7 +90,7 @@ namespace Ryujinx.Ava.UI.Helpers
             int iconSymbol,
             UserResult primaryButtonResult = UserResult.Ok,
             ManualResetEvent deferResetEvent = null,
-            TypedEventHandler<ContentDialog, ContentDialogButtonClickEventArgs> deferCloseAction = null)
+            TypedEventHandler<FAContentDialog, FAContentDialogButtonClickEventArgs> deferCloseAction = null)
         {
             Grid content = CreateTextDialogContent(primaryText, secondaryText, iconSymbol);
 
@@ -123,7 +123,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 deferResetEvent,
                 DeferClose);
 
-            async void DeferClose(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+            async void DeferClose(FAContentDialog sender, FAContentDialogButtonClickEventArgs args)
             {
                 if (startedDeferring)
                 {
@@ -167,9 +167,9 @@ namespace Ryujinx.Ava.UI.Helpers
                 MinHeight = 80,
             };
 
-            SymbolIcon icon = new()
+            FASymbolIcon icon = new()
             {
-                Symbol = (Symbol)symbol,
+                Symbol = (FASymbol)symbol,
                 Margin = new Thickness(10),
                 FontSize = 40,
                 VerticalAlignment = VerticalAlignment.Center,
@@ -221,7 +221,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 acceptButton,
                 "",
                 closeButton,
-                (int)Symbol.Important);
+                (int)FASymbol.Important);
         }
 
         internal static async Task<UserResult> CreateConfirmationDialog(
@@ -239,7 +239,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 acceptButtonText,
                 "",
                 cancelButtonText,
-                (int)Symbol.Help,
+                (int)FASymbol.Help,
                 primaryButtonResult);
         }
 
@@ -252,7 +252,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 "",
                 "",
                 LocaleManager.Instance[LocaleKeys.InputDialogOk],
-                (int)Symbol.Important);
+                (int)FASymbol.Important);
         }
 
         internal static async Task CreateWarningDialog(string primary, string secondaryText)
@@ -264,7 +264,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 "",
                 "",
                 LocaleManager.Instance[LocaleKeys.InputDialogOk],
-                (int)Symbol.Important);
+                (int)FASymbol.Important);
         }
 
         internal static async Task CreateErrorDialog(string errorMessage, string secondaryErrorMessage = "")
@@ -278,7 +278,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 secondaryErrorMessage,
                 "",
                 LocaleManager.Instance[LocaleKeys.InputDialogOk],
-                (int)Symbol.Dismiss);
+                (int)FASymbol.Dismiss);
         }
 
         internal static async Task<bool> CreateChoiceDialog(string title, string primary, string secondaryText)
@@ -297,7 +297,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 LocaleManager.Instance[LocaleKeys.InputDialogYes],
                 "",
                 LocaleManager.Instance[LocaleKeys.InputDialogNo],
-                (int)Symbol.Help,
+                (int)FASymbol.Help,
                 UserResult.Yes);
 
             _isChoiceDialogOpen = false;
@@ -321,9 +321,9 @@ namespace Ryujinx.Ava.UI.Helpers
                 LocaleManager.Instance[LocaleKeys.DialogExitSubMessage]);
         }
 
-        public static async Task<ContentDialogResult> ShowAsync(ContentDialog contentDialog)
+        public static async Task<FAContentDialogResult> ShowAsync(FAContentDialog contentDialog)
         {
-            ContentDialogResult result;
+            FAContentDialogResult result;
             bool isTopDialog = true;
 
             Window parent = GetMainWindow();
@@ -377,14 +377,14 @@ namespace Ryujinx.Ava.UI.Helpers
                     result = await ShowDialog();
                 }
 
-                result = await _contentDialogOverlayWindow.ShowDialog<ContentDialogResult>(parent);
+                result = await _contentDialogOverlayWindow.ShowDialog<FAContentDialogResult>(parent);
             }
             else
             {
                 result = await ShowDialog();
             }
 
-            async Task<ContentDialogResult> ShowDialog()
+            async Task<FAContentDialogResult> ShowDialog()
             {
                 if (_contentDialogOverlayWindow is not null)
                 {
@@ -394,7 +394,7 @@ namespace Ryujinx.Ava.UI.Helpers
                 }
                 else
                 {
-                    result = ContentDialogResult.None;
+                    result = FAContentDialogResult.None;
 
                     Logger.Warning?.Print(LogClass.UI, "Content dialog overlay failed to populate. Default value has been returned.");
                 }

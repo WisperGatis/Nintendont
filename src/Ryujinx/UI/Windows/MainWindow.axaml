@@ -22,11 +22,6 @@
     mc:Ignorable="d"
     WindowStartupLocation="Manual"
     Focusable="True">
-    <Window.Styles>
-        <Style Selector="TitleBar:fullscreen">
-            <Setter Property="Background" Value="#000000" />
-        </Style>
-    </Window.Styles>
     <Design.DataContext>
         <viewModels:MainWindowViewModel />
     </Design.DataContext>

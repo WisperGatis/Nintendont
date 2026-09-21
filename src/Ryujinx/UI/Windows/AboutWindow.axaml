@@ -186,7 +186,7 @@
                         CornerRadius="15"
                         Tag="https://www.ryujinx.org"
                         ToolTip.Tip="{locale:Locale AboutUrlTooltipMessage}">
-                        <ui:SymbolIcon Foreground="{DynamicResource ThemeForegroundColor}" Symbol="Link" />
+                        <ui:FASymbolIcon Foreground="{DynamicResource ThemeForegroundColor}" Symbol="Link" />
                     </Button>
                 </StackPanel>
             </StackPanel>

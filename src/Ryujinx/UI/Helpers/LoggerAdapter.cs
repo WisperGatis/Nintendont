@@ -50,7 +50,7 @@ namespace Ryujinx.Ava.UI.Helpers
         private static string Format(AvaLogLevel level, string area, string template, object source, object[] v)
         {
             var result = new StringBuilder();
-            var r = new CharacterReader(template.AsSpan());
+            int pos = 0;
             int i = 0;
 
             result.Append('[');
@@ -61,9 +61,9 @@ namespace Ryujinx.Ava.UI.Helpers
             result.Append(area);
             result.Append("] ");
 
-            while (!r.End)
+            while (pos < template.Length)
             {
-                var c = r.Take();
+                char c = template[pos++];
 
                 if (c != '{')
                 {
@@ -71,18 +71,20 @@ namespace Ryujinx.Ava.UI.Helpers
                 }
                 else
                 {
-                    if (r.Peek != '{')
+                    if (pos >= template.Length || template[pos] != '{')
                     {
                         result.Append('\'');
                         result.Append(i < v.Length ? v[i++] : null);
                         result.Append('\'');
-                        r.TakeUntil('}');
-                        r.Take();
+
+                        int end = template.IndexOf('}', pos);
+
+                        pos = end < 0 ? template.Length : end + 1;
                     }
                     else
                     {
                         result.Append('{');
-                        r.Take();
+                        pos++;
                     }
                 }
             }

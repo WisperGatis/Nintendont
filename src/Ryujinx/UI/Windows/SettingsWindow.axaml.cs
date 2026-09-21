@@ -49,12 +49,12 @@ namespace Ryujinx.Ava.UI.Windows
         {
             Pages.Children.Clear();
             NavPanel.SelectionChanged += NavPanelOnSelectionChanged;
-            NavPanel.SelectedItem = NavPanel.MenuItems.ElementAt(0);
+            NavPanel.SelectedItem = NavPanel.MenuItems[0];
         }
 
-        private void NavPanelOnSelectionChanged(object sender, NavigationViewSelectionChangedEventArgs e)
+        private void NavPanelOnSelectionChanged(object sender, FANavigationViewSelectionChangedEventArgs e)
         {
-            if (e.SelectedItem is NavigationViewItem navItem && navItem.Tag is not null)
+            if (e.SelectedItem is FANavigationViewItem navItem && navItem.Tag is not null)
             {
                 switch (navItem.Tag.ToString())
                 {

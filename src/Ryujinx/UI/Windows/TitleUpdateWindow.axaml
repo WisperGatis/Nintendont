@@ -51,7 +51,7 @@
                                     MinWidth="0"
                                     MinHeight="0"
                                     Click="OpenLocation">
-                                    <ui:SymbolIcon
+                                    <ui:FASymbolIcon
                                         Symbol="OpenFolder"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center" />
@@ -63,7 +63,7 @@
                                     MinWidth="0"
                                     MinHeight="0"
                                     Click="RemoveUpdate">
-                                    <ui:SymbolIcon
+                                    <ui:FASymbolIcon
                                         Symbol="Cancel"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center" />

@@ -1,6 +1,5 @@
 using Avalonia.Controls;
 using Avalonia.Styling;
-using Avalonia.Svg.Skia;
 using Avalonia.Threading;
 using FluentAvalonia.UI.Controls;
 using Ryujinx.Ava.Common.Locale;
@@ -70,16 +69,16 @@ namespace Ryujinx.Ava.UI.Applet
 
         public static async Task<UserResult> ShowControllerAppletDialog(MainWindow window, ControllerAppletUIArgs args)
         {
-            ContentDialog contentDialog = new();
+            FAContentDialog contentDialog = new();
             UserResult result = UserResult.Cancel;
             ControllerAppletDialog content = new(window, args);
 
             contentDialog.Title = LocaleManager.Instance[LocaleKeys.DialogControllerAppletTitle];
             contentDialog.Content = content;
 
-            void Handler(ContentDialog sender, ContentDialogClosedEventArgs eventArgs)
+            void Handler(FAContentDialog sender, FAContentDialogClosedEventArgs eventArgs)
             {
-                if (eventArgs.Result == ContentDialogResult.Primary)
+                if (eventArgs.Result == FAContentDialogResult.Primary)
                 {
                     result = UserResult.Ok;
                 }
@@ -119,7 +118,7 @@ namespace Ryujinx.Ava.UI.Applet
                 {
                     _mainWindow.SettingsWindow = new SettingsWindow(_mainWindow.VirtualFileSystem, _mainWindow.ContentManager);
                     _mainWindow.SettingsWindow.NavPanel.Content = _mainWindow.SettingsWindow.InputPage;
-                    _mainWindow.SettingsWindow.NavPanel.SelectedItem = _mainWindow.SettingsWindow.NavPanel.MenuItems.ElementAt(1);
+                    _mainWindow.SettingsWindow.NavPanel.SelectedItem = _mainWindow.SettingsWindow.NavPanel.MenuItems[1];
 
                     await ContentDialogHelper.ShowWindowAsync(_mainWindow.SettingsWindow, _mainWindow);
                     _mainWindow.SettingsWindow = null;
@@ -130,7 +129,7 @@ namespace Ryujinx.Ava.UI.Applet
 
         public void Close()
         {
-            ((ContentDialog)Parent)?.Hide();
+            ((FAContentDialog)Parent)?.Hide();
         }
     }
 }

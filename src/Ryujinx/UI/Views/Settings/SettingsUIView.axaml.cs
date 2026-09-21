@@ -30,7 +30,7 @@ namespace Ryujinx.Ava.UI.Views.Settings
             }
             else
             {
-                if (this.GetVisualRoot() is Window window)
+                if (TopLevel.GetTopLevel(this) is Window window)
                 {
                     var result = await window.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
                     {

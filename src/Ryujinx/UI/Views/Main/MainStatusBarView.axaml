@@ -48,7 +48,7 @@
                     VerticalAlignment="Center"
                     Background="Transparent"
                     Click="Refresh_OnClick">
-                    <ui:SymbolIcon
+                    <ui:FASymbolIcon
                         Width="50"
                         Height="100"
                         Symbol="Refresh" />
