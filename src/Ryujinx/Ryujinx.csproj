@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <RuntimeIdentifiers>win-x64;osx-x64;linux-x64</RuntimeIdentifiers>
     <OutputType>Exe</OutputType>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -25,10 +25,10 @@
   </PropertyGroup>
 
   <!--
-    FluentAvalonia, used in the Avalonia UI, requires a workaround for the json serializer used internally when using .NET 8+ System.Text.Json.
+    FluentAvalonia, used in the Avalonia UI, requires a workaround for the json serializer used internally when using .NET 10+ System.Text.Json.
     See:
       https://github.com/amwx/FluentAvalonia/issues/481
-      https://devblogs.microsoft.com/dotnet/system-text-json-in-dotnet-8/
+      https://devblogs.microsoft.com/dotnet/system-text-json-in-dotnet-10/
   -->
   <PropertyGroup>
     <JsonSerializerIsReflectionEnabledByDefault>true</JsonSerializerIsReflectionEnabledByDefault>
@@ -54,6 +54,8 @@
     <PackageReference Include="Silk.NET.Vulkan.Extensions.KHR" />
     <PackageReference Include="SPB" />
     <PackageReference Include="SharpZipLib" />
+    <!-- Pin Avalonia's transitive DBus dependency to the patched release. -->
+    <PackageReference Include="Tmds.DBus.Protocol" />
   </ItemGroup>
 
   <ItemGroup>

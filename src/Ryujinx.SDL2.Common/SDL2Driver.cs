@@ -25,7 +25,7 @@ namespace Ryujinx.SDL2.Common
 
         public static Action<Action> MainThreadDispatcher { get; set; }
 
-        private const uint SdlInitFlags = SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_JOYSTICK | SDL_INIT_AUDIO | SDL_INIT_VIDEO;
+        private const uint SdlInitFlags = SDL_INIT_EVENTS | SDL_INIT_GAMECONTROLLER | SDL_INIT_JOYSTICK | SDL_INIT_VIDEO;
 
         private bool _isRunning;
         private uint _refereceCount;
@@ -73,6 +73,15 @@ namespace Ryujinx.SDL2.Common
                     Logger.Error?.Print(LogClass.Application, errorMessage);
 
                     throw new Exception(errorMessage);
+                }
+
+                // Audio is optional for the UI and input driver. In environments
+                // without an audio device (for example, Codex's Debug runner),
+                // SDL_Init would otherwise abort the entire application before
+                // the configured audio backend can fall back gracefully.
+                if (SDL_Init(SDL_INIT_AUDIO) != 0)
+                {
+                    Logger.Warning?.Print(LogClass.Audio, $"SDL2 audio initialization unavailable: {SDL_GetError()}");
                 }
 
                 // First ensure that we only enable joystick events (for connected/disconnected).
