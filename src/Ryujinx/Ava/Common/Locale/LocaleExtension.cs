@@ -1,7 +1,5 @@
-using Avalonia.Data.Core;
+using Avalonia.Data;
 using Avalonia.Markup.Xaml;
-using Avalonia.Markup.Xaml.MarkupExtensions;
-using Avalonia.Markup.Xaml.MarkupExtensions.CompiledBindings;
 using Ryujinx.Ava.Common.Locale;
 using System;
 
@@ -22,9 +20,9 @@ namespace Ryujinx.Ava.Common.Locale
             _keyString = keyString;
         }
 
-        public LocaleKeys Key 
-        { 
-            get 
+        public LocaleKeys Key
+        {
+            get
             {
                 if (_key.HasValue)
                 {
@@ -45,25 +43,12 @@ namespace Ryujinx.Ava.Common.Locale
         {
             LocaleKeys keyToUse = Key;
 
-            var builder = new CompiledBindingPathBuilder();
-
-            builder
-                .Property(new ClrPropertyInfo("Item",
-                obj => (LocaleManager.Instance[keyToUse]),
-                null,
-                typeof(string)), (weakRef, iPropInfo) =>
-                {
-                    return PropertyInfoAccessorFactory.CreateInpcPropertyAccessor(weakRef, iPropInfo);
-                });
-
-            var path = builder.Build();
-
-            var binding = new CompiledBindingExtension(path)
+            var binding = new Binding($"[{keyToUse}]")
             {
-                Source = LocaleManager.Instance
+                Source = LocaleManager.Instance,
             };
 
-            return binding.ProvideValue(serviceProvider);
+            return binding;
         }
     }
 }

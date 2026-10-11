@@ -30,7 +30,7 @@ namespace Ryujinx.Ava.UI.Views.Settings
             }
             else
             {
-                if (this.GetVisualRoot() is Window window)
+                if (TopLevel.GetTopLevel(this) is Window window)
                 {
                     var result = await window.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
                     {
@@ -59,6 +59,29 @@ namespace Ryujinx.Ava.UI.Views.Settings
             if (GameList.ItemCount > 0)
             {
                 GameList.SelectedIndex = oldIndex < GameList.ItemCount ? oldIndex : 0;
+            }
+        }
+
+        private async void BrowseMatugenTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (TopLevel.GetTopLevel(this) is Window window)
+            {
+                var result = await window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    AllowMultiple = false,
+                    FileTypeFilter = new List<FilePickerFileType>
+                    {
+                        new("XAML theme files")
+                        {
+                            Patterns = new[] { "*.xaml" },
+                        },
+                    },
+                });
+
+                if (result.Count > 0)
+                {
+                    ViewModel.MatugenThemePath = result[0].Path.LocalPath;
+                }
             }
         }
     }

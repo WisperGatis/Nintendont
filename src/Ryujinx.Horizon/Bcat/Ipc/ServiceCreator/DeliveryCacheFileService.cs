@@ -62,9 +62,9 @@ namespace Ryujinx.Horizon.Bcat.Ipc
             Dispose(true);
         }
 
-    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
-    {
-        return new Dictionary<int, CommandHandler>().AsReadOnly();
-    }
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

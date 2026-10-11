@@ -81,6 +81,7 @@ namespace Ryujinx.Ava
         private readonly InputManager _inputManager;
 
         private readonly MainWindowViewModel _viewModel;
+        private readonly PlaytimeTracker _playtime = new();
         private readonly IKeyboard _keyboardInterface;
         private readonly TopLevel _topLevel;
         public RendererHost RendererHost;
@@ -537,10 +538,7 @@ namespace Ryujinx.Ava
 
         private void Dispose()
         {
-            if (Device.Processes != null)
-            {
-                MainWindowViewModel.UpdateGameMetadata(Device.Processes.ActiveApplication.ProgramIdText);
-            }
+            _playtime.Stop();
 
             ConfigurationState.Instance.System.IgnoreMissingServices.Event -= UpdateIgnoreMissingServicesState;
             ConfigurationState.Instance.Graphics.AspectRatio.Event -= UpdateAspectRatioState;
@@ -787,10 +785,7 @@ namespace Ryujinx.Ava
 
             DiscordIntegrationModule.SwitchToPlayingState(Device.Processes.ActiveApplication.ProgramIdText, Device.Processes.ActiveApplication.Name);
 
-            ApplicationLibrary.LoadAndSaveMetaData(Device.Processes.ActiveApplication.ProgramIdText, appMetadata =>
-            {
-                appMetadata.UpdatePreGame();
-            });
+            _playtime.Start(Device.Processes.ActiveApplication.ProgramIdText);
 
             return true;
         }
@@ -798,6 +793,7 @@ namespace Ryujinx.Ava
         internal void Resume()
         {
             Device?.System.TogglePauseEmulation(false);
+            _playtime.Resume();
 
             _viewModel.IsPaused = false;
             _viewModel.Title = TitleHelper.ActiveApplicationTitle(Device?.Processes.ActiveApplication, Program.Version);
@@ -807,6 +803,7 @@ namespace Ryujinx.Ava
         internal void Pause()
         {
             Device?.System.TogglePauseEmulation(true);
+            _playtime.Pause();
 
             _viewModel.IsPaused = true;
             _viewModel.Title = TitleHelper.ActiveApplicationTitle(Device?.Processes.ActiveApplication, Program.Version, LocaleManager.Instance[LocaleKeys.Paused]);

@@ -65,9 +65,9 @@ namespace Ryujinx.Horizon.Ngc.Ipc
                 return _profanityFilter.Reload();
             }
         }
-    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
-    {
-        return new Dictionary<int, CommandHandler>().AsReadOnly();
-    }
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

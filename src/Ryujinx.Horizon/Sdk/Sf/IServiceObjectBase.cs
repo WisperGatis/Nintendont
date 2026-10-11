@@ -16,4 +16,4 @@ namespace Ryujinx.Horizon.Sdk.Sf
             return ServiceObjectUtils.GetEmptyHandlers();
         }
     }
-} 
+}

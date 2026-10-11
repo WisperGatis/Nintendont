@@ -68,6 +68,7 @@ namespace Ryujinx.UI
 
         private bool _updatingGameTable;
         private bool _gameLoaded;
+        private readonly PlaytimeTracker _playtime = new();
         private bool _ending;
 
         private ApplicationData _currentApplicationData = null;
@@ -958,10 +959,7 @@ namespace Ryujinx.UI
                 DiscordIntegrationModule.SwitchToPlayingState(_emulationContext.Processes.ActiveApplication.ProgramIdText,
                                                               _emulationContext.Processes.ActiveApplication.ApplicationControlProperties.Title[(int)_emulationContext.System.State.DesiredTitleLanguage].NameString.ToString());
 
-                ApplicationLibrary.LoadAndSaveMetaData(_emulationContext.Processes.ActiveApplication.ProgramIdText, appMetadata =>
-                {
-                    appMetadata.UpdatePreGame();
-                });
+                _playtime.Start(_emulationContext.Processes.ActiveApplication.ProgramIdText);
             }
         }
 
@@ -1097,15 +1095,9 @@ namespace Ryujinx.UI
             }
         }
 
-        private void UpdateGameMetadata(string titleId)
+        private void UpdateGameMetadata()
         {
-            if (_gameLoaded)
-            {
-                ApplicationLibrary.LoadAndSaveMetaData(titleId, appMetadata =>
-                {
-                    appMetadata.UpdatePostGame();
-                });
-            }
+            _playtime.Stop();
         }
 
         public static void UpdateGraphicsConfig()
@@ -1145,7 +1137,7 @@ namespace Ryujinx.UI
 
             if (_emulationContext != null)
             {
-                UpdateGameMetadata(_emulationContext.Processes.ActiveApplication.ProgramIdText);
+                UpdateGameMetadata();
 
                 if (RendererWidget != null)
                 {
@@ -1488,7 +1480,7 @@ namespace Ryujinx.UI
         {
             if (_emulationContext != null)
             {
-                UpdateGameMetadata(_emulationContext.Processes.ActiveApplication.ProgramIdText);
+                UpdateGameMetadata();
             }
 
             _pauseEmulation.Sensitive = false;
@@ -1502,6 +1494,7 @@ namespace Ryujinx.UI
             _pauseEmulation.Sensitive = false;
             _resumeEmulation.Sensitive = true;
             _emulationContext.System.TogglePauseEmulation(true);
+            _playtime.Pause();
             Title = TitleHelper.ActiveApplicationTitle(_emulationContext.Processes.ActiveApplication, Program.Version, "Paused");
             Logger.Info?.Print(LogClass.Emulation, "Emulation was paused");
         }
@@ -1511,6 +1504,7 @@ namespace Ryujinx.UI
             _pauseEmulation.Sensitive = true;
             _resumeEmulation.Sensitive = false;
             _emulationContext.System.TogglePauseEmulation(false);
+            _playtime.Resume();
             Title = TitleHelper.ActiveApplicationTitle(_emulationContext.Processes.ActiveApplication, Program.Version);
             Logger.Info?.Print(LogClass.Emulation, "Emulation was resumed");
         }
@@ -1526,6 +1520,15 @@ namespace Ryujinx.UI
             _pauseEmulation.Sensitive ^= true;
             _resumeEmulation.Sensitive ^= true;
             _emulationContext.System.TogglePauseEmulation(_resumeEmulation.Sensitive);
+
+            if (_resumeEmulation.Sensitive)
+            {
+                _playtime.Pause();
+            }
+            else
+            {
+                _playtime.Resume();
+            }
         }
 
         private void Installer_File_Pressed(object o, EventArgs args)

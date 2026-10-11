@@ -5,13 +5,24 @@ using System.Linq;
 
 namespace Ryujinx.Horizon.Kernel.Generators
 {
-    class SyscallSyntaxReceiver : ISyntaxReceiver
+    class SyscallSyntaxReceiver
     {
         public List<MethodDeclarationSyntax> SvcImplementations { get; }
 
         public SyscallSyntaxReceiver()
         {
             SvcImplementations = new List<MethodDeclarationSyntax>();
+        }
+
+        public void Visit(Compilation compilation)
+        {
+            foreach (SyntaxTree tree in compilation.SyntaxTrees)
+            {
+                foreach (SyntaxNode node in tree.GetRoot().DescendantNodesAndSelf())
+                {
+                    OnVisitSyntaxNode(node);
+                }
+            }
         }
 
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)

@@ -6,9 +6,9 @@ namespace Ryujinx.Horizon.Wlan.Ipc
 {
     partial class PrivateServiceCreator : IPrivateServiceCreator
     {
-    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
-    {
-        return new Dictionary<int, CommandHandler>().AsReadOnly();
-    }
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

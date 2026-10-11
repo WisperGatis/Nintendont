@@ -26,19 +26,19 @@ namespace Ryujinx.Ava.UI.Views.User
         public UserEditorView()
         {
             InitializeComponent();
-            AddHandler(Frame.NavigatedToEvent, (s, e) =>
+            AddHandler(FAFrame.NavigatedToEvent, (s, e) =>
             {
                 NavigatedTo(e);
             }, RoutingStrategies.Direct);
         }
 
-        private void NavigatedTo(NavigationEventArgs arg)
+        private void NavigatedTo(FANavigationEventArgs arg)
         {
             if (Program.PreviewerDetached)
             {
                 switch (arg.NavigationMode)
                 {
-                    case NavigationMode.New:
+                    case FANavigationMode.New:
                         var (parent, profile, isNewUser) = ((NavigationDialogHost parent, UserProfile profile, bool isNewUser))arg.Parameter;
                         _isNewUser = isNewUser;
                         _profile = profile;
@@ -48,7 +48,7 @@ namespace Ryujinx.Ava.UI.Views.User
                         break;
                 }
 
-                ((ContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - " +
+                ((FAContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - " +
                                                         $"{(_isNewUser ? LocaleManager.Instance[LocaleKeys.UserEditorTitleCreate] : LocaleManager.Instance[LocaleKeys.UserEditorTitle])}";
 
                 DataContext = TempProfile;

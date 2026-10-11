@@ -236,9 +236,9 @@ namespace Ryujinx.Horizon.Prepo.Ipc
 
             return Result.Success;
         }
-    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
-    {
-        return new Dictionary<int, CommandHandler>().AsReadOnly();
-    }
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

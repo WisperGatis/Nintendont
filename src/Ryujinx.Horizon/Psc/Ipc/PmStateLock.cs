@@ -6,9 +6,9 @@ namespace Ryujinx.Horizon.Psc.Ipc
 {
     partial class PmStateLock : IPmStateLock
     {
-    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
-    {
-        return new Dictionary<int, CommandHandler>().AsReadOnly();
-    }
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

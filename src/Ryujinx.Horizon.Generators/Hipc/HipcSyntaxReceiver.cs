@@ -6,13 +6,24 @@ using System.Linq;
 
 namespace Ryujinx.Horizon.Generators.Hipc
 {
-    class HipcSyntaxReceiver : ISyntaxReceiver
+    class HipcSyntaxReceiver
     {
         public List<CommandInterface> CommandInterfaces { get; }
 
         public HipcSyntaxReceiver()
         {
             CommandInterfaces = new List<CommandInterface>();
+        }
+
+        public void Visit(Compilation compilation)
+        {
+            foreach (SyntaxTree tree in compilation.SyntaxTrees)
+            {
+                foreach (SyntaxNode node in tree.GetRoot().DescendantNodesAndSelf())
+                {
+                    OnVisitSyntaxNode(node);
+                }
+            }
         }
 
         public void OnVisitSyntaxNode(SyntaxNode syntaxNode)

@@ -76,8 +76,10 @@ If you wish to build the emulator yourself, follow these steps:
 
 ### Step 1
 
-Install the [.NET 8.0 (or higher) SDK](https://dotnet.microsoft.com/download/dotnet/8.0).
+Install the [.NET 10.0 (or higher) SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
 Make sure your SDK version is higher or equal to the required version specified in [global.json](global.json). 
+
+On NixOS or a Nix-enabled system, enter the provided development shell with `nix develop` instead. It supplies the pinned .NET SDK and the Linux native runtime libraries.
 
 ### Step 2
 

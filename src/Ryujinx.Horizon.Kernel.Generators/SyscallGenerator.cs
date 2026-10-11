@@ -9,7 +9,7 @@ using System.Linq;
 namespace Ryujinx.Horizon.Kernel.Generators
 {
     [Generator]
-    class SyscallGenerator : ISourceGenerator
+    class SyscallGenerator : IIncrementalGenerator
     {
         private const string ClassNamespace = "Ryujinx.HLE.HOS.Kernel.SupervisorCall";
         private const string ClassName = "SyscallDispatch";
@@ -124,9 +124,10 @@ namespace Ryujinx.Horizon.Kernel.Generators
             }
         }
 
-        public void Execute(GeneratorExecutionContext context)
+        private void Execute(SourceProductionContext context, Compilation compilation)
         {
-            SyscallSyntaxReceiver syntaxReceiver = (SyscallSyntaxReceiver)context.SyntaxReceiver;
+            SyscallSyntaxReceiver syntaxReceiver = new SyscallSyntaxReceiver();
+            syntaxReceiver.Visit(compilation);
 
             CodeGenerator generator = new CodeGenerator();
 
@@ -150,12 +151,12 @@ namespace Ryujinx.Horizon.Kernel.Generators
 
             foreach (var method in syntaxReceiver.SvcImplementations)
             {
-                GenerateMethod32(generator, context.Compilation, method);
-                GenerateMethod64(generator, context.Compilation, method);
+                GenerateMethod32(generator, compilation, method);
+                GenerateMethod64(generator, compilation, method);
 
                 foreach (AttributeSyntax attribute in method.AttributeLists.SelectMany(attributeList =>
                              attributeList.Attributes.Where(attribute =>
-                                 GetCanonicalTypeName(context.Compilation, attribute) == TypeSvcAttribute)))
+                                 GetCanonicalTypeName(compilation, attribute) == TypeSvcAttribute)))
                 {
                     syscalls.AddRange(from attributeArg in attribute.ArgumentList.Arguments
                                       where attributeArg.Expression.Kind() == SyntaxKind.NumericLiteralExpression
@@ -513,9 +514,9 @@ namespace Ryujinx.Horizon.Kernel.Generators
                     GetCanonicalTypeName(compilation, attribute) == TypePointerSizedAttribute));
         }
 
-        public void Initialize(GeneratorInitializationContext context)
+        public void Initialize(IncrementalGeneratorInitializationContext context)
         {
-            context.RegisterForSyntaxNotifications(() => new SyscallSyntaxReceiver());
+            context.RegisterSourceOutput(context.CompilationProvider, Execute);
         }
     }
 }

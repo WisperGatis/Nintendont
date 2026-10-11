@@ -39,7 +39,7 @@
                         <CheckBox>Test Check</CheckBox>
                     </StackPanel>
                 </Grid>
-                <ui:NumberBox Value="1" />
+                <ui:FANumberBox Value="1" />
             </StackPanel>
         </Border>
     </Design.PreviewWith>
@@ -406,33 +406,33 @@
     </Style>
     
     <!-- NavigationView Styles for proper theming -->
-    <Style Selector="ui|NavigationView">
+    <Style Selector="ui|FANavigationView">
         <Setter Property="Background"
                 Value="{DynamicResource ThemeBackgroundColor}" />
         <Setter Property="Foreground"
                 Value="{DynamicResource ThemeForegroundColor}" />
     </Style>
     
-    <Style Selector="ui|NavigationViewItem">
+    <Style Selector="ui|FANavigationViewItem">
         <Setter Property="Background"
                 Value="Transparent" />
         <Setter Property="Foreground"
                 Value="{DynamicResource ThemeForegroundColor}" />
     </Style>
     
-    <Style Selector="ui|NavigationViewItem:pointerover">
+    <Style Selector="ui|FANavigationViewItem:pointerover">
         <Setter Property="Background"
                 Value="{DynamicResource ListBoxItemHoverBackgroundColor}" />
     </Style>
     
-    <Style Selector="ui|NavigationViewItem:selected">
+    <Style Selector="ui|FANavigationViewItem:selected">
         <Setter Property="Background"
                 Value="{DynamicResource ListBoxItemSelectedBackgroundColor}" />
         <Setter Property="Foreground"
                 Value="{DynamicResource TextOnAccentFillColorPrimary}" />
     </Style>
     
-    <Style Selector="ui|NavigationViewItem:selected:pointerover">
+    <Style Selector="ui|FANavigationViewItem:selected:pointerover">
         <Setter Property="Background"
                 Value="{DynamicResource ListBoxItemSelectedBackgroundColor}" />
         <Setter Property="Foreground"
@@ -440,25 +440,25 @@
     </Style>
     
     <!-- NavigationView Pane styling -->
-    <Style Selector="ui|NavigationView /template/ Grid#PaneRoot">
+    <Style Selector="ui|FANavigationView /template/ Grid#PaneRoot">
         <Setter Property="Background"
                 Value="{DynamicResource PanelBackgroundColor}" />
     </Style>
     
-    <Style Selector="ui|NavigationView /template/ Border#PaneBorder">
+    <Style Selector="ui|FANavigationView /template/ Border#PaneBorder">
         <Setter Property="Background"
                 Value="{DynamicResource PanelBackgroundColor}" />
         <Setter Property="BorderBrush"
                 Value="{DynamicResource ThemeControlBorderColor}" />
     </Style>
     
-    <Style Selector="ui|NavigationView /template/ ScrollViewer#MenuItemsScrollViewer">
+    <Style Selector="ui|FANavigationView /template/ ScrollViewer#MenuItemsScrollViewer">
         <Setter Property="Background"
                 Value="{DynamicResource PanelBackgroundColor}" />
     </Style>
     
     <!-- ContentDialog Styling for proper theming -->
-    <Style Selector="ui|ContentDialog">
+    <Style Selector="ui|FAContentDialog">
         <Setter Property="Background"
                 Value="{DynamicResource ThemeContentBackgroundColor}" />
         <Setter Property="Foreground"

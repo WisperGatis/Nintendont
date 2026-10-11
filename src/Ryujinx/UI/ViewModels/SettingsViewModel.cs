@@ -50,6 +50,7 @@ namespace Ryujinx.Ava.UI.ViewModels
         private int _scalingFilter;
         private int _scalingFilterLevel;
         private int _baseStyleIndex;
+        private string _matugenThemePath;
 
         public event Action CloseWindow;
         public event Action SaveSettingsEvent;
@@ -204,6 +205,21 @@ namespace Ryujinx.Ava.UI.ViewModels
             set
             {
                 _baseStyleIndex = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsMatugenThemeSelected));
+            }
+        }
+
+        public bool IsMatugenThemeSelected => ThemeRegistry.IdAt(BaseStyleIndex) == ThemeRegistry.MatugenId;
+
+        public IEnumerable<string> ThemeNames => ThemeRegistry.Themes.Select(theme => theme.Label);
+
+        public string MatugenThemePath
+        {
+            get => _matugenThemePath;
+            set
+            {
+                _matugenThemePath = value;
                 OnPropertyChanged();
             }
         }
@@ -415,18 +431,8 @@ namespace Ryujinx.Ava.UI.ViewModels
             GameDirectories.Clear();
             GameDirectories.AddRange(config.UI.GameDirs.Value);
 
-            BaseStyleIndex = config.UI.BaseStyle.Value switch
-            {
-                "Auto" => 0,
-                "Light" => 1,
-                "Dark" => 2,
-                "Purple" => 3,
-                "CatppuccinLatte" => 4,
-                "CatppuccinFrappe" => 5,
-                "CatppuccinMacchiato" => 6,
-                "CatppuccinMocha" => 7,
-                _ => 0
-            };
+            BaseStyleIndex = ThemeRegistry.IndexOf(config.UI.BaseStyle.Value);
+            MatugenThemePath = config.UI.MatugenThemePath;
 
             // Input
             EnableDockedMode = config.System.EnableDockedMode;
@@ -515,18 +521,8 @@ namespace Ryujinx.Ava.UI.ViewModels
                 config.UI.GameDirs.Value = gameDirs;
             }
 
-            config.UI.BaseStyle.Value = BaseStyleIndex switch
-            {
-                0 => "Auto",
-                1 => "Light",
-                2 => "Dark",
-                3 => "Purple",
-                4 => "CatppuccinLatte",
-                5 => "CatppuccinFrappe",
-                6 => "CatppuccinMacchiato",
-                7 => "CatppuccinMocha",
-                _ => "Auto"
-            };
+            config.UI.BaseStyle.Value = ThemeRegistry.IdAt(BaseStyleIndex);
+            config.UI.MatugenThemePath.Value = MatugenThemePath;
 
             // Input
             config.System.EnableDockedMode.Value = EnableDockedMode;

@@ -14,24 +14,24 @@ namespace Ryujinx.Ava.UI.Views.User
         public UserRecovererView()
         {
             InitializeComponent();
-            AddHandler(Frame.NavigatedToEvent, (s, e) =>
+            AddHandler(FAFrame.NavigatedToEvent, (s, e) =>
             {
                 NavigatedTo(e);
             }, RoutingStrategies.Direct);
         }
 
-        private void NavigatedTo(NavigationEventArgs arg)
+        private void NavigatedTo(FANavigationEventArgs arg)
         {
             if (Program.PreviewerDetached)
             {
                 switch (arg.NavigationMode)
                 {
-                    case NavigationMode.New:
+                    case FANavigationMode.New:
                         var parent = (NavigationDialogHost)arg.Parameter;
 
                         _parent = parent;
 
-                        ((ContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - {LocaleManager.Instance[LocaleKeys.UserProfilesRecoverHeading]}";
+                        ((FAContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - {LocaleManager.Instance[LocaleKeys.UserProfilesRecoverHeading]}";
 
                         break;
                 }

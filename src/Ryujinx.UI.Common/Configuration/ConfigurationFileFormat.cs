@@ -288,6 +288,11 @@ namespace Ryujinx.UI.Common.Configuration
         public string CustomThemePath { get; set; }
 
         /// <summary>
+        /// Path to the Matugen-generated Avalonia palette
+        /// </summary>
+        public string MatugenThemePath { get; set; }
+
+        /// <summary>
         /// Chooses the base style // Not Used
         /// </summary>
         public string BaseStyle { get; set; }

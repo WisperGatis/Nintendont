@@ -177,7 +177,7 @@ namespace Ryujinx.UI.Windows
         {
             using var image = SKBitmap.Decode(buffer);
 
-            image.Resize(new SKImageInfo(256, 256), SKFilterQuality.High);
+            image.Resize(new SKImageInfo(256, 256), new SKSamplingOptions(SKCubicResampler.Mitchell));
 
             using MemoryStream streamJpg = MemoryStreamManager.Shared.GetStream();
 

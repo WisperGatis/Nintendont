@@ -35,19 +35,19 @@ namespace Ryujinx.Ava.UI.Views.User
         public UserSaveManagerView()
         {
             InitializeComponent();
-            AddHandler(Frame.NavigatedToEvent, (s, e) =>
+            AddHandler(FAFrame.NavigatedToEvent, (s, e) =>
             {
                 NavigatedTo(e);
             }, RoutingStrategies.Direct);
         }
 
-        private void NavigatedTo(NavigationEventArgs arg)
+        private void NavigatedTo(FANavigationEventArgs arg)
         {
             if (Program.PreviewerDetached)
             {
                 switch (arg.NavigationMode)
                 {
-                    case NavigationMode.New:
+                    case FANavigationMode.New:
                         var (parent, accountManager, client, virtualFileSystem) = ((NavigationDialogHost parent, AccountManager accountManager, HorizonClient client, VirtualFileSystem virtualFileSystem))arg.Parameter;
                         _accountManager = accountManager;
                         _horizonClient = client;
@@ -58,7 +58,7 @@ namespace Ryujinx.Ava.UI.Views.User
                 }
 
                 DataContext = ViewModel = new UserSaveManagerViewModel(_accountManager);
-                ((ContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - {ViewModel.SaveManagerHeading}";
+                ((FAContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - {ViewModel.SaveManagerHeading}";
 
                 Task.Run(LoadSaves);
             }

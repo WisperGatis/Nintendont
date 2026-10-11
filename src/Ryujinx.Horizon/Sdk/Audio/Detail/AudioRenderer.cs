@@ -175,9 +175,9 @@ namespace Ryujinx.Horizon.Sdk.Audio.Detail
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-    public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
-    {
-        return new Dictionary<int, CommandHandler>().AsReadOnly();
-    }
+        public IReadOnlyDictionary<int, CommandHandler> GetCommandHandlers()
+        {
+            return new Dictionary<int, CommandHandler>().AsReadOnly();
+        }
     }
 }

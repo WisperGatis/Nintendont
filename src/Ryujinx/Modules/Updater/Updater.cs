@@ -245,11 +245,11 @@ namespace Ryujinx.Modules
 
             string updateFile = Path.Combine(_updateDir, "update.bin");
 
-            TaskDialog taskDialog = new()
+            FATaskDialog taskDialog = new()
             {
                 Header = LocaleManager.Instance[LocaleKeys.RyujinxUpdater],
                 SubHeader = LocaleManager.Instance[LocaleKeys.UpdaterDownloading],
-                IconSource = new SymbolIconSource { Symbol = Symbol.Download },
+                IconSource = new FASymbolIconSource { Symbol = FASymbol.Download },
                 ShowProgressBar = true,
                 XamlRoot = parent,
             };
@@ -338,7 +338,7 @@ namespace Ryujinx.Modules
             }
         }
 
-        private static void DoUpdateWithMultipleThreads(TaskDialog taskDialog, string downloadUrl, string updateFile)
+        private static void DoUpdateWithMultipleThreads(FATaskDialog taskDialog, string downloadUrl, string updateFile)
         {
             // Multi-Threaded Updater
             long chunkSize = _buildSize / ConnectionCount;
@@ -382,7 +382,7 @@ namespace Ryujinx.Modules
                     Interlocked.Exchange(ref progressPercentage[index], args.ProgressPercentage);
                     Interlocked.Add(ref totalProgressPercentage, args.ProgressPercentage);
 
-                    taskDialog.SetProgressBarState(totalProgressPercentage / ConnectionCount, TaskDialogProgressState.Normal);
+                    taskDialog.SetProgressBarState(totalProgressPercentage / ConnectionCount, FATaskDialogProgressState.Normal);
                 };
 
                 client.DownloadDataCompleted += (_, args) =>
@@ -455,7 +455,7 @@ namespace Ryujinx.Modules
             }
         }
 
-        private static void DoUpdateWithSingleThreadWorker(TaskDialog taskDialog, string downloadUrl, string updateFile)
+        private static void DoUpdateWithSingleThreadWorker(FATaskDialog taskDialog, string downloadUrl, string updateFile)
         {
             using HttpClient client = new();
             // We do not want to timeout while downloading
@@ -481,7 +481,7 @@ namespace Ryujinx.Modules
 
                 byteWritten += readSize;
 
-                taskDialog.SetProgressBarState(GetPercentage(byteWritten, totalBytes), TaskDialogProgressState.Normal);
+                taskDialog.SetProgressBarState(GetPercentage(byteWritten, totalBytes), FATaskDialogProgressState.Normal);
 
                 updateFileStream.Write(buffer, 0, readSize);
             }
@@ -495,7 +495,7 @@ namespace Ryujinx.Modules
             return max == 0 ? 0 : value / max * 100;
         }
 
-        private static void DoUpdateWithSingleThread(TaskDialog taskDialog, string downloadUrl, string updateFile)
+        private static void DoUpdateWithSingleThread(FATaskDialog taskDialog, string downloadUrl, string updateFile)
         {
             Thread worker = new(() => DoUpdateWithSingleThreadWorker(taskDialog, downloadUrl, updateFile))
             {
@@ -507,7 +507,7 @@ namespace Ryujinx.Modules
 
         [SupportedOSPlatform("linux")]
         [SupportedOSPlatform("macos")]
-        private static void ExtractTarGzipFile(TaskDialog taskDialog, string archivePath, string outputDirectoryPath)
+        private static void ExtractTarGzipFile(FATaskDialog taskDialog, string archivePath, string outputDirectoryPath)
         {
             using Stream inStream = File.OpenRead(archivePath);
             using GZipInputStream gzipStream = new(inStream);
@@ -539,12 +539,12 @@ namespace Ryujinx.Modules
                         return;
                     }
 
-                    taskDialog.SetProgressBarState(GetPercentage(tarEntry.Size, inStream.Length), TaskDialogProgressState.Normal);
+                    taskDialog.SetProgressBarState(GetPercentage(tarEntry.Size, inStream.Length), FATaskDialogProgressState.Normal);
                 });
             }
         }
 
-        private static void ExtractZipFile(TaskDialog taskDialog, string archivePath, string outputDirectoryPath)
+        private static void ExtractZipFile(FATaskDialog taskDialog, string archivePath, string outputDirectoryPath)
         {
             using Stream inStream = File.OpenRead(archivePath);
             using ZipFile zipFile = new(inStream);
@@ -571,16 +571,16 @@ namespace Ryujinx.Modules
 
                 Dispatcher.UIThread.Post(() =>
                 {
-                    taskDialog.SetProgressBarState(GetPercentage(count, zipFile.Count), TaskDialogProgressState.Normal);
+                    taskDialog.SetProgressBarState(GetPercentage(count, zipFile.Count), FATaskDialogProgressState.Normal);
                 });
             }
         }
 
-        private static void InstallUpdate(TaskDialog taskDialog, string updateFile)
+        private static void InstallUpdate(FATaskDialog taskDialog, string updateFile)
         {
             // Extract Update
             taskDialog.SubHeader = LocaleManager.Instance[LocaleKeys.UpdaterExtracting];
-            taskDialog.SetProgressBarState(0, TaskDialogProgressState.Normal);
+            taskDialog.SetProgressBarState(0, FATaskDialogProgressState.Normal);
 
             if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
             {
@@ -601,7 +601,7 @@ namespace Ryujinx.Modules
             List<string> allFiles = EnumerateFilesToDelete().ToList();
 
             taskDialog.SubHeader = LocaleManager.Instance[LocaleKeys.UpdaterRenaming];
-            taskDialog.SetProgressBarState(0, TaskDialogProgressState.Normal);
+            taskDialog.SetProgressBarState(0, FATaskDialogProgressState.Normal);
 
             // NOTE: On macOS, replacement is delayed to the restart phase.
             if (!OperatingSystem.IsMacOS())
@@ -617,7 +617,7 @@ namespace Ryujinx.Modules
 
                         Dispatcher.UIThread.InvokeAsync(() =>
                         {
-                            taskDialog.SetProgressBarState(GetPercentage(count, allFiles.Count), TaskDialogProgressState.Normal);
+                            taskDialog.SetProgressBarState(GetPercentage(count, allFiles.Count), FATaskDialogProgressState.Normal);
                         });
                     }
                     catch
@@ -629,7 +629,7 @@ namespace Ryujinx.Modules
                 Dispatcher.UIThread.InvokeAsync(() =>
                 {
                     taskDialog.SubHeader = LocaleManager.Instance[LocaleKeys.UpdaterAddingFiles];
-                    taskDialog.SetProgressBarState(0, TaskDialogProgressState.Normal);
+                    taskDialog.SetProgressBarState(0, FATaskDialogProgressState.Normal);
                 });
 
                 MoveAllFilesOver(_updatePublishDir, _homeDir, taskDialog);
@@ -731,7 +731,7 @@ namespace Ryujinx.Modules
             return files.Where(f => !new FileInfo(f).Attributes.HasFlag(FileAttributes.Hidden | FileAttributes.System));
         }
 
-        private static void MoveAllFilesOver(string root, string dest, TaskDialog taskDialog)
+        private static void MoveAllFilesOver(string root, string dest, FATaskDialog taskDialog)
         {
             int total = Directory.GetFiles(root, "*", SearchOption.AllDirectories).Length;
             foreach (string directory in Directory.GetDirectories(root))
@@ -755,7 +755,7 @@ namespace Ryujinx.Modules
 
                 Dispatcher.UIThread.InvokeAsync(() =>
                 {
-                    taskDialog.SetProgressBarState(GetPercentage(count, total), TaskDialogProgressState.Normal);
+                    taskDialog.SetProgressBarState(GetPercentage(count, total), FATaskDialogProgressState.Normal);
                 });
             }
         }

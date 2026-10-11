@@ -12,7 +12,7 @@ namespace Ryujinx.UI.LocaleGenerator
         {
             // Simplified Initialize for diagnostics
             context.RegisterPostInitializationOutput(ctx => ctx.AddSource(
-                "TestGen.g.cs", 
+                "TestGen.g.cs",
                 $"// LocaleGenerator was here! {System.DateTime.UtcNow}\n"));
 
             /* Original code commented out for diagnostics:

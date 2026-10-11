@@ -32,7 +32,7 @@ namespace Ryujinx.Ava.UI.Windows
 
         public static async Task Show(VirtualFileSystem virtualFileSystem, ApplicationData applicationData)
         {
-            ContentDialog contentDialog = new()
+            FAContentDialog contentDialog = new()
             {
                 PrimaryButtonText = "",
                 SecondaryButtonText = "",
@@ -52,12 +52,12 @@ namespace Ryujinx.Ava.UI.Windows
         private void SaveAndClose(object sender, RoutedEventArgs routedEventArgs)
         {
             ViewModel.Save();
-            ((ContentDialog)Parent).Hide();
+            ((FAContentDialog)Parent).Hide();
         }
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            ((ContentDialog)Parent).Hide();
+            ((FAContentDialog)Parent).Hide();
         }
 
         private void RemoveDLC(object sender, RoutedEventArgs e)

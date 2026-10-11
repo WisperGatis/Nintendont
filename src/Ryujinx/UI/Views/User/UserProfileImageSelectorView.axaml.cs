@@ -26,23 +26,23 @@ namespace Ryujinx.Ava.UI.Views.User
         public UserProfileImageSelectorView()
         {
             InitializeComponent();
-            AddHandler(Frame.NavigatedToEvent, (s, e) =>
+            AddHandler(FAFrame.NavigatedToEvent, (s, e) =>
             {
                 NavigatedTo(e);
             }, RoutingStrategies.Direct);
         }
 
-        private void NavigatedTo(NavigationEventArgs arg)
+        private void NavigatedTo(FANavigationEventArgs arg)
         {
             if (Program.PreviewerDetached)
             {
                 switch (arg.NavigationMode)
                 {
-                    case NavigationMode.New:
+                    case FANavigationMode.New:
                         (_parent, _profile) = ((NavigationDialogHost, TempProfile))arg.Parameter;
                         _contentManager = _parent.ContentManager;
 
-                        ((ContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - {LocaleManager.Instance[LocaleKeys.ProfileImageSelectionHeader]}";
+                        ((FAContentDialog)_parent.Parent).Title = $"{LocaleManager.Instance[LocaleKeys.UserProfileWindowTitle]} - {LocaleManager.Instance[LocaleKeys.ProfileImageSelectionHeader]}";
 
                         if (Program.PreviewerDetached)
                         {
@@ -51,7 +51,7 @@ namespace Ryujinx.Ava.UI.Views.User
                         }
 
                         break;
-                    case NavigationMode.Back:
+                    case FANavigationMode.Back:
                         if (_profile.Image != null)
                         {
                             _parent.GoBack();
@@ -63,7 +63,7 @@ namespace Ryujinx.Ava.UI.Views.User
 
         private async void Import_OnClick(object sender, RoutedEventArgs e)
         {
-            var window = this.GetVisualRoot() as Window;
+            var window = TopLevel.GetTopLevel(this) as Window;
             var result = await window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
             {
                 AllowMultiple = false,
@@ -102,7 +102,7 @@ namespace Ryujinx.Ava.UI.Views.User
         {
             using var bitmap = SKBitmap.Decode(buffer);
 
-            var resizedBitmap = bitmap.Resize(new SKImageInfo(256, 256), SKFilterQuality.High);
+            var resizedBitmap = bitmap.Resize(new SKImageInfo(256, 256), new SKSamplingOptions(SKCubicResampler.Mitchell));
 
             using var streamJpg = new MemoryStream();
 

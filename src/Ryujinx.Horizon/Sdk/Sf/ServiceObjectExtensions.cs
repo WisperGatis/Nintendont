@@ -18,4 +18,4 @@ namespace Ryujinx.Horizon.Sdk.Sf
             return new Dictionary<int, CommandHandler>().AsReadOnly();
         }
     }
-} 
+}

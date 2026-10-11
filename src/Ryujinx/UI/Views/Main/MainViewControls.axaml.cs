@@ -22,7 +22,7 @@ namespace Ryujinx.Ava.UI.Views.Main
         {
             base.OnAttachedToVisualTree(e);
 
-            if (VisualRoot is MainWindow window)
+            if (TopLevel.GetTopLevel(this) is MainWindow window)
             {
                 ViewModel = window.ViewModel;
             }
@@ -32,7 +32,7 @@ namespace Ryujinx.Ava.UI.Views.Main
 
         public void Sort_Checked(object sender, RoutedEventArgs args)
         {
-            if (sender is RadioButton button)
+            if (sender is RadioButton { IsChecked: true } button)
             {
                 ViewModel.Sort(Enum.Parse<ApplicationSort>(button.Tag.ToString()));
             }
@@ -40,7 +40,7 @@ namespace Ryujinx.Ava.UI.Views.Main
 
         public void Order_Checked(object sender, RoutedEventArgs args)
         {
-            if (sender is RadioButton button)
+            if (sender is RadioButton { IsChecked: true } button)
             {
                 ViewModel.Sort(button.Tag.ToString() != "Descending");
             }

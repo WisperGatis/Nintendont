@@ -62,33 +62,19 @@
                             Text="{locale:Locale SettingsTabGeneralTheme}"
                             Width="150" />
                         <ComboBox SelectedIndex="{Binding BaseStyleIndex}"
+                                  ItemsSource="{Binding ThemeNames}"
                                   HorizontalContentAlignment="Left"
-                                  MinWidth="100">
-                            <ComboBoxItem>
-                                <TextBlock Text="{locale:Locale SettingsTabGeneralThemeAuto}" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="{locale:Locale SettingsTabGeneralThemeLight}" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="{locale:Locale SettingsTabGeneralThemeDark}" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="{locale:Locale SettingsTabGeneralThemePurple}" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="Catppuccin Latte" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="Catppuccin Frappé" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="Catppuccin Macchiato" />
-                            </ComboBoxItem>
-                            <ComboBoxItem>
-                                <TextBlock Text="Catppuccin Mocha" />
-                            </ComboBoxItem>
-                        </ComboBox>
+                                  MinWidth="100" />
+                    </StackPanel>
+                    <StackPanel IsVisible="{Binding IsMatugenThemeSelected}"
+                                Margin="150,0,0,10"
+                                Orientation="Horizontal"
+                                Spacing="5">
+                        <TextBox Width="350"
+                                 Text="{Binding MatugenThemePath, Mode=TwoWay}"
+                                 Watermark="Path to Matugen-generated XAML" />
+                        <Button Click="BrowseMatugenTheme_OnClick"
+                                Content="Browse..." />
                     </StackPanel>
                 </StackPanel>
                 <Separator Height="1" />
