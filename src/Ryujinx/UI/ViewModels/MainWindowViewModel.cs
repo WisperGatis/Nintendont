@@ -1600,14 +1600,6 @@ namespace Ryujinx.Ava.UI.ViewModels
             });
         }
 
-        public static void UpdateGameMetadata(string titleId)
-        {
-            ApplicationLibrary.LoadAndSaveMetaData(titleId, appMetadata =>
-            {
-                appMetadata.UpdatePostGame();
-            });
-        }
-
         public void RefreshFirmwareStatus()
         {
             SystemVersion version = null;

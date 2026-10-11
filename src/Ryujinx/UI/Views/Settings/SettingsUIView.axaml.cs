@@ -61,5 +61,28 @@ namespace Ryujinx.Ava.UI.Views.Settings
                 GameList.SelectedIndex = oldIndex < GameList.ItemCount ? oldIndex : 0;
             }
         }
+
+        private async void BrowseMatugenTheme_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (TopLevel.GetTopLevel(this) is Window window)
+            {
+                var result = await window.StorageProvider.OpenFilePickerAsync(new FilePickerOpenOptions
+                {
+                    AllowMultiple = false,
+                    FileTypeFilter = new List<FilePickerFileType>
+                    {
+                        new("XAML theme files")
+                        {
+                            Patterns = new[] { "*.xaml" },
+                        },
+                    },
+                });
+
+                if (result.Count > 0)
+                {
+                    ViewModel.MatugenThemePath = result[0].Path.LocalPath;
+                }
+            }
+        }
     }
 }

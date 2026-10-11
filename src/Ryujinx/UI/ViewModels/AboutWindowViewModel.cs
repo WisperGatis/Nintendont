@@ -1,9 +1,9 @@
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using Avalonia.Styling;
 using Avalonia.Threading;
 using Ryujinx.Ava.Common;
 using Ryujinx.Ava.Common.Locale;
+using Ryujinx.Ava.UI.Helpers;
 using Ryujinx.Common.Utilities;
 using Ryujinx.UI.Common.Configuration;
 using System;
@@ -101,7 +101,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         private void UpdateLogoTheme(string theme)
         {
-            bool isDarkTheme = theme == "Dark" || (theme == "Auto" && App.DetectSystemTheme() == ThemeVariant.Dark);
+            bool isDarkTheme = ThemeRegistry.IsDark(theme, App.DetectSystemTheme());
 
             string basePath = "resm:Ryujinx.UI.Common.Resources.";
             string themeSuffix = isDarkTheme ? "Dark.png" : "Light.png";

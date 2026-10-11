@@ -355,5 +355,635 @@
             <Color x:Key="SystemBaseMediumLowColor">#FF313244</Color>
             <Color x:Key="HighlightBrush">#FFcba6f7</Color>
         </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.RosePineTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#26233A</Color>
+            <Color x:Key="ControlFillColorTertiary">#403D52</Color>
+            <Color x:Key="SystemAccentColor">#C4A7E7</Color>
+            <Color x:Key="SystemAccentColorDark1">#9CCFD8</Color>
+            <Color x:Key="SystemAccentColorDark2">#31748F</Color>
+            <Color x:Key="SystemAccentColorDark3">#EBBCBA</Color>
+            <Color x:Key="SystemAccentColorLight1">#E0DEF4</Color>
+            <Color x:Key="SystemAccentColorLight2">#908CAA</Color>
+            <Color x:Key="SystemAccentColorLight3">#6E6A86</Color>
+            <Color x:Key="ThemeAccentColor4">#524F67</Color>
+            <Color x:Key="DataGridSelectionColor">#403D52</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#1F1D2E</Color>
+            <Color x:Key="ThemeBackgroundColor">#191724</Color>
+            <Color x:Key="ThemeControlBorderColor">#524F67</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#191724</Color>
+            <Color x:Key="SystemChromeWhiteColor">#E0DEF4</Color>
+            <Color x:Key="ThemeForegroundColor">#E0DEF4</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#524F67</Color>
+            <Color x:Key="AppListBackgroundColor">#1FC4A7E7</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2FC4A7E7</Color>
+            <Color x:Key="SecondaryTextColor">#A0908CAA</Color>
+            <Color x:Key="VsyncEnabled">#31748F</Color>
+            <Color x:Key="VsyncDisabled">#EB6F92</Color>
+            <Color x:Key="MenuBarBackgroundColor">#191724</Color>
+            <Color x:Key="PanelBackgroundColor">#191724</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#403D52</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#26233A</Color>
+            <Color x:Key="ButtonBackgroundColor">#F6C177</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#EBBCBA</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#EB6F92</Color>
+            <Color x:Key="ButtonBorderColor">#F6C177</Color>
+            <Color x:Key="ThemeDarkColor">#191724</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#191724</Color>
+            <Color x:Key="ThemeBorderLowColor">#403D52</Color>
+            <Color x:Key="SystemListLowColor">#191724</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#26233A</Color>
+            <Color x:Key="HighlightBrush">#C4A7E7</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.RosePineDawnTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#F2E9E1</Color>
+            <Color x:Key="ControlFillColorTertiary">#DFDAD9</Color>
+            <Color x:Key="SystemAccentColor">#907AA9</Color>
+            <Color x:Key="SystemAccentColorDark1">#56949F</Color>
+            <Color x:Key="SystemAccentColorDark2">#286983</Color>
+            <Color x:Key="SystemAccentColorDark3">#D7827E</Color>
+            <Color x:Key="SystemAccentColorLight1">#575279</Color>
+            <Color x:Key="SystemAccentColorLight2">#797593</Color>
+            <Color x:Key="SystemAccentColorLight3">#9893A5</Color>
+            <Color x:Key="ThemeAccentColor4">#CECacd</Color>
+            <Color x:Key="DataGridSelectionColor">#DFDAD9</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#FFFAF3</Color>
+            <Color x:Key="ThemeBackgroundColor">#FAF4ED</Color>
+            <Color x:Key="ThemeControlBorderColor">#CECACD</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#FAF4ED</Color>
+            <Color x:Key="SystemChromeWhiteColor">#575279</Color>
+            <Color x:Key="ThemeForegroundColor">#575279</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#CECACD</Color>
+            <Color x:Key="AppListBackgroundColor">#1F907AA9</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F907AA9</Color>
+            <Color x:Key="SecondaryTextColor">#A0797593</Color>
+            <Color x:Key="VsyncEnabled">#286983</Color>
+            <Color x:Key="VsyncDisabled">#B4637A</Color>
+            <Color x:Key="MenuBarBackgroundColor">#FAF4ED</Color>
+            <Color x:Key="PanelBackgroundColor">#FAF4ED</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#DFDAD9</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#F2E9E1</Color>
+            <Color x:Key="ButtonBackgroundColor">#EA9D34</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#D7827E</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#B4637A</Color>
+            <Color x:Key="ButtonBorderColor">#EA9D34</Color>
+            <Color x:Key="ThemeDarkColor">#FAF4ED</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#FAF4ED</Color>
+            <Color x:Key="ThemeBorderLowColor">#DFDAD9</Color>
+            <Color x:Key="SystemListLowColor">#FAF4ED</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#F2E9E1</Color>
+            <Color x:Key="HighlightBrush">#907AA9</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.GruvboxTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#3C3836</Color>
+            <Color x:Key="ControlFillColorTertiary">#504945</Color>
+            <Color x:Key="SystemAccentColor">#83A598</Color>
+            <Color x:Key="SystemAccentColorDark1">#8EC07C</Color>
+            <Color x:Key="SystemAccentColorDark2">#B8BB26</Color>
+            <Color x:Key="SystemAccentColorDark3">#FABD2F</Color>
+            <Color x:Key="SystemAccentColorLight1">#D5C4A1</Color>
+            <Color x:Key="SystemAccentColorLight2">#EBDBB2</Color>
+            <Color x:Key="SystemAccentColorLight3">#FBF1C7</Color>
+            <Color x:Key="ThemeAccentColor4">#665C54</Color>
+            <Color x:Key="DataGridSelectionColor">#504945</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#3C3836</Color>
+            <Color x:Key="ThemeBackgroundColor">#282828</Color>
+            <Color x:Key="ThemeControlBorderColor">#665C54</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#282828</Color>
+            <Color x:Key="SystemChromeWhiteColor">#EBDBB2</Color>
+            <Color x:Key="ThemeForegroundColor">#EBDBB2</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#665C54</Color>
+            <Color x:Key="AppListBackgroundColor">#1F83A598</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F83A598</Color>
+            <Color x:Key="SecondaryTextColor">#A0BDAE93</Color>
+            <Color x:Key="VsyncEnabled">#B8BB26</Color>
+            <Color x:Key="VsyncDisabled">#FB4934</Color>
+            <Color x:Key="MenuBarBackgroundColor">#282828</Color>
+            <Color x:Key="PanelBackgroundColor">#282828</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#504945</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#3C3836</Color>
+            <Color x:Key="ButtonBackgroundColor">#FABD2F</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#FE8019</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#FB4934</Color>
+            <Color x:Key="ButtonBorderColor">#FABD2F</Color>
+            <Color x:Key="ThemeDarkColor">#282828</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#282828</Color>
+            <Color x:Key="ThemeBorderLowColor">#504945</Color>
+            <Color x:Key="SystemListLowColor">#282828</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#3C3836</Color>
+            <Color x:Key="HighlightBrush">#83A598</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.GruvboxLightTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#EBDBB2</Color>
+            <Color x:Key="ControlFillColorTertiary">#D5C4A1</Color>
+            <Color x:Key="SystemAccentColor">#076678</Color>
+            <Color x:Key="SystemAccentColorDark1">#427B58</Color>
+            <Color x:Key="SystemAccentColorDark2">#79740E</Color>
+            <Color x:Key="SystemAccentColorDark3">#B57614</Color>
+            <Color x:Key="SystemAccentColorLight1">#504945</Color>
+            <Color x:Key="SystemAccentColorLight2">#665C54</Color>
+            <Color x:Key="SystemAccentColorLight3">#7C6F64</Color>
+            <Color x:Key="ThemeAccentColor4">#BDAE93</Color>
+            <Color x:Key="DataGridSelectionColor">#D5C4A1</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#F2E5BC</Color>
+            <Color x:Key="ThemeBackgroundColor">#FBF1C7</Color>
+            <Color x:Key="ThemeControlBorderColor">#BDAE93</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#FBF1C7</Color>
+            <Color x:Key="SystemChromeWhiteColor">#504945</Color>
+            <Color x:Key="ThemeForegroundColor">#3C3836</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#BDAE93</Color>
+            <Color x:Key="AppListBackgroundColor">#1F076678</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F076678</Color>
+            <Color x:Key="SecondaryTextColor">#A0665C54</Color>
+            <Color x:Key="VsyncEnabled">#427B58</Color>
+            <Color x:Key="VsyncDisabled">#9D0006</Color>
+            <Color x:Key="MenuBarBackgroundColor">#FBF1C7</Color>
+            <Color x:Key="PanelBackgroundColor">#FBF1C7</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#D5C4A1</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#EBDBB2</Color>
+            <Color x:Key="ButtonBackgroundColor">#B57614</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#AF3A03</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#9D0006</Color>
+            <Color x:Key="ButtonBorderColor">#B57614</Color>
+            <Color x:Key="ThemeDarkColor">#FBF1C7</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#FBF1C7</Color>
+            <Color x:Key="ThemeBorderLowColor">#D5C4A1</Color>
+            <Color x:Key="SystemListLowColor">#FBF1C7</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#EBDBB2</Color>
+            <Color x:Key="HighlightBrush">#076678</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.RosePineMoonTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#2A273F</Color>
+            <Color x:Key="ControlFillColorTertiary">#393552</Color>
+            <Color x:Key="SystemAccentColor">#C4A7E7</Color>
+            <Color x:Key="SystemAccentColorDark1">#9CCFD8</Color>
+            <Color x:Key="SystemAccentColorDark2">#3E8FB0</Color>
+            <Color x:Key="SystemAccentColorDark3">#EA9A97</Color>
+            <Color x:Key="SystemAccentColorLight1">#E0DEF4</Color>
+            <Color x:Key="SystemAccentColorLight2">#908CAA</Color>
+            <Color x:Key="SystemAccentColorLight3">#6E6A86</Color>
+            <Color x:Key="ThemeAccentColor4">#56526E</Color>
+            <Color x:Key="DataGridSelectionColor">#393552</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#2A273F</Color>
+            <Color x:Key="ThemeBackgroundColor">#232136</Color>
+            <Color x:Key="ThemeControlBorderColor">#56526E</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#232136</Color>
+            <Color x:Key="SystemChromeWhiteColor">#E0DEF4</Color>
+            <Color x:Key="ThemeForegroundColor">#E0DEF4</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#56526E</Color>
+            <Color x:Key="AppListBackgroundColor">#1FC4A7E7</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2FC4A7E7</Color>
+            <Color x:Key="SecondaryTextColor">#A0908CAA</Color>
+            <Color x:Key="VsyncEnabled">#3E8FB0</Color>
+            <Color x:Key="VsyncDisabled">#EB6F92</Color>
+            <Color x:Key="MenuBarBackgroundColor">#232136</Color>
+            <Color x:Key="PanelBackgroundColor">#232136</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#393552</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#2A273F</Color>
+            <Color x:Key="ButtonBackgroundColor">#F6C177</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#EA9A97</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#EB6F92</Color>
+            <Color x:Key="ButtonBorderColor">#F6C177</Color>
+            <Color x:Key="ThemeDarkColor">#232136</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#232136</Color>
+            <Color x:Key="ThemeBorderLowColor">#393552</Color>
+            <Color x:Key="SystemListLowColor">#232136</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#2A273F</Color>
+            <Color x:Key="HighlightBrush">#C4A7E7</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.TokyoNightTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#16161E</Color>
+            <Color x:Key="ControlFillColorTertiary">#292E42</Color>
+            <Color x:Key="SystemAccentColor">#7AA2F7</Color>
+            <Color x:Key="SystemAccentColorDark1">#7DCFFF</Color>
+            <Color x:Key="SystemAccentColorDark2">#BB9AF7</Color>
+            <Color x:Key="SystemAccentColorDark3">#9ECE6A</Color>
+            <Color x:Key="SystemAccentColorLight1">#C0CAF5</Color>
+            <Color x:Key="SystemAccentColorLight2">#A9B1D6</Color>
+            <Color x:Key="SystemAccentColorLight3">#565F89</Color>
+            <Color x:Key="ThemeAccentColor4">#3B4261</Color>
+            <Color x:Key="DataGridSelectionColor">#292E42</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#16161E</Color>
+            <Color x:Key="ThemeBackgroundColor">#1A1B26</Color>
+            <Color x:Key="ThemeControlBorderColor">#3B4261</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#1A1B26</Color>
+            <Color x:Key="SystemChromeWhiteColor">#C0CAF5</Color>
+            <Color x:Key="ThemeForegroundColor">#C0CAF5</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#3B4261</Color>
+            <Color x:Key="AppListBackgroundColor">#1F7AA2F7</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F7AA2F7</Color>
+            <Color x:Key="SecondaryTextColor">#A0A9B1D6</Color>
+            <Color x:Key="VsyncEnabled">#9ECE6A</Color>
+            <Color x:Key="VsyncDisabled">#F7768E</Color>
+            <Color x:Key="MenuBarBackgroundColor">#1A1B26</Color>
+            <Color x:Key="PanelBackgroundColor">#1A1B26</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#292E42</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#16161E</Color>
+            <Color x:Key="ButtonBackgroundColor">#E0AF68</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#FF9E64</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#F7768E</Color>
+            <Color x:Key="ButtonBorderColor">#E0AF68</Color>
+            <Color x:Key="ThemeDarkColor">#1A1B26</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#1A1B26</Color>
+            <Color x:Key="ThemeBorderLowColor">#292E42</Color>
+            <Color x:Key="SystemListLowColor">#1A1B26</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#16161E</Color>
+            <Color x:Key="HighlightBrush">#7AA2F7</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.TokyoNightDayTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#D0D5E3</Color>
+            <Color x:Key="ControlFillColorTertiary">#C4C8DA</Color>
+            <Color x:Key="SystemAccentColor">#2E7DE9</Color>
+            <Color x:Key="SystemAccentColorDark1">#007197</Color>
+            <Color x:Key="SystemAccentColorDark2">#9854F1</Color>
+            <Color x:Key="SystemAccentColorDark3">#587539</Color>
+            <Color x:Key="SystemAccentColorLight1">#3760BF</Color>
+            <Color x:Key="SystemAccentColorLight2">#6172B0</Color>
+            <Color x:Key="SystemAccentColorLight3">#848CB5</Color>
+            <Color x:Key="ThemeAccentColor4">#A8AECB</Color>
+            <Color x:Key="DataGridSelectionColor">#C4C8DA</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#D0D5E3</Color>
+            <Color x:Key="ThemeBackgroundColor">#E1E2E7</Color>
+            <Color x:Key="ThemeControlBorderColor">#A8AECB</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#E1E2E7</Color>
+            <Color x:Key="SystemChromeWhiteColor">#3760BF</Color>
+            <Color x:Key="ThemeForegroundColor">#3760BF</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#A8AECB</Color>
+            <Color x:Key="AppListBackgroundColor">#1F2E7DE9</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F2E7DE9</Color>
+            <Color x:Key="SecondaryTextColor">#A06172B0</Color>
+            <Color x:Key="VsyncEnabled">#587539</Color>
+            <Color x:Key="VsyncDisabled">#F52A65</Color>
+            <Color x:Key="MenuBarBackgroundColor">#E1E2E7</Color>
+            <Color x:Key="PanelBackgroundColor">#E1E2E7</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#C4C8DA</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#D0D5E3</Color>
+            <Color x:Key="ButtonBackgroundColor">#8C6C3E</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#B15C00</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#F52A65</Color>
+            <Color x:Key="ButtonBorderColor">#8C6C3E</Color>
+            <Color x:Key="ThemeDarkColor">#E1E2E7</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#E1E2E7</Color>
+            <Color x:Key="ThemeBorderLowColor">#C4C8DA</Color>
+            <Color x:Key="SystemListLowColor">#E1E2E7</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#D0D5E3</Color>
+            <Color x:Key="HighlightBrush">#2E7DE9</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.NordTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#3B4252</Color>
+            <Color x:Key="ControlFillColorTertiary">#434C5E</Color>
+            <Color x:Key="SystemAccentColor">#88C0D0</Color>
+            <Color x:Key="SystemAccentColorDark1">#81A1C1</Color>
+            <Color x:Key="SystemAccentColorDark2">#5E81AC</Color>
+            <Color x:Key="SystemAccentColorDark3">#8FBCBB</Color>
+            <Color x:Key="SystemAccentColorLight1">#E5E9F0</Color>
+            <Color x:Key="SystemAccentColorLight2">#D8DEE9</Color>
+            <Color x:Key="SystemAccentColorLight3">#B48EAD</Color>
+            <Color x:Key="ThemeAccentColor4">#4C566A</Color>
+            <Color x:Key="DataGridSelectionColor">#434C5E</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#3B4252</Color>
+            <Color x:Key="ThemeBackgroundColor">#2E3440</Color>
+            <Color x:Key="ThemeControlBorderColor">#4C566A</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#2E3440</Color>
+            <Color x:Key="SystemChromeWhiteColor">#ECEFF4</Color>
+            <Color x:Key="ThemeForegroundColor">#ECEFF4</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#4C566A</Color>
+            <Color x:Key="AppListBackgroundColor">#1F88C0D0</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F88C0D0</Color>
+            <Color x:Key="SecondaryTextColor">#A0D8DEE9</Color>
+            <Color x:Key="VsyncEnabled">#A3BE8C</Color>
+            <Color x:Key="VsyncDisabled">#BF616A</Color>
+            <Color x:Key="MenuBarBackgroundColor">#2E3440</Color>
+            <Color x:Key="PanelBackgroundColor">#2E3440</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#434C5E</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#3B4252</Color>
+            <Color x:Key="ButtonBackgroundColor">#EBCB8B</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#D08770</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#BF616A</Color>
+            <Color x:Key="ButtonBorderColor">#EBCB8B</Color>
+            <Color x:Key="ThemeDarkColor">#2E3440</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#2E3440</Color>
+            <Color x:Key="ThemeBorderLowColor">#434C5E</Color>
+            <Color x:Key="SystemListLowColor">#2E3440</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#3B4252</Color>
+            <Color x:Key="HighlightBrush">#88C0D0</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.DraculaTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#21222C</Color>
+            <Color x:Key="ControlFillColorTertiary">#44475A</Color>
+            <Color x:Key="SystemAccentColor">#BD93F9</Color>
+            <Color x:Key="SystemAccentColorDark1">#FF79C6</Color>
+            <Color x:Key="SystemAccentColorDark2">#8BE9FD</Color>
+            <Color x:Key="SystemAccentColorDark3">#50FA7B</Color>
+            <Color x:Key="SystemAccentColorLight1">#F8F8F2</Color>
+            <Color x:Key="SystemAccentColorLight2">#FFB86C</Color>
+            <Color x:Key="SystemAccentColorLight3">#F1FA8C</Color>
+            <Color x:Key="ThemeAccentColor4">#6272A4</Color>
+            <Color x:Key="DataGridSelectionColor">#44475A</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#21222C</Color>
+            <Color x:Key="ThemeBackgroundColor">#282A36</Color>
+            <Color x:Key="ThemeControlBorderColor">#6272A4</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#282A36</Color>
+            <Color x:Key="SystemChromeWhiteColor">#F8F8F2</Color>
+            <Color x:Key="ThemeForegroundColor">#F8F8F2</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#6272A4</Color>
+            <Color x:Key="AppListBackgroundColor">#1FBD93F9</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2FBD93F9</Color>
+            <Color x:Key="SecondaryTextColor">#A0BFBFD0</Color>
+            <Color x:Key="VsyncEnabled">#50FA7B</Color>
+            <Color x:Key="VsyncDisabled">#FF5555</Color>
+            <Color x:Key="MenuBarBackgroundColor">#282A36</Color>
+            <Color x:Key="PanelBackgroundColor">#282A36</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#44475A</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#21222C</Color>
+            <Color x:Key="ButtonBackgroundColor">#F1FA8C</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#FFB86C</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#FF5555</Color>
+            <Color x:Key="ButtonBorderColor">#F1FA8C</Color>
+            <Color x:Key="ThemeDarkColor">#282A36</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#282A36</Color>
+            <Color x:Key="ThemeBorderLowColor">#44475A</Color>
+            <Color x:Key="SystemListLowColor">#282A36</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#21222C</Color>
+            <Color x:Key="HighlightBrush">#BD93F9</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.EverforestTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#343F44</Color>
+            <Color x:Key="ControlFillColorTertiary">#3D484D</Color>
+            <Color x:Key="SystemAccentColor">#A7C080</Color>
+            <Color x:Key="SystemAccentColorDark1">#83C092</Color>
+            <Color x:Key="SystemAccentColorDark2">#7FBBB3</Color>
+            <Color x:Key="SystemAccentColorDark3">#DBBC7F</Color>
+            <Color x:Key="SystemAccentColorLight1">#D3C6AA</Color>
+            <Color x:Key="SystemAccentColorLight2">#859289</Color>
+            <Color x:Key="SystemAccentColorLight3">#7A8478</Color>
+            <Color x:Key="ThemeAccentColor4">#475258</Color>
+            <Color x:Key="DataGridSelectionColor">#3D484D</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#343F44</Color>
+            <Color x:Key="ThemeBackgroundColor">#2D353B</Color>
+            <Color x:Key="ThemeControlBorderColor">#475258</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#2D353B</Color>
+            <Color x:Key="SystemChromeWhiteColor">#D3C6AA</Color>
+            <Color x:Key="ThemeForegroundColor">#D3C6AA</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#475258</Color>
+            <Color x:Key="AppListBackgroundColor">#1FA7C080</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2FA7C080</Color>
+            <Color x:Key="SecondaryTextColor">#A09DA9A0</Color>
+            <Color x:Key="VsyncEnabled">#A7C080</Color>
+            <Color x:Key="VsyncDisabled">#E67E80</Color>
+            <Color x:Key="MenuBarBackgroundColor">#2D353B</Color>
+            <Color x:Key="PanelBackgroundColor">#2D353B</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#3D484D</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#343F44</Color>
+            <Color x:Key="ButtonBackgroundColor">#DBBC7F</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#E69875</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#E67E80</Color>
+            <Color x:Key="ButtonBorderColor">#DBBC7F</Color>
+            <Color x:Key="ThemeDarkColor">#2D353B</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#2D353B</Color>
+            <Color x:Key="ThemeBorderLowColor">#3D484D</Color>
+            <Color x:Key="SystemListLowColor">#2D353B</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#343F44</Color>
+            <Color x:Key="HighlightBrush">#A7C080</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.EverforestLightTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#F4F0D9</Color>
+            <Color x:Key="ControlFillColorTertiary">#E6E2CC</Color>
+            <Color x:Key="SystemAccentColor">#8DA101</Color>
+            <Color x:Key="SystemAccentColorDark1">#35A77C</Color>
+            <Color x:Key="SystemAccentColorDark2">#3A94C5</Color>
+            <Color x:Key="SystemAccentColorDark3">#DFA000</Color>
+            <Color x:Key="SystemAccentColorLight1">#5C6A72</Color>
+            <Color x:Key="SystemAccentColorLight2">#939F91</Color>
+            <Color x:Key="SystemAccentColorLight3">#A6B0A0</Color>
+            <Color x:Key="ThemeAccentColor4">#E0DCC7</Color>
+            <Color x:Key="DataGridSelectionColor">#E6E2CC</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#F4F0D9</Color>
+            <Color x:Key="ThemeBackgroundColor">#FDF6E3</Color>
+            <Color x:Key="ThemeControlBorderColor">#E0DCC7</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#FDF6E3</Color>
+            <Color x:Key="SystemChromeWhiteColor">#5C6A72</Color>
+            <Color x:Key="ThemeForegroundColor">#5C6A72</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#E0DCC7</Color>
+            <Color x:Key="AppListBackgroundColor">#1F8DA101</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F8DA101</Color>
+            <Color x:Key="SecondaryTextColor">#A0829181</Color>
+            <Color x:Key="VsyncEnabled">#8DA101</Color>
+            <Color x:Key="VsyncDisabled">#F85552</Color>
+            <Color x:Key="MenuBarBackgroundColor">#FDF6E3</Color>
+            <Color x:Key="PanelBackgroundColor">#FDF6E3</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#E6E2CC</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#F4F0D9</Color>
+            <Color x:Key="ButtonBackgroundColor">#DFA000</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#F57D26</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#F85552</Color>
+            <Color x:Key="ButtonBorderColor">#DFA000</Color>
+            <Color x:Key="ThemeDarkColor">#FDF6E3</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#FDF6E3</Color>
+            <Color x:Key="ThemeBorderLowColor">#E6E2CC</Color>
+            <Color x:Key="SystemListLowColor">#FDF6E3</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#F4F0D9</Color>
+            <Color x:Key="HighlightBrush">#8DA101</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.KanagawaTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#2A2A37</Color>
+            <Color x:Key="ControlFillColorTertiary">#363646</Color>
+            <Color x:Key="SystemAccentColor">#7E9CD8</Color>
+            <Color x:Key="SystemAccentColorDark1">#7FB4CA</Color>
+            <Color x:Key="SystemAccentColorDark2">#957FB8</Color>
+            <Color x:Key="SystemAccentColorDark3">#98BB6C</Color>
+            <Color x:Key="SystemAccentColorLight1">#DCD7BA</Color>
+            <Color x:Key="SystemAccentColorLight2">#C8C093</Color>
+            <Color x:Key="SystemAccentColorLight3">#727169</Color>
+            <Color x:Key="ThemeAccentColor4">#54546D</Color>
+            <Color x:Key="DataGridSelectionColor">#363646</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#2A2A37</Color>
+            <Color x:Key="ThemeBackgroundColor">#1F1F28</Color>
+            <Color x:Key="ThemeControlBorderColor">#54546D</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#1F1F28</Color>
+            <Color x:Key="SystemChromeWhiteColor">#DCD7BA</Color>
+            <Color x:Key="ThemeForegroundColor">#DCD7BA</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#54546D</Color>
+            <Color x:Key="AppListBackgroundColor">#1F7E9CD8</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F7E9CD8</Color>
+            <Color x:Key="SecondaryTextColor">#A0C8C093</Color>
+            <Color x:Key="VsyncEnabled">#98BB6C</Color>
+            <Color x:Key="VsyncDisabled">#E46876</Color>
+            <Color x:Key="MenuBarBackgroundColor">#1F1F28</Color>
+            <Color x:Key="PanelBackgroundColor">#1F1F28</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#363646</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#2A2A37</Color>
+            <Color x:Key="ButtonBackgroundColor">#E6C384</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#FFA066</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#C34043</Color>
+            <Color x:Key="ButtonBorderColor">#E6C384</Color>
+            <Color x:Key="ThemeDarkColor">#1F1F28</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#1F1F28</Color>
+            <Color x:Key="ThemeBorderLowColor">#363646</Color>
+            <Color x:Key="SystemListLowColor">#1F1F28</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#2A2A37</Color>
+            <Color x:Key="HighlightBrush">#7E9CD8</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.OneDarkTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#21252B</Color>
+            <Color x:Key="ControlFillColorTertiary">#2C313C</Color>
+            <Color x:Key="SystemAccentColor">#61AFEF</Color>
+            <Color x:Key="SystemAccentColorDark1">#56B6C2</Color>
+            <Color x:Key="SystemAccentColorDark2">#C678DD</Color>
+            <Color x:Key="SystemAccentColorDark3">#98C379</Color>
+            <Color x:Key="SystemAccentColorLight1">#ABB2BF</Color>
+            <Color x:Key="SystemAccentColorLight2">#828997</Color>
+            <Color x:Key="SystemAccentColorLight3">#5C6370</Color>
+            <Color x:Key="ThemeAccentColor4">#3E4451</Color>
+            <Color x:Key="DataGridSelectionColor">#2C313C</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#21252B</Color>
+            <Color x:Key="ThemeBackgroundColor">#282C34</Color>
+            <Color x:Key="ThemeControlBorderColor">#3E4451</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#282C34</Color>
+            <Color x:Key="SystemChromeWhiteColor">#ABB2BF</Color>
+            <Color x:Key="ThemeForegroundColor">#ABB2BF</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#3E4451</Color>
+            <Color x:Key="AppListBackgroundColor">#1F61AFEF</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F61AFEF</Color>
+            <Color x:Key="SecondaryTextColor">#A0828997</Color>
+            <Color x:Key="VsyncEnabled">#98C379</Color>
+            <Color x:Key="VsyncDisabled">#E06C75</Color>
+            <Color x:Key="MenuBarBackgroundColor">#282C34</Color>
+            <Color x:Key="PanelBackgroundColor">#282C34</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#2C313C</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#21252B</Color>
+            <Color x:Key="ButtonBackgroundColor">#E5C07B</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#D19A66</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#E06C75</Color>
+            <Color x:Key="ButtonBorderColor">#E5C07B</Color>
+            <Color x:Key="ThemeDarkColor">#282C34</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#282C34</Color>
+            <Color x:Key="ThemeBorderLowColor">#2C313C</Color>
+            <Color x:Key="SystemListLowColor">#282C34</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#21252B</Color>
+            <Color x:Key="HighlightBrush">#61AFEF</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.SolarizedDarkTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#073642</Color>
+            <Color x:Key="ControlFillColorTertiary">#0A4150</Color>
+            <Color x:Key="SystemAccentColor">#268BD2</Color>
+            <Color x:Key="SystemAccentColorDark1">#2AA198</Color>
+            <Color x:Key="SystemAccentColorDark2">#6C71C4</Color>
+            <Color x:Key="SystemAccentColorDark3">#859900</Color>
+            <Color x:Key="SystemAccentColorLight1">#EEE8D5</Color>
+            <Color x:Key="SystemAccentColorLight2">#93A1A1</Color>
+            <Color x:Key="SystemAccentColorLight3">#657B83</Color>
+            <Color x:Key="ThemeAccentColor4">#586E75</Color>
+            <Color x:Key="DataGridSelectionColor">#0A4150</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#073642</Color>
+            <Color x:Key="ThemeBackgroundColor">#002B36</Color>
+            <Color x:Key="ThemeControlBorderColor">#586E75</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#002B36</Color>
+            <Color x:Key="SystemChromeWhiteColor">#93A1A1</Color>
+            <Color x:Key="ThemeForegroundColor">#93A1A1</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#586E75</Color>
+            <Color x:Key="AppListBackgroundColor">#1F268BD2</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F268BD2</Color>
+            <Color x:Key="SecondaryTextColor">#A0839496</Color>
+            <Color x:Key="VsyncEnabled">#859900</Color>
+            <Color x:Key="VsyncDisabled">#DC322F</Color>
+            <Color x:Key="MenuBarBackgroundColor">#002B36</Color>
+            <Color x:Key="PanelBackgroundColor">#002B36</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#0A4150</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#073642</Color>
+            <Color x:Key="ButtonBackgroundColor">#B58900</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#CB4B16</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#DC322F</Color>
+            <Color x:Key="ButtonBorderColor">#B58900</Color>
+            <Color x:Key="ThemeDarkColor">#002B36</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#002B36</Color>
+            <Color x:Key="ThemeBorderLowColor">#0A4150</Color>
+            <Color x:Key="SystemListLowColor">#002B36</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#073642</Color>
+            <Color x:Key="HighlightBrush">#268BD2</Color>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="{x:Static ava:App.SolarizedLightTheme}">
+            <SolidColorBrush x:Key="DataGridSelectionBackgroundBrush" Color="{DynamicResource DataGridSelectionColor}" />
+            <SolidColorBrush x:Key="ThemeAccentColorBrush" Color="{DynamicResource SystemAccentColor}" />
+            <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}" />
+            <Color x:Key="ControlFillColorSecondary">#EEE8D5</Color>
+            <Color x:Key="ControlFillColorTertiary">#E4DDC8</Color>
+            <Color x:Key="SystemAccentColor">#268BD2</Color>
+            <Color x:Key="SystemAccentColorDark1">#2AA198</Color>
+            <Color x:Key="SystemAccentColorDark2">#6C71C4</Color>
+            <Color x:Key="SystemAccentColorDark3">#859900</Color>
+            <Color x:Key="SystemAccentColorLight1">#073642</Color>
+            <Color x:Key="SystemAccentColorLight2">#586E75</Color>
+            <Color x:Key="SystemAccentColorLight3">#657B83</Color>
+            <Color x:Key="ThemeAccentColor4">#93A1A1</Color>
+            <Color x:Key="DataGridSelectionColor">#E4DDC8</Color>
+            <Color x:Key="ThemeContentBackgroundColor">#EEE8D5</Color>
+            <Color x:Key="ThemeBackgroundColor">#FDF6E3</Color>
+            <Color x:Key="ThemeControlBorderColor">#93A1A1</Color>
+            <Color x:Key="TextOnAccentFillColorPrimary">#FDF6E3</Color>
+            <Color x:Key="SystemChromeWhiteColor">#586E75</Color>
+            <Color x:Key="ThemeForegroundColor">#586E75</Color>
+            <Color x:Key="MenuFlyoutPresenterBorderColor">#93A1A1</Color>
+            <Color x:Key="AppListBackgroundColor">#1F268BD2</Color>
+            <Color x:Key="AppListHoverBackgroundColor">#2F268BD2</Color>
+            <Color x:Key="SecondaryTextColor">#A0657B83</Color>
+            <Color x:Key="VsyncEnabled">#859900</Color>
+            <Color x:Key="VsyncDisabled">#DC322F</Color>
+            <Color x:Key="MenuBarBackgroundColor">#FDF6E3</Color>
+            <Color x:Key="PanelBackgroundColor">#FDF6E3</Color>
+            <Color x:Key="ListBoxItemSelectedBackgroundColor">#E4DDC8</Color>
+            <Color x:Key="ListBoxItemHoverBackgroundColor">#EEE8D5</Color>
+            <Color x:Key="ButtonBackgroundColor">#B58900</Color>
+            <Color x:Key="ButtonHoverBackgroundColor">#CB4B16</Color>
+            <Color x:Key="ButtonPressedBackgroundColor">#DC322F</Color>
+            <Color x:Key="ButtonBorderColor">#B58900</Color>
+            <Color x:Key="ThemeDarkColor">#FDF6E3</Color>
+            <Color x:Key="ThemeButtonForegroundColor">#FDF6E3</Color>
+            <Color x:Key="ThemeBorderLowColor">#E4DDC8</Color>
+            <Color x:Key="SystemListLowColor">#FDF6E3</Color>
+            <Color x:Key="SystemBaseMediumLowColor">#EEE8D5</Color>
+            <Color x:Key="HighlightBrush">#268BD2</Color>
+        </ResourceDictionary>
     </ResourceDictionary.ThemeDictionaries>
 </ResourceDictionary>

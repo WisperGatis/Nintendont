@@ -23,7 +23,7 @@ namespace Ryujinx.UI.App.Common
         public string LastPlayedOld { get; set; }
 
         /// <summary>
-        /// Updates <see cref="LastPlayed"/>. Call this before launching a game.
+        /// Updates <see cref="LastPlayed"/>.
         /// </summary>
         public void UpdatePreGame()
         {
@@ -31,21 +31,16 @@ namespace Ryujinx.UI.App.Common
         }
 
         /// <summary>
-        /// Updates <see cref="LastPlayed"/> and <see cref="TimePlayed"/>. Call this after a game ends.
+        /// Adds <paramref name="duration"/> to <see cref="TimePlayed"/> and updates <see cref="LastPlayed"/>.
         /// </summary>
-        public void UpdatePostGame()
+        public void AddPlayTime(TimeSpan duration)
         {
-            DateTime? prevLastPlayed = LastPlayed;
             UpdatePreGame();
 
-            if (!prevLastPlayed.HasValue)
+            if (duration > TimeSpan.Zero)
             {
-                return;
+                TimePlayed += duration;
             }
-
-            TimeSpan diff = DateTime.UtcNow - prevLastPlayed.Value;
-            double newTotalSeconds = TimePlayed.Add(diff).TotalSeconds;
-            TimePlayed = TimeSpan.FromSeconds(Math.Round(newTotalSeconds, MidpointRounding.AwayFromZero));
         }
     }
 }

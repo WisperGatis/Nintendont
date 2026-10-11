@@ -24,6 +24,22 @@ namespace Ryujinx.Ava
         public static readonly ThemeVariant CatppuccinFrappeTheme = new("CatppuccinFrappe", ThemeVariant.Dark);
         public static readonly ThemeVariant CatppuccinMacchiatoTheme = new("CatppuccinMacchiato", ThemeVariant.Dark);
         public static readonly ThemeVariant CatppuccinMochaTheme = new("CatppuccinMocha", ThemeVariant.Dark);
+        public static readonly ThemeVariant RosePineTheme = new("RosePine", ThemeVariant.Dark);
+        public static readonly ThemeVariant RosePineDawnTheme = new("RosePineDawn", ThemeVariant.Light);
+        public static readonly ThemeVariant GruvboxTheme = new("Gruvbox", ThemeVariant.Dark);
+        public static readonly ThemeVariant GruvboxLightTheme = new("GruvboxLight", ThemeVariant.Light);
+        public static readonly ThemeVariant RosePineMoonTheme = new("RosePineMoon", ThemeVariant.Dark);
+        public static readonly ThemeVariant TokyoNightTheme = new("TokyoNight", ThemeVariant.Dark);
+        public static readonly ThemeVariant TokyoNightDayTheme = new("TokyoNightDay", ThemeVariant.Light);
+        public static readonly ThemeVariant NordTheme = new("Nord", ThemeVariant.Dark);
+        public static readonly ThemeVariant DraculaTheme = new("Dracula", ThemeVariant.Dark);
+        public static readonly ThemeVariant EverforestTheme = new("Everforest", ThemeVariant.Dark);
+        public static readonly ThemeVariant EverforestLightTheme = new("EverforestLight", ThemeVariant.Light);
+        public static readonly ThemeVariant KanagawaTheme = new("Kanagawa", ThemeVariant.Dark);
+        public static readonly ThemeVariant OneDarkTheme = new("OneDark", ThemeVariant.Dark);
+        public static readonly ThemeVariant SolarizedDarkTheme = new("SolarizedDark", ThemeVariant.Dark);
+        public static readonly ThemeVariant SolarizedLightTheme = new("SolarizedLight", ThemeVariant.Light);
+        public static readonly ThemeVariant MatugenTheme = new("Matugen", ThemeVariant.Dark);
 
         public override void Initialize()
         {
@@ -52,6 +68,7 @@ namespace Ryujinx.Ava
 
                 ConfigurationState.Instance.UI.BaseStyle.Event += ThemeChanged_Event;
                 ConfigurationState.Instance.UI.CustomThemePath.Event += ThemeChanged_Event;
+                ConfigurationState.Instance.UI.MatugenThemePath.Event += MatugenThemePathChanged_Event;
                 ConfigurationState.Instance.UI.EnableCustomTheme.Event += CustomThemeChanged_Event;
             }
         }
@@ -92,6 +109,14 @@ namespace Ryujinx.Ava
             ApplyConfiguredTheme();
         }
 
+        private void MatugenThemePathChanged_Event(object sender, ReactiveEventArgs<string> e)
+        {
+            if (ConfigurationState.Instance.UI.BaseStyle == ThemeRegistry.MatugenId)
+            {
+                MatugenThemeLoader.Configure(e.NewValue);
+            }
+        }
+
         public void ApplyConfiguredTheme()
         {
             try
@@ -109,18 +134,21 @@ namespace Ryujinx.Ava
 
                 ThemeManager.OnThemeChanged();
 
-                RequestedThemeVariant = baseStyle switch
+                RequestedThemeVariant = ThemeRegistry.Find(baseStyle) is { } theme
+                    ? theme.Variant ?? systemTheme
+                    : ThemeVariant.Default;
+
+                if (baseStyle == ThemeRegistry.MatugenId)
                 {
-                    "Auto" => systemTheme,
-                    "Light" => ThemeVariant.Light,
-                    "Dark" => ThemeVariant.Dark,
-                    "Purple" => PurpleTheme,
-                    "CatppuccinLatte" => CatppuccinLatteTheme,
-                    "CatppuccinFrappe" => CatppuccinFrappeTheme,
-                    "CatppuccinMacchiato" => CatppuccinMacchiatoTheme,
-                    "CatppuccinMocha" => CatppuccinMochaTheme,
-                    _ => ThemeVariant.Default,
-                };
+                    if (!MatugenThemeLoader.Configure(ConfigurationState.Instance.UI.MatugenThemePath))
+                    {
+                        RequestedThemeVariant = systemTheme;
+                    }
+                }
+                else
+                {
+                    MatugenThemeLoader.StopWatching();
+                }
             }
             catch (Exception)
             {
