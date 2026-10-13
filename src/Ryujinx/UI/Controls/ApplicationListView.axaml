@@ -47,7 +47,7 @@
             </ListBox.Styles>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid ToolTip.Tip="{Binding Notes}">
                         <Border
                             Margin="0"
                             Padding="10"

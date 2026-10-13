@@ -48,6 +48,72 @@ namespace Ryujinx.Ava.UI.Controls
             }
         }
 
+        public async void EditTags_Click(object sender, RoutedEventArgs args)
+        {
+            var viewModel = (sender as MenuItem)?.DataContext as MainWindowViewModel;
+            ApplicationData app = viewModel?.SelectedApplication;
+
+            if (app == null)
+            {
+                return;
+            }
+
+            string input = await ContentDialogHelper.ShowTextInputDialog(
+                LocaleManager.Instance[LocaleKeys.GameListEditTagsTitle],
+                LocaleManager.Instance[LocaleKeys.GameListEditTagsPrompt],
+                string.Join(", ", app.Tags ?? new List<string>()),
+                LocaleManager.Instance[LocaleKeys.InputDialogOk],
+                LocaleManager.Instance[LocaleKeys.InputDialogCancel]);
+
+            if (input == null)
+            {
+                return;
+            }
+
+            ApplicationMetadata saved = ApplicationLibrary.LoadAndSaveMetaData(app.IdString, appMetadata =>
+            {
+                appMetadata.SetTags(input.Split(',', StringSplitOptions.RemoveEmptyEntries));
+            });
+
+            app.Tags = saved.Tags != null ? new List<string>(saved.Tags) : new List<string>();
+
+            viewModel.RefreshView();
+        }
+
+        public async void EditNotes_Click(object sender, RoutedEventArgs args)
+        {
+            var viewModel = (sender as MenuItem)?.DataContext as MainWindowViewModel;
+            ApplicationData app = viewModel?.SelectedApplication;
+
+            if (app == null)
+            {
+                return;
+            }
+
+            string input = await ContentDialogHelper.ShowTextInputDialog(
+                LocaleManager.Instance[LocaleKeys.GameListEditNotesTitle],
+                LocaleManager.Instance[LocaleKeys.GameListEditNotesPrompt],
+                app.Notes ?? string.Empty,
+                LocaleManager.Instance[LocaleKeys.InputDialogOk],
+                LocaleManager.Instance[LocaleKeys.InputDialogCancel],
+                ApplicationMetadata.MaxNotesLength,
+                multiline: true);
+
+            if (input == null)
+            {
+                return;
+            }
+
+            ApplicationMetadata saved = ApplicationLibrary.LoadAndSaveMetaData(app.IdString, appMetadata =>
+            {
+                appMetadata.SetNotes(input);
+            });
+
+            app.Notes = saved.Notes;
+
+            viewModel.RefreshView();
+        }
+
         public void OpenUserSaveDirectory_Click(object sender, RoutedEventArgs args)
         {
             if (sender is MenuItem { DataContext: MainWindowViewModel viewModel })

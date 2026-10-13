@@ -12,6 +12,7 @@ using Ryujinx.HLE.FileSystem;
 using Ryujinx.HLE.Loaders.Processes.Extensions;
 using Ryujinx.UI.Common.Helper;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json.Serialization;
 
@@ -20,6 +21,8 @@ namespace Ryujinx.UI.App.Common
     public class ApplicationData
     {
         public bool Favorite { get; set; }
+        public List<string> Tags { get; set; } = new();
+        public string Notes { get; set; }
         public byte[] Icon { get; set; }
         public string Name { get; set; } = "Unknown";
         public ulong Id { get; set; }
