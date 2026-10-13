@@ -462,6 +462,7 @@ namespace Ryujinx.UI.App.Common
                     });
 
                     data.Favorite = appMetadata.Favorite;
+                    data.Tags = appMetadata.Tags != null ? new List<string>(appMetadata.Tags) : new List<string>();
                     data.TimePlayed = appMetadata.TimePlayed;
                     data.LastPlayed = appMetadata.LastPlayed;
                 }

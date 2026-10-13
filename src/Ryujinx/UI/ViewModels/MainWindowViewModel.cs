@@ -38,6 +38,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Key = Ryujinx.Input.Key;
@@ -171,7 +172,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
                 _searchTimer?.Dispose();
 
-                _searchTimer = new Timer(TimerCallback, null, 1000, 0);
+                _searchTimer = new Timer(TimerCallback, null, 250, 0);
             }
         }
 
@@ -974,6 +975,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public void RefreshView()
         {
+            RebuildFilterOptions();
             RefreshGrid();
         }
 
@@ -991,17 +993,73 @@ namespace Ryujinx.Ava.UI.ViewModels
         {
             if (arg is ApplicationData app)
             {
-                if (string.IsNullOrWhiteSpace(_searchText))
-                {
-                    return true;
-                }
+                FilterOption option = SelectedFilterOption;
 
-                CompareInfo compareInfo = CultureInfo.CurrentCulture.CompareInfo;
-
-                return compareInfo.IndexOf(app.Name, _searchText, CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace) >= 0;
+                return ApplicationFilter.Matches(app, _searchText, option?.Quick ?? QuickFilter.All, option?.Tag, DateTime.UtcNow);
             }
 
             return false;
+        }
+
+        public sealed record FilterOption(string Label, QuickFilter Quick, string Tag)
+        {
+            public override string ToString() => Label;
+        }
+
+        private FilterOption _selectedFilterOption;
+
+        public ObservableCollection<FilterOption> FilterOptions { get; } = new();
+
+        public FilterOption SelectedFilterOption
+        {
+            get => _selectedFilterOption;
+            set
+            {
+                if (value == null || Equals(_selectedFilterOption, value))
+                {
+                    return;
+                }
+
+                _selectedFilterOption = value;
+                OnPropertyChanged();
+                RefreshView();
+            }
+        }
+
+        private void RebuildFilterOptions()
+        {
+            string[] tags = Applications
+                .SelectMany(app => app.Tags ?? new List<string>())
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .OrderBy(tag => tag, StringComparer.CurrentCultureIgnoreCase)
+                .ToArray();
+
+            List<FilterOption> options = new()
+            {
+                new FilterOption(LocaleManager.Instance[LocaleKeys.GameListFilterAll], QuickFilter.All, null),
+                new FilterOption(LocaleManager.Instance[LocaleKeys.GameListFilterFavorites], QuickFilter.Favorites, null),
+                new FilterOption(LocaleManager.Instance[LocaleKeys.GameListFilterRecent], QuickFilter.Recent, null),
+                new FilterOption(LocaleManager.Instance[LocaleKeys.GameListFilterNeverPlayed], QuickFilter.NeverPlayed, null),
+            };
+
+            options.AddRange(tags.Select(tag => new FilterOption("# " + tag, QuickFilter.All, tag)));
+
+            if (FilterOptions.SequenceEqual(options))
+            {
+                return;
+            }
+
+            FilterOption previous = _selectedFilterOption;
+
+            FilterOptions.Clear();
+
+            foreach (FilterOption option in options)
+            {
+                FilterOptions.Add(option);
+            }
+
+            _selectedFilterOption = options.FirstOrDefault(option => Equals(option, previous)) ?? options[0];
+            OnPropertyChanged(nameof(SelectedFilterOption));
         }
 
         private async Task HandleFirmwareInstallation(string filename)

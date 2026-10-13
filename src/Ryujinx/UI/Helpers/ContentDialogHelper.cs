@@ -80,6 +80,32 @@ namespace Ryujinx.Ava.UI.Helpers
             return result;
         }
 
+        /// <summary>
+        /// Shows a dialog with a single text box. Returns the entered text, or null if cancelled.
+        /// </summary>
+        public async static Task<string> ShowTextInputDialog(string title, string prompt, string initialText, string okButton, string cancelButton)
+        {
+            TextBox textBox = new()
+            {
+                Text = initialText,
+                MinWidth = 320,
+            };
+
+            StackPanel content = new()
+            {
+                Spacing = 8,
+                Children =
+                {
+                    new TextBlock { Text = prompt, TextWrapping = TextWrapping.Wrap },
+                    textBox,
+                },
+            };
+
+            UserResult result = await ShowContentDialog(title, content, okButton, null, cancelButton);
+
+            return result == UserResult.Ok ? textBox.Text ?? string.Empty : null;
+        }
+
         public async static Task<UserResult> ShowTextDialog(
             string title,
             string primaryText,
