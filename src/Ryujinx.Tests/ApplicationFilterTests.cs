@@ -64,6 +64,33 @@ namespace Ryujinx.Tests
         }
 
         [Test]
+        public void MostRecentlyPlayed_PicksNewestExistingAndSkipsUnplayed()
+        {
+            string file = System.IO.Path.GetTempFileName();
+
+            try
+            {
+                ApplicationData older = App("Old", lastPlayed: _now - TimeSpan.FromDays(3));
+                ApplicationData newer = App("New", lastPlayed: _now - TimeSpan.FromDays(1));
+                ApplicationData missing = App("Missing", lastPlayed: _now);
+                ApplicationData never = App("Never");
+
+                older.Path = file;
+                newer.Path = file;
+                missing.Path = "/nonexistent/game.nsp";
+                never.Path = file;
+
+                Assert.AreSame(newer, ApplicationFilter.MostRecentlyPlayed(new[] { older, newer, missing, never }));
+                Assert.IsNull(ApplicationFilter.MostRecentlyPlayed(new[] { never, missing }));
+                Assert.IsNull(ApplicationFilter.MostRecentlyPlayed(new List<ApplicationData>()));
+            }
+            finally
+            {
+                System.IO.File.Delete(file);
+            }
+        }
+
+        [Test]
         public void EmptySearch_MatchesEverything()
         {
             Assert.IsTrue(ApplicationFilter.Matches(App("Game"), "  ", QuickFilter.All, null, _now));

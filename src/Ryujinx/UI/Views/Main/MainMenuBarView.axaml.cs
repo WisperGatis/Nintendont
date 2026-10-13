@@ -267,6 +267,44 @@ namespace Ryujinx.Ava.UI.Views.Main
             await AboutWindow.Show();
         }
 
+        public async void OpenLibraryStatistics(object sender, RoutedEventArgs e)
+        {
+            LibraryStats stats = LibraryStats.Compute(ViewModel.Applications);
+            LocaleManager locale = LocaleManager.Instance;
+
+            List<string> lines = new()
+            {
+                $"{locale[LocaleKeys.StatsGames]}: {stats.GameCount} ({stats.PlayedCount} / {stats.GameCount - stats.PlayedCount})",
+                $"{locale[LocaleKeys.StatsTotalTime]}: {LibraryStats.FormatTotal(stats.TotalPlayTime)} (⌀ {LibraryStats.FormatTotal(stats.AveragePlayTime)})",
+            };
+
+            if (stats.TopTag != null)
+            {
+                lines.Add($"{locale[LocaleKeys.StatsTopTag]}: {stats.TopTag}");
+            }
+
+            if (stats.MostPlayed.Count > 0)
+            {
+                lines.Add(string.Empty);
+                lines.Add(locale[LocaleKeys.StatsMostPlayed]);
+                lines.AddRange(stats.MostPlayed.Select(app => $"  {app.Name} — {LibraryStats.FormatTotal(app.TimePlayed)}"));
+            }
+
+            if (stats.RecentlyPlayed.Count > 0)
+            {
+                lines.Add(string.Empty);
+                lines.Add(locale[LocaleKeys.StatsRecent]);
+                lines.AddRange(stats.RecentlyPlayed.Select(app => $"  {app.Name} — {ValueFormatUtils.FormatDateTime(app.LastPlayed)}"));
+            }
+
+            await ContentDialogHelper.CreateInfoDialog(
+                locale[LocaleKeys.StatsSummary],
+                string.Join(Environment.NewLine, lines),
+                locale[LocaleKeys.InputDialogOk],
+                string.Empty,
+                locale[LocaleKeys.MenuBarHelpLibraryStatistics]);
+        }
+
         public void CloseWindow(object sender, RoutedEventArgs e)
         {
             Window.Close();

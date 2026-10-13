@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 
 namespace Ryujinx.UI.App.Common
@@ -56,6 +58,14 @@ namespace Ryujinx.UI.App.Common
                    (app.Notes != null && compareInfo.IndexOf(app.Notes, searchText, Options) >= 0) ||
                    (app.Tags?.Any(appTag => compareInfo.IndexOf(appTag, searchText, Options) >= 0) ?? false);
         }
+
+        /// <summary>
+        /// The most recently played application whose file still exists, or null.
+        /// </summary>
+        public static ApplicationData MostRecentlyPlayed(IEnumerable<ApplicationData> apps) =>
+            apps?.Where(app => app.LastPlayed.HasValue && !string.IsNullOrEmpty(app.Path) && (File.Exists(app.Path) || Directory.Exists(app.Path)))
+                .OrderByDescending(app => app.LastPlayed.Value)
+                .FirstOrDefault();
 
         private static bool HasTag(ApplicationData app, string tag) =>
             app.Tags?.Any(appTag => string.Equals(appTag, tag, StringComparison.OrdinalIgnoreCase)) ?? false;

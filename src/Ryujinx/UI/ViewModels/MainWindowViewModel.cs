@@ -266,6 +266,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
                 OnPropertyChanged();
                 OnPropertyChanged(nameof(EnableNonGameRunningControls));
+                OnPropertyChanged(nameof(ContinueLastPlayedEnabled));
                 OnPropertyChanged(nameof(IsAppletMenuActive));
                 OnPropertyChanged(nameof(StatusBarVisible));
                 OnPropertyChanged(nameof(ShowFirmwareStatus));
@@ -975,6 +976,7 @@ namespace Ryujinx.Ava.UI.ViewModels
 
         public void RefreshView()
         {
+            LastPlayedApplication = ApplicationFilter.MostRecentlyPlayed(Applications);
             RebuildFilterOptions();
             RefreshGrid();
         }
@@ -1021,10 +1023,13 @@ namespace Ryujinx.Ava.UI.ViewModels
                 }
 
                 _selectedFilterOption = value;
+                ConfigurationState.Instance.UI.LastFilter.Value = value.Tag != null ? "tag:" + value.Tag : value.Quick.ToString();
                 OnPropertyChanged();
                 RefreshView();
             }
         }
+
+        private static string FilterKey(FilterOption option) => option.Tag != null ? "tag:" + option.Tag : option.Quick.ToString();
 
         private void RebuildFilterOptions()
         {
@@ -1049,8 +1054,6 @@ namespace Ryujinx.Ava.UI.ViewModels
                 return;
             }
 
-            FilterOption previous = _selectedFilterOption;
-
             FilterOptions.Clear();
 
             foreach (FilterOption option in options)
@@ -1058,7 +1061,9 @@ namespace Ryujinx.Ava.UI.ViewModels
                 FilterOptions.Add(option);
             }
 
-            _selectedFilterOption = options.FirstOrDefault(option => Equals(option, previous)) ?? options[0];
+            string saved = ConfigurationState.Instance.UI.LastFilter.Value;
+
+            _selectedFilterOption = options.FirstOrDefault(option => FilterKey(option) == saved) ?? options[0];
             OnPropertyChanged(nameof(SelectedFilterOption));
         }
 
@@ -1485,6 +1490,39 @@ namespace Ryujinx.Ava.UI.ViewModels
         public void SimulateWakeUpMessage()
         {
             AppHost.Device.System.SimulateWakeUpMessage();
+        }
+
+        private ApplicationData _lastPlayedApplication;
+
+        public ApplicationData LastPlayedApplication
+        {
+            get => _lastPlayedApplication;
+            private set
+            {
+                if (ReferenceEquals(_lastPlayedApplication, value))
+                {
+                    return;
+                }
+
+                _lastPlayedApplication = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ContinueLastPlayedEnabled));
+                OnPropertyChanged(nameof(ContinueLastPlayedLabel));
+            }
+        }
+
+        public bool ContinueLastPlayedEnabled => EnableNonGameRunningControls && LastPlayedApplication != null;
+
+        public string ContinueLastPlayedLabel => LastPlayedApplication == null
+            ? LocaleManager.Instance[LocaleKeys.MenuBarFileContinueLastPlayed]
+            : $"{LocaleManager.Instance[LocaleKeys.MenuBarFileContinueLastPlayed]}: {LastPlayedApplication.Name}";
+
+        public async Task ContinueLastPlayed()
+        {
+            if (ContinueLastPlayedEnabled)
+            {
+                await LoadApplication(LastPlayedApplication);
+            }
         }
 
         public async Task OpenFile()

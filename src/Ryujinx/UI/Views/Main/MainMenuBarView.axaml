@@ -27,6 +27,11 @@
             </Menu.ItemsPanel>
             <MenuItem VerticalAlignment="Center" Header="{locale:Locale MenuBarFile}">
                 <MenuItem
+                    Command="{Binding ContinueLastPlayed}"
+                    Header="{Binding ContinueLastPlayedLabel}"
+                    IsEnabled="{Binding ContinueLastPlayedEnabled}"
+                    ToolTip.Tip="{locale:Locale MenuBarFileContinueLastPlayedTooltip}" />
+                <MenuItem
                     Command="{Binding OpenFile}"
                     Header="{locale:Locale MenuBarFileOpenFromFile}"
                     IsEnabled="{Binding EnableNonGameRunningControls}"
@@ -201,6 +206,9 @@
                     Click="CheckForUpdates"
                     Header="{locale:Locale MenuBarHelpCheckForUpdates}"
                     ToolTip.Tip="{locale:Locale CheckUpdatesTooltip}" />
+                <MenuItem
+                    Click="OpenLibraryStatistics"
+                    Header="{locale:Locale MenuBarHelpLibraryStatistics}" />
                 <Separator />
                 <MenuItem
                     Click="OpenAboutWindow"

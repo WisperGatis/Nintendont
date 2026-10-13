@@ -154,6 +154,11 @@ namespace Ryujinx.UI.Common.Configuration
             public ReactiveObject<string> MatugenThemePath { get; private set; }
 
             /// <summary>
+            /// The quick filter selected in the game list, as <c>All</c>, <c>Favorites</c>, <c>Recent</c>, <c>NeverPlayed</c> or <c>tag:name</c>
+            /// </summary>
+            public ReactiveObject<string> LastFilter { get; private set; }
+
+            /// <summary>
             /// Selects the base style
             /// </summary>
             public ReactiveObject<string> BaseStyle { get; private set; }
@@ -203,6 +208,7 @@ namespace Ryujinx.UI.Common.Configuration
                 EnableCustomTheme = new ReactiveObject<bool>();
                 CustomThemePath = new ReactiveObject<string>();
                 MatugenThemePath = new ReactiveObject<string>();
+                LastFilter = new ReactiveObject<string>();
                 BaseStyle = new ReactiveObject<string>();
                 StartFullscreen = new ReactiveObject<bool>();
                 GameListViewMode = new ReactiveObject<int>();
@@ -756,6 +762,7 @@ namespace Ryujinx.UI.Common.Configuration
                 EnableCustomTheme = UI.EnableCustomTheme,
                 CustomThemePath = UI.CustomThemePath,
                 MatugenThemePath = UI.MatugenThemePath,
+                LastFilter = UI.LastFilter,
                 BaseStyle = UI.BaseStyle,
                 GameListViewMode = UI.GameListViewMode,
                 ShowNames = UI.ShowNames,
@@ -858,6 +865,7 @@ namespace Ryujinx.UI.Common.Configuration
             UI.GameListViewMode.Value = 0;
             UI.ShowNames.Value = true;
             UI.GridSize.Value = 2;
+            UI.LastFilter.Value = "All";
             UI.ApplicationSort.Value = 0;
             UI.IsAscendingOrder.Value = true;
             UI.StartFullscreen.Value = false;
@@ -1559,6 +1567,7 @@ namespace Ryujinx.UI.Common.Configuration
             UI.MatugenThemePath.Value = string.IsNullOrWhiteSpace(configurationFileFormat.MatugenThemePath)
                 ? Path.Combine(AppDataManager.BaseDirPath, "matugen.xaml")
                 : configurationFileFormat.MatugenThemePath;
+            UI.LastFilter.Value = string.IsNullOrWhiteSpace(configurationFileFormat.LastFilter) ? "All" : configurationFileFormat.LastFilter;
             UI.BaseStyle.Value = configurationFileFormat.BaseStyle;
             UI.GameListViewMode.Value = configurationFileFormat.GameListViewMode;
             UI.ShowNames.Value = configurationFileFormat.ShowNames;
