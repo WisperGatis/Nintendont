@@ -206,6 +206,9 @@
                     Click="CheckForUpdates"
                     Header="{locale:Locale MenuBarHelpCheckForUpdates}"
                     ToolTip.Tip="{locale:Locale CheckUpdatesTooltip}" />
+                <MenuItem
+                    Click="OpenLibraryStatistics"
+                    Header="{locale:Locale MenuBarHelpLibraryStatistics}" />
                 <Separator />
                 <MenuItem
                     Click="OpenAboutWindow"

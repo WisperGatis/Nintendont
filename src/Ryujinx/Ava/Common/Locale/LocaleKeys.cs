@@ -67,6 +67,13 @@ namespace Ryujinx.Ava.Common.Locale
         MenuBarHelpCheckForUpdates,
         CheckUpdatesTooltip,
         MenuBarHelpAbout,
+        MenuBarHelpLibraryStatistics,
+        StatsSummary,
+        StatsGames,
+        StatsTotalTime,
+        StatsTopTag,
+        StatsMostPlayed,
+        StatsRecent,
         OpenAboutTooltip,
 
         // Settings Tab Items
