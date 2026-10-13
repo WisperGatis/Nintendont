@@ -15,6 +15,9 @@
     <MenuItem
         Click="EditTags_Click"
         Header="{locale:Locale GameListContextMenuEditTags}" />
+    <MenuItem
+        Click="EditNotes_Click"
+        Header="{locale:Locale GameListContextMenuEditNotes}" />
 	<MenuItem
 		Click="CreateApplicationShortcut_Click"
 		Header="{locale:Locale GameListContextMenuCreateShortcut}"

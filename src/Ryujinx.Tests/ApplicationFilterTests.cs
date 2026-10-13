@@ -32,6 +32,38 @@ namespace Ryujinx.Tests
         }
 
         [Test]
+        public void Search_AlsoMatchesNotes()
+        {
+            ApplicationData app = App("Game");
+            app.Notes = "Needs the Vulkan backend";
+
+            Assert.IsTrue(ApplicationFilter.Matches(app, "vulkan", QuickFilter.All, null, _now));
+            Assert.IsFalse(ApplicationFilter.Matches(App("Game"), "vulkan", QuickFilter.All, null, _now));
+        }
+
+        [Test]
+        public void SetNotes_TrimsEmptiesAndCaps()
+        {
+            ApplicationMetadata metadata = new();
+
+            metadata.SetNotes("  hello\nworld  ");
+            Assert.AreEqual("hello\nworld", metadata.Notes);
+
+            metadata.SetNotes(new string('x', 5000));
+            Assert.AreEqual(ApplicationMetadata.MaxNotesLength, metadata.Notes.Length);
+
+            metadata.SetNotes("   ");
+            Assert.IsNull(metadata.Notes);
+        }
+
+        [Test]
+        public void Notes_OmittedFromJsonWhenNull()
+        {
+            Assert.IsFalse(JsonSerializer.Serialize(new ApplicationMetadata()).Contains("\"notes\""));
+            Assert.IsNull(JsonSerializer.Deserialize<ApplicationMetadata>("{}").Notes);
+        }
+
+        [Test]
         public void EmptySearch_MatchesEverything()
         {
             Assert.IsTrue(ApplicationFilter.Matches(App("Game"), "  ", QuickFilter.All, null, _now));

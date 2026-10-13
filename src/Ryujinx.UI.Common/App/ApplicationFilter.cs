@@ -53,6 +53,7 @@ namespace Ryujinx.UI.App.Common
             const CompareOptions Options = CompareOptions.IgnoreCase | CompareOptions.IgnoreNonSpace;
 
             return compareInfo.IndexOf(app.Name ?? string.Empty, searchText, Options) >= 0 ||
+                   (app.Notes != null && compareInfo.IndexOf(app.Notes, searchText, Options) >= 0) ||
                    (app.Tags?.Any(appTag => compareInfo.IndexOf(appTag, searchText, Options) >= 0) ?? false);
         }
 
