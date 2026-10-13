@@ -8,6 +8,8 @@ namespace Ryujinx.Ava.Common.Locale
     {
         // Menu Bar Items
         MenuBarFile,
+        MenuBarFileContinueLastPlayed,
+        MenuBarFileContinueLastPlayedTooltip,
         MenuBarFileOpenFromFile,
         MenuBarFileOpenFromFileError,
         MenuBarFileOpenUnpacked,

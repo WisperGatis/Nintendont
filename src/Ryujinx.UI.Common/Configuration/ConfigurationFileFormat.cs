@@ -293,6 +293,11 @@ namespace Ryujinx.UI.Common.Configuration
         public string MatugenThemePath { get; set; }
 
         /// <summary>
+        /// The quick filter selected in the game list
+        /// </summary>
+        public string LastFilter { get; set; }
+
+        /// <summary>
         /// Chooses the base style // Not Used
         /// </summary>
         public string BaseStyle { get; set; }

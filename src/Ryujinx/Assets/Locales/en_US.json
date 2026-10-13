@@ -9,6 +9,8 @@
   "SettingsTabSystemMemoryManagerModeHostUnchecked": "Host Unchecked (fastest, unsafe)",
   "SettingsTabSystemUseHypervisor": "Use Hypervisor",
   "MenuBarFile": "_File",
+  "MenuBarFileContinueLastPlayed": "Continue Last Played",
+  "MenuBarFileContinueLastPlayedTooltip": "Launch the game you played most recently",
   "MenuBarFileOpenFromFile": "_Load Application From File",
   "MenuBarFileOpenFromFileError": "No applications found in selected file.",
   "MenuBarFileOpenUnpacked": "Load _Unpacked Game",
