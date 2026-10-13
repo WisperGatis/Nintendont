@@ -1440,6 +1440,14 @@ namespace Ryujinx.Ava.UI.ViewModels
             OpenHelper.OpenFolder(AppDataManager.BaseDirPath);
         }
 
+        public void OpenScreenshotsFolder()
+        {
+            string screenshotsPath = ScreenshotHelper.GetDirectory();
+
+            Directory.CreateDirectory(screenshotsPath);
+            OpenHelper.OpenFolder(screenshotsPath);
+        }
+
         public void OpenLogsFolder()
         {
             string logPath = AppDataManager.GetOrCreateLogsDir();
