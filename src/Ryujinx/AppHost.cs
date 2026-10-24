@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls.Notifications;
 using Avalonia.Input;
 using Avalonia.Threading;
 using LibHac.Tools.FsSystem;
@@ -342,52 +343,44 @@ namespace Ryujinx.Ava
                 {
                     lock (_lockObject)
                     {
-                        string applicationName = Device.Processes.ActiveApplication.Name;
-                        string sanitizedApplicationName = FileSystemUtils.SanitizeFileName(applicationName);
-                        DateTime currentTime = DateTime.Now;
-
-                        string filename = $"{sanitizedApplicationName}_{currentTime.Year}-{currentTime.Month:D2}-{currentTime.Day:D2}_{currentTime.Hour:D2}-{currentTime.Minute:D2}-{currentTime.Second:D2}.png";
-
-                        string directory = AppDataManager.Mode switch
-                        {
-                            AppDataManager.LaunchMode.Portable or AppDataManager.LaunchMode.Custom => Path.Combine(AppDataManager.BaseDirPath, "screenshots"),
-                            _ => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Ryujinx"),
-                        };
-
+                        string filename = ScreenshotHelper.BuildFileName(Device.Processes.ActiveApplication.Name, DateTime.Now);
+                        string directory = ScreenshotHelper.GetDirectory();
                         string path = Path.Combine(directory, filename);
 
                         try
                         {
                             Directory.CreateDirectory(directory);
+
+                            var colorType = e.IsBgra ? SKColorType.Bgra8888 : SKColorType.Rgba8888;
+                            using SKBitmap bitmap = new SKBitmap(new SKImageInfo(e.Width, e.Height, colorType, SKAlphaType.Premul));
+
+                            Marshal.Copy(e.Data, 0, bitmap.GetPixels(), e.Data.Length);
+
+                            using SKBitmap bitmapToSave = new SKBitmap(bitmap.Width, bitmap.Height);
+                            using SKCanvas canvas = new SKCanvas(bitmapToSave);
+
+                            canvas.Clear(SKColors.Black);
+
+                            float scaleX = e.FlipX ? -1 : 1;
+                            float scaleY = e.FlipY ? -1 : 1;
+
+                            var matrix = SKMatrix.CreateScale(scaleX, scaleY, bitmap.Width / 2f, bitmap.Height / 2f);
+
+                            canvas.SetMatrix(matrix);
+                            canvas.DrawBitmap(bitmap, SKPoint.Empty);
+
+                            SaveBitmapAsPng(bitmapToSave, path);
                         }
                         catch (Exception ex)
                         {
-                            Logger.Error?.Print(LogClass.Application, $"Failed to create directory at path {directory}. Error : {ex.GetType().Name}", "Screenshot");
+                            Logger.Error?.Print(LogClass.Application, $"Failed to save screenshot to {path}. Error : {ex.GetType().Name}", "Screenshot");
+                            NotificationHelper.Show(LocaleManager.Instance[LocaleKeys.ScreenshotFailed], filename, NotificationType.Error);
 
                             return;
                         }
 
-                        var colorType = e.IsBgra ? SKColorType.Bgra8888 : SKColorType.Rgba8888;
-                        using SKBitmap bitmap = new SKBitmap(new SKImageInfo(e.Width, e.Height, colorType, SKAlphaType.Premul));
-
-                        Marshal.Copy(e.Data, 0, bitmap.GetPixels(), e.Data.Length);
-
-                        using SKBitmap bitmapToSave = new SKBitmap(bitmap.Width, bitmap.Height);
-                        using SKCanvas canvas = new SKCanvas(bitmapToSave);
-
-                        canvas.Clear(SKColors.Black);
-
-                        float scaleX = e.FlipX ? -1 : 1;
-                        float scaleY = e.FlipY ? -1 : 1;
-
-                        var matrix = SKMatrix.CreateScale(scaleX, scaleY, bitmap.Width / 2f, bitmap.Height / 2f);
-
-                        canvas.SetMatrix(matrix);
-                        canvas.DrawBitmap(bitmap, SKPoint.Empty);
-
-                        SaveBitmapAsPng(bitmapToSave, path);
-
                         Logger.Notice.Print(LogClass.Application, $"Screenshot saved to {path}", "Screenshot");
+                        NotificationHelper.Show(LocaleManager.Instance[LocaleKeys.ScreenshotSaved], filename, NotificationType.Success, onClick: () => OpenHelper.LocateFile(path));
                     }
                 });
             }
