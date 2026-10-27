@@ -18,6 +18,7 @@
     <Window.Styles>
         <Style Selector="TreeViewItem">
             <Setter Property="IsExpanded" Value="True" />
+            <Setter Property="IsVisible" Value="{Binding IsVisible}" />
         </Style>
     </Window.Styles>
     <Grid Name="CheatGrid" Margin="15">
@@ -32,6 +33,30 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,5"
+            IsVisible="{Binding !NoCheatsFound}">
+            <Button
+                Margin="5,0,0,0"
+                Command="{Binding DisableAll}"
+                DockPanel.Dock="Right">
+                <TextBlock Text="{locale:Locale CheatWindowDisableAll}" />
+            </Button>
+            <Button
+                Margin="5,0,0,0"
+                Command="{Binding EnableAll}"
+                DockPanel.Dock="Right">
+                <TextBlock Text="{locale:Locale CheatWindowEnableAll}" />
+            </Button>
+            <TextBox
+                Name="SearchBox"
+                HorizontalAlignment="Stretch"
+                TextChanged="SearchBox_TextChanged"
+                Watermark="{locale:Locale MenuSearch}" />
+        </DockPanel>
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
@@ -98,6 +123,15 @@
                 </TreeView.ItemTemplate>
             </TreeView>
         </Border>
+        <TextBlock
+            Name="NoMatchesText"
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            IsVisible="False"
+            Text="{locale:Locale CheatWindowNoMatches}" />
         <DockPanel
             Grid.Row="4"
             Grid.Column="0"

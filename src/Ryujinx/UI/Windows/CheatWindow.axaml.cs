@@ -98,6 +98,53 @@ namespace Ryujinx.Ava.UI.Windows
             Title = $"Ryujinx {Program.Version} - " + LocaleManager.Instance[LocaleKeys.CheatWindowTitle];
         }
 
+        private void SearchBox_TextChanged(object sender, Avalonia.Controls.TextChangedEventArgs e)
+        {
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            if (LoadedCheats == null)
+            {
+                return;
+            }
+
+            string search = SearchBox.Text ?? string.Empty;
+            bool anyVisible = false;
+
+            foreach (CheatNode group in LoadedCheats)
+            {
+                foreach (CheatNode cheat in group.SubNodes)
+                {
+                    cheat.IsVisible = CheatFilter.Matches(cheat.CleanName, search);
+                }
+
+                group.IsVisible = group.SubNodes.Any(cheat => cheat.IsVisible);
+                anyVisible |= group.IsVisible;
+            }
+
+            NoMatchesText.IsVisible = !NoCheatsFound && !anyVisible;
+        }
+
+        public void EnableAll() => SetVisibleCheats(true);
+
+        public void DisableAll() => SetVisibleCheats(false);
+
+        private void SetVisibleCheats(bool enabled)
+        {
+            foreach (CheatNode group in LoadedCheats)
+            {
+                foreach (CheatNode cheat in group.SubNodes.Where(cheat => cheat.IsVisible))
+                {
+                    cheat.IsEnabled = enabled;
+                    cheat.RefreshEnabled();
+                }
+
+                group.RefreshEnabled();
+            }
+        }
+
         public void Save()
         {
             if (NoCheatsFound)

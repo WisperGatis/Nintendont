@@ -8,6 +8,7 @@ namespace Ryujinx.Ava.UI.Models
     public class CheatNode : BaseModel
     {
         private bool _isEnabled = false;
+        private bool _isVisible = true;
         public ObservableCollection<CheatNode> SubNodes { get; } = new();
         public string CleanName => Name[1..^7];
         public string BuildIdKey => $"{BuildId}-{Name}";
@@ -37,6 +38,24 @@ namespace Ryujinx.Ava.UI.Models
                 _isEnabled = value;
             }
         }
+
+        /// <summary>
+        /// Whether the node passes the current search filter.
+        /// </summary>
+        public bool IsVisible
+        {
+            get => _isVisible;
+            set
+            {
+                _isVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Notifies the UI that <see cref="IsEnabled"/> may have changed.
+        /// </summary>
+        public void RefreshEnabled() => OnPropertyChanged(nameof(IsEnabled));
 
         public CheatNode(string name, string buildId, string path, bool isRootNode, bool isEnabled = false)
         {
